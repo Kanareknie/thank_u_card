@@ -8,25 +8,25 @@
     <!-- Head meta basic information -->
     <title>
       {% block title %}
-        Story Gym
+        Thank U Card | Create personalized thank you cards
       {% endblock %}
     </title>
-    <meta name="description" content="Story Gym is a creative writing training platform designed to help you strengthen your storytelling skills through structured exercises and challenges." />
-    <meta name="keywords" content="creative writing, storytelling, writing exercises, story practice, writing skills" />
+    <meta name="description" content="Create personalized thank you cards for any occasion." />
+    <meta name="keywords" content="thank you cards, personalized cards, custom cards, greeting cards" />
     <meta name="author" content="Katarzyna Gawronska" />
     <meta name="theme-color" content="#1a1a1a" />
     <!-- Open Graph (Social Media Preview) -->
-    <meta property="og:title" content="Story Gym | Train Your Creative Writing Skills" />
-    <meta property="og:description" content="Build stronger storytelling skills with creative writing workouts and structured exercises." />
-    <meta property="og:url" content="https://kanareknie.github.io/Story-Gym/" />
+    <meta property="og:title" content="Thank U Card | Create Personalized Thank You Cards" />
+    <meta property="og:description" content="Create personalized thank you cards for any occasion." />
+    <meta property="og:url" content="https://kanareknie.github.io/Thank_U_Card/" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Story Gym" />
+    <meta property="og:site_name" content="Thank U Card" />
     <!-- REQUIRED image (Django path) -->
     <meta property="og:image" content="{{ og_image_url|default:'https://yourdomain.com/static/images/web-picture.png' }}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:alt" content="Story Gym website preview showing creative writing exercises and storytelling training" />
+    <meta property="og:image:alt" content="Thank U Card website preview showing personalized thank you card creation options" />
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}" />
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}" />
@@ -47,10 +47,10 @@
   </head>
   <body>
     <div class="page-wrapper">
-      {% comment %} Polygon background {% endcomment %}
+      {% comment %} Polygon background 
       <div class="polygon-bg">
         <svg id="triangleMesh" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
-      </div>
+      </div> {% endcomment %}
       <header>
         <nav class="navbar navbar-expand-lg navbar-dark sg-navbar">
           <div class="container-fluid">
@@ -71,10 +71,10 @@
                   </li>
                 {% else %}
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    <a class="nav-link" href="">Login</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    <a class="nav-link" href="">Register</a>
                   </li>
                 {% endif %}
               </ul>
