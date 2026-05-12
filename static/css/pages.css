@@ -118,3 +118,79 @@ textarea {
 .home-note {
   font-size: 0.9rem;
 }
+
+/* ============== */
+/* Options Panel - main settings */
+/* ============== */
+
+.options-panel {
+  border: 2px solid var(--purple);
+  border-radius: 1.5rem;
+  padding: 1rem;
+  min-height: 520px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.option-group {
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.option-group legend,
+.option-title {
+  align-self: center;
+  background: linear-gradient(90deg, #fff8a8, #ff9dee);
+  border: 1px solid var(--purple);
+  border-radius: 1rem;
+  padding: 0.45rem 0.8rem;
+
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.option-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  font-size: 0.9rem;
+}
+
+.option-group input[type="radio"],
+.option-group input[type="checkbox"] {
+  width: auto;
+  accent-color: var(--purple);
+}
+
+.option-group select {
+  width: 100%;
+  border: 2px solid var(--purple);
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  font-family: inherit;
+  color: var(--text-color);
+  background: #ffffff;
+}
+
+.option-checkbox {
+  align-items: center;
+}
+
+.generate-bg-button {
+  margin-top: auto;
+
+  border: 2px solid var(--purple);
+  border-radius: 1rem;
+  padding: 0.75rem;
+
+  background: var(--purple);
+  color: #000000;
+
+  font-weight: 800;
+}
