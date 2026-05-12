@@ -19,55 +19,121 @@
   </div>
 </section>
 
-<section class="home-builder">
-  <aside class="builder-column builder-options">
-    <h2>Step 1</h2>
+<form class="home-builder-form" method="post" action="">
+  {% csrf_token %}
 
-    <div class="builder-card">
-      <p>Who would you like to say thank you?</p>
-    </div>
+  <div class="home-builder">
+    <section class="builder-column builder-options" aria-labelledby="step-one-title">
+      <h2 id="step-one-title">Step 1</h2>
 
-    <div class="builder-placeholder">Filters will go here</div>
-  </aside>
+      <div class="options-panel">
+        <fieldset class="option-group">
+          <legend>Who would you like to say thank you?</legend>
 
-  <section class="builder-column builder-preview">
-    <h2>Step 2</h2>
+          <label><input type="radio" name="recipient_type" value="teacher" checked /> Teacher</label>
+          <label><input type="radio" name="recipient_type" value="friend" /> Friend</label>
+          <label><input type="radio" name="recipient_type" value="family" /> Family</label>
+          <label><input type="radio" name="recipient_type" value="wedding_guest" /> Wedding guest</label>
+        </fieldset>
 
-    <div class="preview-card">
-      <div class="preview-display">
-        <h3>Your card preview:</h3>
-        <div class="preview-paper">
-          <p>Your card preview will appear here</p>
+        <fieldset class="option-group">
+          <legend>Pick your theme</legend>
+
+          <label><input type="radio" name="theme" value="elegant" checked /> Elegant</label>
+          <label><input type="radio" name="theme" value="cute" /> Cute</label>
+          <label><input type="radio" name="theme" value="funny" /> Funny</label>
+          <label><input type="radio" name="theme" value="formal" /> Formal</label>
+        </fieldset>
+
+        <div class="option-group">
+          <label for="main-colour" class="option-title">Pick main colour</label>
+          <select id="main-colour" name="main_colour">
+            <option value="">Choose colour</option>
+            <option value="pink">Pink</option>
+            <option value="purple">Purple</option>
+            <option value="blue">Blue</option>
+            <option value="yellow">Yellow</option>
+            <option value="green">Green</option>
+          </select>
+        </div>
+
+        <div class="option-group">
+          <label for="include-element" class="option-title">Include element</label>
+          <select id="include-element" name="include_element">
+            <option value="">Choose element</option>
+            <option value="animals">Animals</option>
+            <option value="flowers">Flowers</option>
+            <option value="bears">Bears</option>
+            <option value="hearts">Hearts</option>
+          </select>
+        </div>
+
+        <div class="option-group option-checkbox">
+          <label>
+            <input id="no-message-toggle" type="checkbox" name="without_message" value="true" />
+            Card without message
+          </label>
+        </div>
+
+        <button type="submit" name="action" value="generate_background" class="generate-bg-button">
+          Generate background with AI *
+        </button>
+      </div>
+    </section>
+
+    <section class="builder-column builder-preview" aria-labelledby="step-two-title">
+      <h2 id="step-two-title">Step 2</h2>
+
+      <div class="preview-card">
+        <div class="preview-display">
+          <h3>Your card preview:</h3>
+
+          <div class="preview-paper">
+            <p>Your card preview will appear here</p>
+          </div>
+        </div>
+
+        <div class="preview-form" id="message-fields">
+          <div class="form-group">
+            <label for="recipient-name">Recipient name (optional):</label>
+            <input id="recipient-name" type="text" name="recipient_name" maxlength="50" placeholder="Add text" />
+            <span class="field-counter">0/50</span>
+          </div>
+
+          <div class="form-group">
+            <label for="card-message">Write down the message:</label>
+            <textarea id="card-message" name="message" maxlength="300" placeholder="Write your thank-you message here..."></textarea>
+            <span class="field-counter">0/300</span>
+          </div>
+        </div>
+
+        <div class="preview-buttons">
+          <button type="submit" name="action" value="generate_message">
+            Generate / Improve message
+          </button>
+
+          <button type="submit" name="action" value="update_preview">
+            Update preview
+          </button>
         </div>
       </div>
+    </section>
 
-      <div class="preview-form">
-        <div class="form-group">
-          <label for="recipient-name">Recipient name (optional):</label>
-          <input id="recipient-name" type="text" placeholder="Add text" />
-        </div>
+    <section class="builder-column builder-actions" aria-labelledby="step-three-title">
+      <h2 id="step-three-title">Step 3</h2>
 
-        <div class="form-group">
-          <label for="card-message">Write down the message:</label>
-          <textarea id="card-message" placeholder="Write your thank-you message here..."></textarea>
-        </div>
+      <div class="actions-panel">
+        <button type="submit" name="action" value="save_card">Save</button>
+        <button type="reset">Reset</button>
+        <button type="submit" name="action" value="add_to_basket">Add to basket</button>
       </div>
-    </div>
-  </section>
-
-  <aside class="builder-column builder-actions">
-    <h2>Step 3</h2>
-
-    <div class="actions-panel">
-      <button type="button">Save</button>
-      <button type="button">Reset</button>
-      <button type="button">Add to basket</button>
-    </div>
-  </aside>
-</section>
+    </section>
+  </div>
+</form>
 
 <section class="home-note">
   <p><strong>*Background generation is limited to 3 per 24h per user.</strong></p>
+  <p>After the successful payment received, the thank you card will be able to download in PDF format from account page.</p>
 </section>
 
 {% endblock %}
