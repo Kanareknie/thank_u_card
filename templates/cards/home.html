@@ -1,6 +1,73 @@
 {% extends 'cards/base.html' %}
 
+{% block main_class %}home-page{% endblock %}
+
 {% block content %}
-<h1>Home Page</h1>
-<p>Your card builder will go here</p>
+
+<section class="home-hero">
+  <div class="home-logo-area">
+    <p>Create your own thank<br />you card with</p>
+    <h1>Thank U Card</h1>
+  </div>
+
+  <div class="home-instructions">
+    <ul>
+      <li>Use filters on the left to set up the card</li>
+      <li>Add text and generate the background</li>
+      <li>Add to basket</li>
+    </ul>
+  </div>
+</section>
+
+<section class="home-builder">
+  <aside class="builder-column builder-options">
+    <h2>Step 1</h2>
+
+    <div class="builder-card">
+      <p>Who would you like to say thank you?</p>
+    </div>
+
+    <div class="builder-placeholder">Filters will go here</div>
+  </aside>
+
+  <section class="builder-column builder-preview">
+    <h2>Step 2</h2>
+
+    <div class="preview-card">
+      <div class="preview-display">
+        <h3>Your card preview:</h3>
+        <div class="preview-paper">
+          <p>Your card preview will appear here</p>
+        </div>
+      </div>
+
+      <div class="preview-form">
+        <div class="form-group">
+          <label for="recipient-name">Recipient name (optional):</label>
+          <input id="recipient-name" type="text" placeholder="Add text" />
+        </div>
+
+        <div class="form-group">
+          <label for="card-message">Write down the message:</label>
+          <textarea id="card-message" placeholder="Write your thank-you message here..."></textarea>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="builder-column builder-actions">
+    <h2>Step 3</h2>
+
+    <div class="actions-panel">
+      <button type="button">Save</button>
+      <button type="button">Reset</button>
+      <button type="button">Add to basket</button>
+    </div>
+  </aside>
+</section>
+
+<section class="home-note">
+  <p><strong>*Background generation is limited to 3 per 24h per user.</strong></p>
+</section>
+
 {% endblock %}
