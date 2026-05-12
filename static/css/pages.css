@@ -26,6 +26,10 @@
   align-items: stretch;
 }
 
+.home-builder-form {
+  width: 100%;
+}
+
 .builder-column {
   display: flex;
   flex-direction: column;
