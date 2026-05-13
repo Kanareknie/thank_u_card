@@ -28,10 +28,10 @@
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:alt" content="Thank U Card website preview showing personalized thank you card creation options" />
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}" />
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}" />
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'favicon/favicon-96x96.png' %}" />
+    <link rel="icon" type="image/svg+xml" href="{% static 'favicon/favicon.svg' %}" />
     <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}" />
     <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -44,52 +44,46 @@
     <link rel="stylesheet" href="{% static 'css/pages.css' %}" />
   </head>
   <body>
-  <div class="site-shell">
-    <header class="site-header">
-      <nav class="site-nav" aria-label="Main navigation">
-        <div class="nav-socials">
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <i class="fa-brands fa-facebook"></i>
-          </a>
-          <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X">
-            <i class="fa-brands fa-x-twitter"></i>
-          </a>
-        </div>
+    <div class="site-shell">
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Main navigation">
+          <div class="nav-socials">
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
 
-        <div class="nav-links">
-          {% if user.is_authenticated %}
-            <a href="{% url 'account' %}">Your account</a>
-            <form action="{% url 'logout' %}" method="post" class="nav-form">
-              {% csrf_token %}
-              <button type="submit">Log Out</button>
-            </form>
-          {% else %}
-            <a href="">Sign Up</a>
-            <a href="">Login</a>
-          {% endif %}
+          <div class="nav-links">
+            {% if user.is_authenticated %}
+              <a href="{% url 'account' %}">Your account</a>
+              <form action="{% url 'logout' %}" method="post" class="nav-form">
+                {% csrf_token %}
+                <button type="submit">Log Out</button>
+              </form>
+            {% else %}
+              <a href="">Sign Up</a>
+              <a href="">Login</a>
+            {% endif %}
 
-          <a href="{% url 'home' %}" aria-label="Basket">
-            <i class="fa-solid fa-cart-shopping"></i>
-          </a>
-        </div>
-      </nav>
-    </header>
+            <a href="{% url 'home' %}" aria-label="Basket"><i class="fa-solid fa-cart-shopping"></i></a>
+          </div>
+        </nav>
+      </header>
 
-    <main class="site-main {% block main_class %}{% endblock %}">
-      <section class="content-panel">
-        {% block content %}{% endblock %}
-      </section>
-    </main>
+      <main class="site-main {% block main_class %}
+        {% endblock %}">
+        <section class="content-panel">
+          {% block content %}
+          {% endblock %}
+        </section>
+      </main>
 
-    <footer class="site-footer">
-      <p>All rights reserved. This website is a student project created for educational purposes only.</p>
-      <p>Katarzyna Gawronska 2026</p>
-    </footer>
-  </div>
+      <footer class="site-footer">
+        <p>All rights reserved. This website is a student project created for educational purposes only.</p>
+        <p>Katarzyna Gawronska 2026</p>
+      </footer>
+    </div>
 
-  <script src="{% static 'js/main.js' %}"></script>
-</body>
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
 </html>
