@@ -1,0 +1,85 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+  Register | Thank U Card
+{% endblock %}
+
+{% block content %}
+  <!-- Register page main container -->
+  <section class="register-container">
+    <div class="register-panel">
+      <!-- Left: Title -->
+      <div class="register-col register-col--form">
+        <header class="register-header">
+          <h1 class="register-title">Create your Thank U Card account</h1>
+          <p class="register-subtitle">Start creating your unique thank you cards today.</p>
+        </header>
+        <!-- Right: Form -->
+
+        {% comment %}Form - Register new user{% endcomment %}
+        <form method="post" class="register-form">
+          {% csrf_token %}
+          <p>Please fill in the form below to create your account.</p>
+
+          {% comment %}Error loop https://docs.djangoproject.com/en/stable/ref/forms/api/#django.forms.BoundField.errors{% endcomment %}
+          {% if form.non_field_errors %}
+            <div class="form-error">
+              {% for error in form.non_field_errors %}
+                <p>{{ error }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+          {% comment %} Notification for form errors {% endcomment %}
+          {% if form.errors %}
+            <div class="form-error">
+              <p>Please correct the errors below and try again.</p>
+            </div>
+          {% endif %}
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            {% comment %}Form hint{% endcomment %}
+            <p class="form-hint">Enter a valid email address. Disposable emails are not allowed.</p>
+            <input type="email" name="email" class="form-control" id="email" required value="{{ form.email.value|default:'' }}" autocomplete="email" />
+            {% comment %}Error check regarding this particular section{% endcomment %}
+            {% if form.email.errors %}
+              <div class="form-error">
+                {% for error in form.email.errors %}
+                  <p>{{ error }}</p>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+          <div class="mb-3">
+            <label for="password1" class="form-label">Password</label>
+            {% comment %}Form hint{% endcomment %}
+            <p class="form-hint">At least 8 characters. Use a mix of letters and numbers.</p>
+            <input type="password" name="password1" class="form-control" id="password1" required autocomplete="new-password" />
+            {% if form.password1.errors %}
+              <div class="form-error">
+                {% for error in form.password1.errors %}
+                  <p>{{ error }}</p>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+          <div class="mb-3">
+            <label for="password2" class="form-label">Confirm Password</label>
+            {% comment %}Form hint{% endcomment %}
+            <p class="form-hint">Must match the password entered above.</p>
+            <input type="password" name="password2" class="form-control" id="password2" required autocomplete="new-password" />
+            {% if form.password2.errors %}
+              <div class="form-error">
+                {% for error in form.password2.errors %}
+                  <p>{{ error }}</p>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+          
+          <button type="submit" class="sg-btn register-btn">Create account</button>
+        </form>
+      </div>
+    </div>
+  </section>
+{% endblock %}
