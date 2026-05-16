@@ -120,6 +120,26 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# Email settings for password reset functionality
+# https://docs.djangoproject.com/en/4.2/topics/email/#email-backends
+# twilio sendgrid email backend settings
+# #https://docs.sendgrid.com/for-developers/sending-email/django-email-integration
+
+SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL")
+
+if SENDGRID_API_KEY:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.sendgrid.net'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = 'apikey'
+    EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
