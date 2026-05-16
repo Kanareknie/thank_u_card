@@ -1,0 +1,46 @@
+{% extends 'cards/base.html' %}
+{% load static %}
+
+{% block title %}
+ Login | Thank U Card
+{% endblock %}
+
+{% block content %}
+  <!-- Main container login page -->
+  <section class="login-container">
+    <div class="login-panel">
+      <!-- LEFT: Login -->
+      <div class="login-col login-col--form">
+        <header class="login-header">
+          <h1 class="login-title">Welcome back!</h1>
+          <p class="login-subtitle">Please log in to your account</p>
+        </header>
+        {% if form.errors %}
+          <div class="alert alert-danger">Invalid email address or password</div>
+        {% endif %}
+        <form method="post" class="login-form">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" name="username" class="form-control" id="email" placeholder="Enter your email" autocomplete="email" />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password" autocomplete="current-password" />
+          </div>
+          {% comment %} Password reset link {% endcomment %}
+          <div class="login-meta">
+            <a class="login-link" href="">Forgot password?</a>
+          </div> 
+          <button type="submit" class="sg-btn login-btn">Login</button>
+        </form>
+      </div>
+      <!-- RIGHT: Signup -->
+      <aside class="login-col login-col--signup">
+        <h2 class="signup-title">New user?</h2>
+        <p class="signup-subtitle">Register below to get started</p>
+        <a href="{% url 'register' %}" class="sg-btn signup-btn">Create account</a>
+      </aside>
+    </div>
+  </section>
+{% endblock %}
