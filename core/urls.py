@@ -17,13 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from cards.views import home
-from accounts.views import register
+from accounts.views import register, CustomeLoginView
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', register, name='register'),
+    path('login/', CustomeLoginView.as_view(), name='login'),
     path('', home, name='home'),
 ]
 
