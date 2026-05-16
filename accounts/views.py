@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from accounts.forms import SignUpForm
-from django.contrib.auth import login, LoginView
+from django.contrib.auth import login
+from django.contrib.auth.views import LoginView
 
 # Create your views here.
 def register(request):
@@ -16,5 +17,5 @@ def register(request):
         
     return render(request, 'accounts/register.html', {"form": form})
 
-class LoginView(LoginView):
+class CustomLoginView(LoginView):
     template_name = 'accounts/login.html'
