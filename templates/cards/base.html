@@ -61,8 +61,8 @@
                 <button type="submit">Log Out</button>
               </form>
             {% else %}
-              <a href="">Sign Up</a>
-              <a href="">Login</a>
+              <a href="{% url 'register' %}">Sign Up</a>
+              <a href="{% url 'login' %}">Login</a>
             {% endif %}
 
             <a href="{% url 'home' %}" aria-label="Basket"><i class="fa-solid fa-cart-shopping"></i></a>
