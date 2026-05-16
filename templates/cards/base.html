@@ -51,12 +51,16 @@
             <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
             <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+
+            {% if user.is_authenticated %}
+               <span>Logged in as <b>{{ user.email }}</b></span>
+            {% endif %}
           </div>
 
           <div class="nav-links">
             {% if user.is_authenticated %}
-               <p>Logged in as <b>{{ user.email }}</b></p>
                <a href="#">Account</a>
+               
               <form action="{% url 'logout' %}" method="post" class="nav-form">
                 {% csrf_token %}
                 <button type="submit">Log Out</button>
