@@ -55,7 +55,8 @@
 
           <div class="nav-links">
             {% if user.is_authenticated %}
-              <a href="">Your account</a>
+               <p>Logged in as <b>{{ user.email }}</b></p>
+               <a href="#">Account</a>
               <form action="{% url 'logout' %}" method="post" class="nav-form">
                 {% csrf_token %}
                 <button type="submit">Log Out</button>
