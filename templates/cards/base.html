@@ -53,14 +53,14 @@
             <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
 
             {% if user.is_authenticated %}
-               <span>Logged in as <b>{{ user.email }}</b></span>
+              <span>Logged in as <b>{{ user.email }}</b></span>
             {% endif %}
           </div>
 
           <div class="nav-links">
             {% if user.is_authenticated %}
-               <a href="#">Account</a>
-               
+              <a href="#">Account</a>
+
               <form action="{% url 'logout' %}" method="post" class="nav-form">
                 {% csrf_token %}
                 <button type="submit">Log Out</button>
@@ -75,10 +75,21 @@
         </nav>
       </header>
 
+      {% comment %} Message content {% endcomment %}
+      {% if messages %}
+        <div class="messages-container">
+          {% for message in messages %}
+            <div class="message {{ message.tags }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
       <main class="site-main {% block main_class %}
+
         {% endblock %}">
         <section class="content-panel">
           {% block content %}
+
           {% endblock %}
         </section>
       </main>
