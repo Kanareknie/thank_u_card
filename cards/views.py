@@ -10,6 +10,7 @@ from .openai_helpers import generate_card_message
 @login_required
 def home(request):
     generated_message = None
+    preview_card = None
 
     if request.method == "POST":
         form = CardForm(request.POST)
@@ -35,9 +36,34 @@ def home(request):
                             "no_message": form.cleaned_data.get("no_message", False),
                         }
                     )
+                    
+                    preview_card = {
+                        "recipient_name": form.initial.get("recipient_name"),
+                        "message": generated_message,
+                        "recipient_type": form.initial.get("recipient_type"),
+                        "theme": form.initial.get("theme"),
+                        "colour": form.initial.get("colour"),
+                        "element": form.initial.get("element"),
+                        "no_message": form.initial.get("no_message"),
+                    }
+                    
                     messages.success(request, "Message generated successfully.")
                 else:
                     messages.error(request, "AI message generation is currently unavailable.")
+                    
+        elif action == "update_preview":
+            if form.is_valid():
+                preview_card = {
+                    "recipient_name": form.cleaned_data.get("recipient_name"),
+                    "message": form.cleaned_data.get("message"),
+                    "recipient_type": form.cleaned_data.get("recipient_type"),
+                    "theme": form.cleaned_data.get("theme"),
+                    "colour": form.cleaned_data.get("colour"),
+                    "element": form.cleaned_data.get("element"),
+                    "no_message": form.cleaned_data.get("no_message"),
+                }
+
+                messages.success(request, "Preview updated.")
 
         elif action == "save_card":
             if form.is_valid():
@@ -60,5 +86,6 @@ def home(request):
             "form": form,
             "latest_card": latest_card,
             "generated_message": generated_message,
+            "preview_card": preview_card,
         },
     )
