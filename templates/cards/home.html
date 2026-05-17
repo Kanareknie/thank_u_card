@@ -1,139 +1,135 @@
 {% extends 'cards/base.html' %}
 
-{% block main_class %}home-page{% endblock %}
+{% block main_class %}
+  home-page
+{% endblock %}
 
 {% block content %}
+  <section class="home-hero">
+    <div class="home-logo-area">
+      <p>
+        Create your own thank<br />you card with
+      </p>
+      <h1>Thank U Card</h1>
+    </div>
 
-<section class="home-hero">
-  <div class="home-logo-area">
-    <p>Create your own thank<br />you card with</p>
-    <h1>Thank U Card</h1>
-  </div>
+    <div class="home-instructions">
+      <ul>
+        <li>Use filters on the left to set up the card</li>
+        <li>Add text and generate the background</li>
+        <li>Add to basket</li>
+      </ul>
+    </div>
+  </section>
 
-  <div class="home-instructions">
-    <ul>
-      <li>Use filters on the left to set up the card</li>
-      <li>Add text and generate the background</li>
-      <li>Add to basket</li>
-    </ul>
-  </div>
-</section>
+  <form class="home-builder-form" method="post" action="">
+    {% csrf_token %}
 
-<form class="home-builder-form" method="post" action="">
-  {% csrf_token %}
+    <div class="home-builder">
+      <section class="builder-column builder-options" aria-labelledby="step-one-title">
+        <h2 id="step-one-title">Step 1</h2>
 
-  <div class="home-builder">
-    <section class="builder-column builder-options" aria-labelledby="step-one-title">
-      <h2 id="step-one-title">Step 1</h2>
+        <div class="options-panel">
+          <fieldset class="option-group">
+            <legend>Who would you like to say thank you?</legend>
+            {{ form.recipient_type }}
+            {{ form.recipient_type.errors }}
+          </fieldset>
 
-      <div class="options-panel">
-        <fieldset class="option-group">
-          <legend>Who would you like to say thank you?</legend>
+          <fieldset class="option-group">
+            <legend>Pick your theme</legend>
+            {{ form.theme }}
+            {{ form.theme.errors }}
+          </fieldset>
 
-          <label><input type="radio" name="recipient_type" value="teacher" checked /> Teacher</label>
-          <label><input type="radio" name="recipient_type" value="friend" /> Friend</label>
-          <label><input type="radio" name="recipient_type" value="family" /> Family</label>
-          <label><input type="radio" name="recipient_type" value="wedding_guest" /> Wedding guest</label>
-        </fieldset>
-
-        <fieldset class="option-group">
-          <legend>Pick your theme</legend>
-
-          <label><input type="radio" name="theme" value="elegant" checked /> Elegant</label>
-          <label><input type="radio" name="theme" value="cute" /> Cute</label>
-          <label><input type="radio" name="theme" value="funny" /> Funny</label>
-          <label><input type="radio" name="theme" value="formal" /> Formal</label>
-        </fieldset>
-
-        <div class="option-group">
-          <label for="main-colour" class="option-title">Pick main colour</label>
-          <select id="main-colour" name="main_colour">
-            <option value="">Choose colour</option>
-            <option value="pink">Pink</option>
-            <option value="purple">Purple</option>
-            <option value="blue">Blue</option>
-            <option value="yellow">Yellow</option>
-            <option value="green">Green</option>
-          </select>
-        </div>
-
-        <div class="option-group">
-          <label for="include-element" class="option-title">Include element</label>
-          <select id="include-element" name="include_element">
-            <option value="">Choose element</option>
-            <option value="animals">Animals</option>
-            <option value="flowers">Flowers</option>
-            <option value="bears">Bears</option>
-            <option value="hearts">Hearts</option>
-          </select>
-        </div>
-
-        <div class="option-group option-checkbox">
-          <label>
-            <input id="no-message-toggle" type="checkbox" name="without_message" value="true" />
-            Card without message
-          </label>
-        </div>
-
-        <button type="submit" name="action" value="generate_background" class="generate-bg-button">
-          Generate background with AI *
-        </button>
-      </div>
-    </section>
-
-    <section class="builder-column builder-preview" aria-labelledby="step-two-title">
-      <h2 id="step-two-title">Step 2</h2>
-
-      <div class="preview-card">
-        <div class="preview-display">
-          <h3>Your card preview:</h3>
-
-          <div class="preview-paper">
-            <p>Your card preview will appear here</p>
-          </div>
-        </div>
-
-        <div class="preview-form" id="message-fields">
-          <div class="form-group">
-            <label for="recipient-name">Recipient name (optional):</label>
-            <input id="recipient-name" type="text" name="recipient_name" maxlength="50" placeholder="Add text" />
-            <span class="field-counter">0/50</span>
+          <div class="option-group">
+            <label for="main-colour" class="option-title">Pick main colour</label>
+            {{ form.colour }}
+            {{ form.colour.errors }}
           </div>
 
-          <div class="form-group">
-            <label for="card-message">Write down the message:</label>
-            <textarea id="card-message" name="message" maxlength="300" placeholder="Write your thank-you message here..."></textarea>
-            <span class="field-counter">0/300</span>
+          <div class="option-group">
+            <label for="include-element" class="option-title">Include element</label>
+            {{ form.element }}
+            {{ form.element.errors }}
+          </div>
+
+          <div class="option-group option-checkbox">
+            <label>
+              {{ form.no_message }}
+              Card without message
+            </label>
+            {{ form.no_message.errors }}
+          </div>
+
+          <button type="submit" name="action" value="generate_background" class="generate-bg-button">Generate background with AI *</button>
+        </div>
+      </section>
+
+      <section class="builder-column builder-preview" aria-labelledby="step-two-title">
+        <h2 id="step-two-title">Step 2</h2>
+
+        <div class="preview-card">
+          <div class="preview-display">
+            <h3>Your card preview:</h3>
+
+            <div class="preview-paper">
+              {% if latest_card %}
+                <h3>Dear {{ latest_card.recipient_name }}</h3>
+
+                {% if not latest_card.no_message %}
+                  <p>{{ latest_card.message }}</p>
+                {% else %}
+                  <p>This card has no message.</p>
+                {% endif %}
+
+                <p>Theme: {{ latest_card.theme }}</p>
+                <p>Colour: {{ latest_card.colour }}</p>
+                <p>Element: {{ latest_card.element }}</p>
+              {% else %}
+                <p>Your card preview will appear here</p>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="preview-form" id="message-fields">
+            <div class="form-group">
+              <label for="recipient-name">Recipient name (optional):</label>
+              {{ form.recipient_name }}
+              {{ form.recipient_name.errors }}
+            </div>
+
+            <div class="form-group">
+              <label for="card-message">Write down the message:</label>
+              {{ form.message }}
+              {{ form.message.errors }}
+            </div>
+          </div>
+
+          <div class="preview-buttons">
+            <button type="submit" name="action" value="generate_message">Generate / Improve message</button>
+
+            <button type="submit" name="action" value="update_preview">Update preview</button>
           </div>
         </div>
+      </section>
 
-        <div class="preview-buttons">
-          <button type="submit" name="action" value="generate_message">
-            Generate / Improve message
-          </button>
+      <section class="builder-column builder-actions" aria-labelledby="step-three-title">
+        <h2 id="step-three-title">Step 3</h2>
 
-          <button type="submit" name="action" value="update_preview">
-            Update preview
-          </button>
+        <div class="actions-panel">
+          <button type="submit" name="action" value="save_card">Save</button>
+          <button type="reset">Reset</button>
+          <button type="submit" name="action" value="add_to_basket">Add to basket</button>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
+  </form>
 
-    <section class="builder-column builder-actions" aria-labelledby="step-three-title">
-      <h2 id="step-three-title">Step 3</h2>
-
-      <div class="actions-panel">
-        <button type="submit" name="action" value="save_card">Save</button>
-        <button type="reset">Reset</button>
-        <button type="submit" name="action" value="add_to_basket">Add to basket</button>
-      </div>
-    </section>
-  </div>
-</form>
-
-<section class="home-note">
-  <p><strong>*Background generation is limited to 3 per 24h per user.</strong></p>
-  <p>After the successful payment received, the thank you card will be able to download in PDF format from account page.</p>
-</section>
-
+  <section class="home-note">
+    <p>
+      <strong>*Background generation is limited to 3 per 24h per user.</strong>
+    </p>
+    <p>After the successful payment received, the thank you card will be able to download in PDF format from account page.</p>
+  </section>
 {% endblock %}

@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+
+from cards.models import Card
 from .forms import CardForm
 
 
@@ -19,4 +21,13 @@ def home(request):
     else:
         form = CardForm()
 
-    return render(request, "cards/home.html", {"form": form})
+    latest_card = Card.objects.filter(user=request.user).order_by("-created_on").first()
+
+    return render(
+        request,
+        "cards/home.html",
+        {
+            "form": form,
+            "latest_card": latest_card,
+        },
+    )
