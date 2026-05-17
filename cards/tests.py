@@ -51,6 +51,8 @@ class CardCreationTests(TestCase):
                 "recipient_name": "Mrs Smith",
                 "message": "Thank you for helping me.",
                 "no_message": False,
+                "action": "save_card",
+                
             }
         )
 
