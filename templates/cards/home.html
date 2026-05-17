@@ -74,18 +74,38 @@
             <h3>Your card preview:</h3>
 
             <div class="preview-paper">
-              {% if latest_card %}
-                <h3>Dear {{ latest_card.recipient_name }}</h3>
+              {% if preview_card %}
+                <div class="preview-content">
+                  {% if preview_card.recipient_name %}
+                    <h3>Dear {{ preview_card.recipient_name }}</h3>
+                  {% endif %}
 
-                {% if not latest_card.no_message %}
-                  <p>{{ latest_card.message }}</p>
-                {% else %}
-                  <p>This card has no message.</p>
-                {% endif %}
+                  {% if not preview_card.no_message %}
+                    <p>{{ preview_card.message }}</p>
+                  {% else %}
+                    <p>This card has no message.</p>
+                  {% endif %}
 
-                <p>Theme: {{ latest_card.theme }}</p>
-                <p>Colour: {{ latest_card.colour }}</p>
-                <p>Element: {{ latest_card.element }}</p>
+                  <p>Theme: {{ preview_card.theme }}</p>
+                  <p>Colour: {{ preview_card.colour }}</p>
+                  <p>Element: {{ preview_card.element }}</p>
+                </div>
+              {% elif latest_card %}
+                <div class="preview-content">
+                  {% if latest_card.recipient_name %}
+                    <h3>Dear {{ latest_card.recipient_name }}</h3>
+                  {% endif %}
+
+                  {% if not latest_card.no_message %}
+                    <p>{{ latest_card.message }}</p>
+                  {% else %}
+                    <p>This card has no message.</p>
+                  {% endif %}
+
+                  <p>Theme: {{ latest_card.theme }}</p>
+                  <p>Colour: {{ latest_card.colour }}</p>
+                  <p>Element: {{ latest_card.element }}</p>
+                </div>
               {% else %}
                 <p>Your card preview will appear here</p>
               {% endif %}
