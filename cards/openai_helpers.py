@@ -4,6 +4,8 @@ from openai import OpenAI
 from core import settings
 
 # This function generates or improves a thank-you card message.
+
+
 def generate_card_message(recipient_type, theme, message=""):
     """
     Generate or improve a short thank-you card message.
@@ -39,11 +41,16 @@ def generate_card_message(recipient_type, theme, message=""):
     return response.output_text.strip()
 
 # This function generates a thank-you card background image based on the card's attributes.
+
+
 def generate_card_background(card):
     if not settings.OPENAI_API_KEY:
         return None
 
-    client = OpenAI(api_key=settings.OPENAI_API_KEY)
+    client = OpenAI(
+        api_key=settings.OPENAI_API_KEY,
+        timeout=25.0,
+    )
 
     prompt = f"""
     Create a beautiful thank-you card background.
@@ -69,11 +76,16 @@ def generate_card_background(card):
     - watercolour style of elements is preferred, as it adds a soft and elegant touch to the card's design
     """
 
-    result = client.images.generate(
-        model="gpt-image-1",
-        prompt=prompt,
-        size="1024x1024",
-    )
+    try:
+        result = client.images.generate(
+            model="gpt-image-1",
+            prompt=prompt,
+            size="1024x1024",
+        )
 
-    image_base64 = result.data[0].b64_json
-    return base64.b64decode(image_base64)
+        image_base64 = result.data[0].b64_json
+        return base64.b64decode(image_base64)
+
+    except Exception as error:
+        print(f"OpenAI image generation failed: {error}")
+        return None
