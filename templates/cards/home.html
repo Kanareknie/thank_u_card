@@ -61,8 +61,11 @@
             </label>
             {{ form.no_message.errors }}
           </div>
-
-          <button type="submit" name="action" value="generate_background" class="generate-bg-button">Generate background with AI *</button>
+          {% comment %}Generate background image{% endcomment %}
+          {% if latest_card %}
+            <button type="submit" name="action" value="generate_background" class="sg-btn">Generate background with AI</button>
+            <input type="hidden" name="card_id" value="{{ latest_card.id }}" />
+          {% endif %}
         </div>
       </section>
 
@@ -91,6 +94,10 @@
                   <p>Element: {{ preview_card.element }}</p>
                 </div>
               {% elif latest_card %}
+                {% if latest_card.background_image %}
+                  <img src="{{ latest_card.background_image.url }}" alt="Generated card background" />
+                {% endif %}
+
                 <div class="preview-content">
                   {% if latest_card.recipient_name %}
                     <h3>Dear {{ latest_card.recipient_name }}</h3>
