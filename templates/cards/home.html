@@ -43,13 +43,13 @@
           </fieldset>
 
           <div class="option-group">
-            <label for="main-colour" class="option-title">Pick main colour</label>
+            <label for="{{ form.colour.id_for_label }}" class="option-title">Pick main colour</label>
             {{ form.colour }}
             {{ form.colour.errors }}
           </div>
 
           <div class="option-group">
-            <label for="include-element" class="option-title">Include element</label>
+            <label for="{{ form.element.id_for_label }}" class="option-title">Include element</label>
             {{ form.element }}
             {{ form.element.errors }}
           </div>
@@ -122,13 +122,13 @@
 
           <div class="preview-form" id="message-fields">
             <div class="form-group">
-              <label for="recipient-name">Recipient name (optional):</label>
+              <label for="{{ form.recipient_name.id_for_label }}">Recipient name (optional):</label>
               {{ form.recipient_name }}
               {{ form.recipient_name.errors }}
             </div>
 
             <div class="form-group">
-              <label for="card-message">Write down the message:</label>
+              <label for="{{ form.message.id_for_label }}">Write down the message:</label>
               {{ form.message }}
               {{ form.message.errors }}
             </div>
