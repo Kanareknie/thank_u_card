@@ -61,10 +61,6 @@
             </label>
             {{ form.no_message.errors }}
           </div>
-          {% comment %} If the card exists {% endcomment %}
-          {% if latest_card %}
-            <input type="hidden" name="card_id" value="{{ latest_card.id }}" />
-          {% endif %}
           {% comment %}Generate background image{% endcomment %}
           <button type="submit" name="action" value="generate_background" class="sg-btn">Generate background with AI</button>
           <p class="ai-notice">Background generation uses AI and may send your selected theme, colour, recipient type, and element to OpenAI.</p>
