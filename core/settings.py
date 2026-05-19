@@ -169,18 +169,27 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# Celery settings
+# Celery / Redis settings
 # https://testdriven.io/courses/django-celery/getting-started/
 # https://docs.celeryq.dev/en/stable/django/first-steps-with-django.html#configuration
 
-CELERY_BROKER_URL = os.environ.get("REDIS_URL")
-CELERY_RESULT_BACKEND = os.environ.get("REDIS_URL")
+REDIS_URL = os.environ.get("REDIS_URL", "redis://localhost:6379/0")
+
+if REDIS_URL.startswith("rediss://"):
+    if "?" in REDIS_URL:
+        REDIS_URL = REDIS_URL + "&ssl_cert_reqs=CERT_NONE"
+    else:
+        REDIS_URL = REDIS_URL + "?ssl_cert_reqs=CERT_NONE"
+
+CELERY_BROKER_URL = REDIS_URL
+CELERY_RESULT_BACKEND = REDIS_URL
+
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
 CELERY_TIMEZONE = "UTC"
-
 CELERY_TASK_TRACK_STARTED = True
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
