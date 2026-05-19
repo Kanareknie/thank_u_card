@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.core.files.base import ContentFile
-from django.utils.text import slugify
 
 from cards.models import Card
 from .forms import CardForm
-from .openai_helpers import generate_card_message, generate_card_background
+from .tasks import generate_background_task
+from .openai_helpers import generate_card_message
 
 @login_required
 def home(request):
@@ -87,26 +86,18 @@ def home(request):
         # Generate a background image for the card using AI and save it to the card's background_image field
         elif action == "generate_background":
             if form.is_valid():
-                # Save the card to the database to ensure it has an ID that can be used for naming the generated image file
                 card = form.save(commit=False)
                 card.user = request.user
                 card.save()
 
-                image_bytes = generate_card_background(card)
+                # Call the Celery task to generate the background image asynchronously, 
+                # passing the card's ID as an argument
+                generate_background_task.delay(card.id)
 
-                # If an image was generated, save it to the card's background_image field and display a success message. 
-                # Otherwise, display an error message indicating that AI image generation is currently unavailable.
-                if image_bytes:
-                    filename = f"card_{card.id}_{slugify(card.theme.name)}.png"
-                    card.background_image.save(
-                        filename,
-                        ContentFile(image_bytes),
-                        save=True,
-                    )
-                    messages.success(request, "Background image generated successfully.")
-                else:
-                    messages.error(request, "AI image generation is currently unavailable.")
-
+                messages.success(
+                    request,
+                    "Background generation started. Please refresh the page in a moment."
+                )
                 return redirect("home")
             else:
                 messages.error(
