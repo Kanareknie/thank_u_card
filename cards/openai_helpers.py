@@ -49,7 +49,7 @@ def generate_card_background(card):
 
     client = OpenAI(
         api_key=settings.OPENAI_API_KEY,
-        timeout=15.0,
+        timeout=120.0,
     )
 
     prompt = f"""
