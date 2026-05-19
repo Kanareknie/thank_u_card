@@ -68,7 +68,6 @@ def generate_card_background(card):
     - no letters
     - no watermark
     - white background with a soft border in the main colour is preferred,
-    - Add title text to the image that says "Thank You" in a stylish font that complements the card's theme and colour scheme. The title should be prominently displayed but not overpower the top message area.
     - avoid overly complex patterns that may distract from the message
     - pictures should be in a style that complements the card's theme and colour scheme
     - avoid using the same decorative element as the main focus of the image to prevent visual clutter
