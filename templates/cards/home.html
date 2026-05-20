@@ -66,7 +66,7 @@
           <p class="ai-notice">Background generation uses AI and may send your selected theme, colour, recipient type, and element to OpenAI.</p>
         </div>
       </section>
-
+      {% comment %}Preview window{% endcomment %}
       <section class="builder-column builder-preview" aria-labelledby="step-two-title">
         <h2 id="step-two-title">Step 2</h2>
 
@@ -75,45 +75,46 @@
             <h3>Your card preview:</h3>
 
             <div class="preview-paper">
-              {% if preview_card %}
-                <div class="preview-content">
-                  {% if preview_card.recipient_name %}
-                    <h3>Dear {{ preview_card.recipient_name }}</h3>
-                  {% endif %}
-
-                  {% if not preview_card.no_message %}
-                    <p>{{ preview_card.message }}</p>
-                  {% else %}
-                    <p>This card has no message.</p>
-                  {% endif %}
-
-                  <p>Theme: {{ preview_card.theme }}</p>
-                  <p>Colour: {{ preview_card.colour }}</p>
-                  <p>Element: {{ preview_card.element }}</p>
-                </div>
-              {% elif latest_card %}
-                {% if latest_card.background_image %}
-                  <img src="{{ latest_card.background_image.url }}" alt="Generated card background" />
-                {% endif %}
-
-                <div class="preview-content">
-                  {% if latest_card.recipient_name %}
-                    <h3>Dear {{ latest_card.recipient_name }}</h3>
-                  {% endif %}
-
-                  {% if not latest_card.no_message %}
-                    <p>{{ latest_card.message }}</p>
-                  {% else %}
-                    <p>This card has no message.</p>
-                  {% endif %}
-
-                  <p>Theme: {{ latest_card.theme }}</p>
-                  <p>Colour: {{ latest_card.colour }}</p>
-                  <p>Element: {{ latest_card.element }}</p>
-                </div>
-              {% else %}
-                <p>Your card preview will appear here</p>
+              {% comment %}1. Background image{% endcomment %}
+              {% if latest_card and latest_card.background_image %}
+                <img src="{{ latest_card.background_image.url }}" alt="Generated card background" class="card-bg-image" />
               {% endif %}
+
+              {% comment %}2. Card content overlay{% endcomment %}
+              <div class="preview-content">
+                {% if preview_card %}
+                  <h3 id="live-recipient-preview">
+                    {% if preview_card.recipient_name %}
+                      Dear {{ preview_card.recipient_name }}
+                    {% endif %}
+                  </h3>
+
+                  <p id="live-message-preview">
+                    {% if not preview_card.no_message %}
+                      {{ preview_card.message }}
+                    {% else %}
+                      This card has no message.
+                    {% endif %}
+                  </p>
+                {% elif latest_card %}
+                  <h3 id="live-recipient-preview">
+                    {% if latest_card.recipient_name %}
+                      Dear {{ latest_card.recipient_name }}
+                    {% endif %}
+                  </h3>
+
+                  <p id="live-message-preview">
+                    {% if not latest_card.no_message %}
+                      {{ latest_card.message }}
+                    {% else %}
+                      This card has no message.
+                    {% endif %}
+                  </p>
+                {% else %}
+                  <h3 id="live-recipient-preview"></h3>
+                  <p id="live-message-preview">Your card preview will appear here</p>
+                {% endif %}
+              </div>
             </div>
           </div>
 
@@ -133,9 +134,9 @@
 
           <div class="preview-buttons">
             <button type="submit" name="action" value="generate_message">Generate / Improve message</button>
-
             <button type="submit" name="action" value="update_preview">Update preview</button>
           </div>
+
           <p>Do not enter personal, sensitive, or private information. The message may be sent to OpenAI to generate or improve the card text.</p>
         </div>
       </section>

@@ -37,6 +37,10 @@ body {
   color: var(--text-color);
 }
 
+.hidden {
+  display: none;
+}
+
 /* =========================
    MAIN SITE WRAPPER
 ========================= */
