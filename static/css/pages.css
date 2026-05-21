@@ -70,7 +70,7 @@
   min-height: 520px;
 }
 
-/* Preview window */
+/* =========== Preview window ==========*/
 
 .preview-paper {
   position: relative;
@@ -87,6 +87,53 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.card-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+
+.preview-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 14%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+}
+
+.preview-content::before {
+  content: "Thank You";
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(1.4rem, 4vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.preview-content h3 {
+  margin: 0 0 1rem;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  max-width: 80%;
+}
+
+.preview-content p {
+  margin: 0;
+  max-width: 75%;
+  font-size: clamp(0.9rem, 2.2vw, 1.2rem);
+  line-height: 1.5;
 }
 
 .preview-form {
