@@ -126,12 +126,12 @@
 .preview-content h3 {
   margin: 0 0 1rem;
   font-size: clamp(1rem, 2.5vw, 1.4rem);
-  max-width: 80%;
+  max-width: 70%;
 }
 
 .preview-content p {
   margin: 0;
-  max-width: 75%;
+  max-width: 65%;
   font-size: clamp(0.9rem, 2.2vw, 1.2rem);
   line-height: 1.5;
 }
