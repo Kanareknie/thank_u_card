@@ -163,17 +163,6 @@
   pointer-events: none;
 }
 
-.preview-content::before {
-  content: "Thank You";
-  position: absolute;
-  top: 8%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: clamp(1.4rem, 4vw, 2.4rem);
-  font-weight: 700;
-  line-height: 1;
-}
-
 .preview-content h3 {
   margin: 0 0 1rem;
   font-size: clamp(1rem, 2.5vw, 1.4rem);

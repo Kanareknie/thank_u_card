@@ -27,7 +27,7 @@ def generate_card_message(recipient_type, theme, message=""):
 
     Requirements:
     - Warm and friendly
-    - Maximum 300 characters
+    - Maximum 200 characters
     - Suitable for a thank-you card
     - Do not include quotation marks
     """

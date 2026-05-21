@@ -25,7 +25,7 @@
   <form class="home-builder-form" method="post" action="">
     {% csrf_token %}
 
-    {% comment %} Background generation progress bar {% endcomment %}
+    {% comment %}Background generation progress bar{% endcomment %}
     {% if latest_card and latest_card.background_status == 'generating' %}
       <div class="page-progress" data-refresh="true" aria-live="polite">
         <span class="page-progress-text">Generating your background...</span>
@@ -92,50 +92,56 @@
 
               {% comment %}2. Card content overlay{% endcomment %}
               <div class="preview-content">
-                {% if preview_card %}
-                  <h3 id="live-recipient-preview">
-                    {% if preview_card.recipient_name %}
-                      Dear {{ preview_card.recipient_name }}
-                    {% endif %}
-                  </h3>
+                <div class="card-title-box">
+                  <h2 class="card-title">Thank You</h2>
+                </div>
 
-                  <p id="live-message-preview">
-                    {% if not preview_card.no_message %}
-                      {{ preview_card.message }}
-                    {% else %}
-                      This card has no message.
-                    {% endif %}
-                  </p>
-                {% elif latest_card %}
-                  <h3 id="live-recipient-preview">
-                    {% if latest_card.recipient_name %}
-                      Dear {{ latest_card.recipient_name }}
-                    {% endif %}
-                  </h3>
+                <div class="card-message-box">
+                  {% if preview_card %}
+                    <h3 id="live-recipient-preview">
+                      {% if preview_card.recipient_name %}
+                        Dear {{ preview_card.recipient_name }}
+                      {% endif %}
+                    </h3>
 
-                  <p id="live-message-preview">
-                    {% if not latest_card.no_message %}
-                      {{ latest_card.message }}
-                    {% else %}
-                      This card has no message.
-                    {% endif %}
-                  </p>
-                {% else %}
-                  <h3 id="live-recipient-preview"></h3>
-                  <p id="live-message-preview">Your card preview will appear here</p>
-                {% endif %}
+                    <p id="live-message-preview">
+                      {% if not preview_card.no_message %}
+                        {{ preview_card.message }}
+                      {% else %}
+                        This card has no message.
+                      {% endif %}
+                    </p>
+                  {% elif latest_card %}
+                    <h3 id="live-recipient-preview">
+                      {% if latest_card.recipient_name %}
+                        Dear {{ latest_card.recipient_name }}
+                      {% endif %}
+                    </h3>
+
+                    <p id="live-message-preview">
+                      {% if not latest_card.no_message %}
+                        {{ latest_card.message }}
+                      {% else %}
+                        This card has no message.
+                      {% endif %}
+                    </p>
+                  {% else %}
+                    <h3 id="live-recipient-preview"></h3>
+                    <p id="live-message-preview">Your card preview will appear here</p>
+                  {% endif %}
+                </div>
               </div>
             </div>
           </div>
 
-            {% comment %} ======= Message fields =========== {% endcomment %}
+          {% comment %}======= Message fields ==========={% endcomment %}
           <div class="preview-form" id="message-fields">
             <div class="form-group">
               <label for="{{ form.recipient_name.id_for_label }}">Recipient name (optional):</label>
               {{ form.recipient_name }}
 
-              {% comment %} Character counter {% endcomment %}
-               <small id="recipient-counter" class="character-counter">0 / 50</small>
+              {% comment %}Character counter{% endcomment %}
+              <small id="recipient-counter" class="character-counter">0 / 50</small>
               {{ form.recipient_name.errors }}
             </div>
 
@@ -143,8 +149,8 @@
               <label for="{{ form.message.id_for_label }}">Write down the message:</label>
               {{ form.message }}
 
-              {% comment %} Character counter {% endcomment %}
-               <small id="message-counter" class="character-counter">0 / 300</small>
+              {% comment %}Character counter{% endcomment %}
+              <small id="message-counter" class="character-counter">0 / 200</small>
               {{ form.message.errors }}
             </div>
           </div>

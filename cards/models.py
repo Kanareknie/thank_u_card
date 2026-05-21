@@ -81,7 +81,7 @@ class Card(models.Model):
         blank=True
         )
     message = models.TextField(
-        max_length=300, 
+        max_length=200, 
         null=True, 
         blank=True
         )
