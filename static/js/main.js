@@ -72,6 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (progressBox) {
     setTimeout(function () {
       window.location.reload();
-    }, 8000);
+    }, 12000);
   }
 });
