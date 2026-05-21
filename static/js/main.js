@@ -21,6 +21,21 @@ document.addEventListener("DOMContentLoaded", function () {
   const messagePreview = document.getElementById("live-message-preview");
   const messageFields = document.getElementById("message-fields");
 
+  const recipientCounter = document.getElementById("recipient-counter");
+  const messageCounter = document.getElementById("message-counter");
+
+
+  // Function to update character counters for recipient name and message fields
+  function updateCharacterCounters() {
+    if (recipientInput && recipientCounter) {
+      recipientCounter.textContent = `${recipientInput.value.length} / 50`;
+    }
+
+    if (messageInput && messageCounter) {
+      messageCounter.textContent = `${messageInput.value.length} / 300`;
+    }
+  }
+
   // Function to update the live preview based on form inputs
   // This function checks the current values of the recipient name, message, and no message checkbox,
   // and updates the preview elements accordingly. If the "No Message" checkbox is selected, it hides the message fields and shows a default message.
