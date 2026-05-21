@@ -34,7 +34,7 @@
         </div>
       </div>
     {% endif %}
-    
+
     <div class="home-builder">
       <section class="builder-column builder-options" aria-labelledby="step-one-title">
         <h2 id="step-one-title">Step 1</h2>
@@ -128,16 +128,23 @@
             </div>
           </div>
 
+            {% comment %} ======= Message fields =========== {% endcomment %}
           <div class="preview-form" id="message-fields">
             <div class="form-group">
               <label for="{{ form.recipient_name.id_for_label }}">Recipient name (optional):</label>
               {{ form.recipient_name }}
+
+              {% comment %} Character counter {% endcomment %}
+               <small id="recipient-counter" class="character-counter">0 / 50</small>
               {{ form.recipient_name.errors }}
             </div>
 
             <div class="form-group">
               <label for="{{ form.message.id_for_label }}">Write down the message:</label>
               {{ form.message }}
+
+              {% comment %} Character counter {% endcomment %}
+               <small id="message-counter" class="character-counter">0 / 300</small>
               {{ form.message.errors }}
             </div>
           </div>
