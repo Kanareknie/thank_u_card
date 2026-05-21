@@ -62,6 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
         messageFields.classList.remove("hidden");
       }
     }
+
+    updateCharacterCounters();
   }
 
   // Add event listeners to the recipient name input, message textarea, and "No Message" checkbox to update the live preview whenever any of these inputs change.
