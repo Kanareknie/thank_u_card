@@ -11,6 +11,7 @@ from .openai_helpers import generate_card_message
 def home(request):
     generated_message = None
     preview_card = None
+    latest_card = Card.objects.filter(user=request.user).order_by("-created_on").first()
 
     # Handle form submissions for generating messages, 
     # updating preview, and saving cards
@@ -104,13 +105,13 @@ def home(request):
                     request,
                     "Please choose the card options before generating a background."
                 )
-        
-    # If the request method is GET, initialize an empty form for the user to fill out
+    # If the request method is GET, pre-fill the form with the latest card if it exists
     else:
-        form = CardForm()
-    # Retrieve the latest card created by the user to display on the home page
-    latest_card = Card.objects.filter(user=request.user).order_by("-created_on").first()
-    # Render the home page template with the form, latest card, generated message, and preview card data
+        if latest_card:
+            form = CardForm(instance=latest_card)
+        else:
+            form = CardForm()
+            
     return render(
         request,
         "cards/home.html",
