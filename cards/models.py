@@ -100,5 +100,20 @@ class Card(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     
+    # Progress bar status for background tasks to be dispayed on the page after clicking on generate card button.
+
+    BACKGROUND_STATUS_CHOICES = [
+        ("not_started", "Not started"),
+        ("generating", "Generating"),
+        ("completed", "Completed"),
+        ("failed", "Failed"),
+    ]
+
+    background_status = models.CharField(
+        max_length=20,
+        choices=BACKGROUND_STATUS_CHOICES,
+        default="not_started",
+    )
     def __str__(self):
         return f"Card '{self.recipient_name}' by {self.user.email}"
+

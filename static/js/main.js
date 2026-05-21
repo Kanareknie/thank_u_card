@@ -64,3 +64,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateLivePreview();
 });
+
+// Auto-refresh page when background generation is in progress
+document.addEventListener("DOMContentLoaded", function () {
+  const progressBox = document.querySelector("[data-refresh='true']");
+
+  if (progressBox) {
+    setTimeout(function () {
+      window.location.reload();
+    }, 8000);
+  }
+});

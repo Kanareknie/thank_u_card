@@ -88,6 +88,7 @@ def home(request):
         elif action == "generate_background":
             if form.is_valid():
                 card = form.save(commit=False)
+                card.background_status = "generating"
                 card.user = request.user
                 card.save()
 

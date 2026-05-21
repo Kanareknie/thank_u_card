@@ -70,6 +70,57 @@
   min-height: 520px;
 }
 
+
+/* ======== Progression bar ========*/
+
+/* Progress bar tutorial - indeterminate progress bar */
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Animations/Using */
+/* https://www.geeksforgeeks.org/css/how-to-create-animation-loading-bar-using-css/ */
+
+.page-progress {
+  width: 100%;
+  margin: 0 0 1rem;
+  text-align: center;
+}
+
+.page-progress-text {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.page-progress-track {
+  width: 100%;
+  height: 6px;
+  background: #eeeeee;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.page-progress-bar {
+  width: 45%;
+  height: 100%;
+  border-radius: 999px;
+  background: #d8894a;
+  animation: pageProgressMove 1.4s infinite ease-in-out;
+}
+
+@keyframes pageProgressMove {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  50% {
+    transform: translateX(90%);
+  }
+
+  100% {
+    transform: translateX(250%);
+  }
+}
+
 /* =========== Preview window ==========*/
 
 .preview-paper {
