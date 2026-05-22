@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (messageInput && messageCounter) {
-      messageCounter.textContent = `${messageInput.value.length} / 300`;
+      messageCounter.textContent = `${messageInput.value.length} / 200`;
     }
   }
 
