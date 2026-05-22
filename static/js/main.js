@@ -87,6 +87,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const progressBox = document.querySelector("[data-refresh='true']");
 
   if (progressBox) {
+
+    // Scroll to the top of the page to ensure the user sees the progress box, 
+    // then set a timeout to refresh the page after 12 seconds, 
+    // allowing time for the background generation process to complete 
+    // and update the progress status.
+    
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
     setTimeout(function () {
       window.location.reload();
     }, 12000);
