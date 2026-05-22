@@ -11,6 +11,9 @@ from .openai_helpers import generate_card_message
 def home(request):
     generated_message = None
     preview_card = None
+    # Check if the reset query parameter is set to "1" to determine if the form and preview should be reset
+    reset_page = request.GET.get("reset") == "1"
+    
     latest_card = Card.objects.filter(user=request.user).order_by("-created_on").first()
 
     # Handle form submissions for generating messages, 
@@ -104,7 +107,10 @@ def home(request):
                 )
     # If the request method is GET, pre-fill the form with the latest card if it exists
     else:
-        if latest_card:
+        if reset_page:
+            form = CardForm()
+            latest_card = None
+        elif latest_card:
             form = CardForm(instance=latest_card)
         else:
             form = CardForm()

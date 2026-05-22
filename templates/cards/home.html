@@ -169,7 +169,7 @@
 
         <div class="actions-panel">
           <button type="submit" name="action" value="save_card">Save</button>
-          <button type="reset">Reset</button>
+          <a href="{% url 'home' %}?reset=1" class="reset-button">Reset</a>
           <button type="submit" name="action" value="add_to_basket">Add to basket</button>
         </div>
       </section>
