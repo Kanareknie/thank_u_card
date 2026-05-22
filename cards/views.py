@@ -95,11 +95,7 @@ def home(request):
                 # Call the Celery task to generate the background image asynchronously, 
                 # passing the card's ID as an argument
                 generate_background_task.delay(card.id)
-
-                messages.success(
-                    request,
-                    "Background generation started. Please refresh the page in a moment."
-                )
+                
                 return redirect("home")
             else:
                 messages.error(
