@@ -1,11 +1,17 @@
+from datetime import timedelta
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 
 from cards.models import Card
 from .forms import CardForm
 from .tasks import generate_background_task
 from .openai_helpers import generate_card_message
+
+
+
 
 @login_required
 def home(request):
@@ -88,18 +94,39 @@ def home(request):
                 return redirect("home")
             
         # Generate a background image for the card using AI and save it to the card's background_image field
+        # https://docs.djangoproject.com/en/6.0/ref/models/querysets/
+        # https://stackoverflow.com/questions/32510123/django-datetime-timedelta-how-does-its-subtract-from-timezone-now-if-they-ar
         elif action == "generate_background":
             if form.is_valid():
-                card = form.save(commit=False)
-                card.background_status = "generating"
-                card.user = request.user
-                card.save()
+                twenty_four_hours_ago = timezone.now() - timedelta(hours=24)
 
-                # Call the Celery task to generate the background image asynchronously, 
-                # passing the card's ID as an argument
-                generate_background_task.delay(card.id)
-                
-                return redirect("home")
+                # Count the number of cards with background generation
+                # requests made by the user in the last 24 hours
+                generated_count = Card.objects.filter(
+                    user=request.user,
+                    created_on__gte=twenty_four_hours_ago,
+                    background_status__in=["generating", "completed", "failed"],
+                ).count()
+
+                # If the user has already made 3 or more background generation requests in the last 24 hours, 
+                # display an error message and do not allow them to generate 
+                # another background until the 24-hour period has
+                if generated_count >= 3:
+                    messages.error(
+                        request,
+                        "You can generate only 3 card backgrounds per 24 hours."
+                    )
+                else:
+                    card = form.save(commit=False)
+                    card.background_status = "generating"
+                    card.user = request.user
+                    card.save()
+
+                    # Call the Celery task to generate the background image asynchronously, 
+                    # passing the card's ID as an argument
+                    generate_background_task.delay(card.id)
+                    
+                    return redirect("home")
             else:
                 messages.error(
                     request,
