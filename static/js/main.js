@@ -103,3 +103,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 12000);
   }
 });
+
+
+// Clear message button functionality
+const clearMessageButton = document.getElementById("clear-message-button");
+
+if (clearMessageButton && messageInput) {
+  clearMessageButton.addEventListener("click", () => {
+    messageInput.value = "";
+    updateLivePreview();
+  });
+} 
