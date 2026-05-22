@@ -3,6 +3,7 @@ from datetime import timedelta
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 from django.utils import timezone
 
 from cards.models import Card
@@ -91,7 +92,7 @@ def home(request):
                 card.save()
                 # Display a success message to the user indicating that the card has been saved successfully
                 messages.success(request, "Your card has been saved successfully.")
-                return redirect("home")
+                return redirect(f"{reverse('home')}?reset=1")
             
         # Generate a background image for the card using AI and save it to the card's background_image field
         # https://docs.djangoproject.com/en/6.0/ref/models/querysets/
