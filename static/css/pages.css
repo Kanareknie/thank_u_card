@@ -154,6 +154,8 @@
   justify-content: center;
   text-align: center;
   pointer-events: none;
+  /* moving the content down */
+  transform: translateY(15%);
 }
 
 .preview-form {
@@ -203,8 +205,8 @@ textarea {
 }
 
 .card-message-box {
-  width: 58%;
-  max-width: 58%;
+  width: 80%;
+  max-width: 80%;
   padding: 0.8rem 1rem;
   background: rgba(255, 255, 255, 0.88);
   border-radius: 1rem;
@@ -229,7 +231,6 @@ textarea {
   word-break: break-word;
   white-space: normal;
 }
-
 
 /* ============== */
 /* Options Panel - main settings */
