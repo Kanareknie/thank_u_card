@@ -8,6 +8,7 @@ from django.utils import timezone
 
 from cards.models import Card
 from .forms import CardForm
+from basket.models import Basket, BasketItem
 from .tasks import generate_background_task
 from .openai_helpers import generate_card_message
 
@@ -93,6 +94,25 @@ def home(request):
                 # Display a success message to the user indicating that the card has been saved successfully
                 messages.success(request, "Your card has been saved successfully.")
                 return redirect(f"{reverse('home')}?reset=1")
+            
+        # Add the card to the user's basket by creating a BasketItem linking the card to the user's Basket
+        elif action == "add_to_basket":
+            if form.is_valid():
+                card = form.save(commit=False)
+                card.user = request.user
+                card.save()
+
+                basket, created = Basket.objects.get_or_create(
+                    user=request.user
+                )
+
+                BasketItem.objects.create(
+                    basket=basket,
+                    card=card
+                )
+
+                messages.success(request, "Your card has been added to the basket.")
+                return redirect("basket")
             
         # Generate a background image for the card using AI and save it to the card's background_image field
         # https://docs.djangoproject.com/en/6.0/ref/models/querysets/
