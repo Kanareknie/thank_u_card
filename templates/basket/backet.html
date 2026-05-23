@@ -1,0 +1,46 @@
+{% extends 'cards/base.html' %}
+{% load static %}
+
+{% block title %}
+ Basket | Thank U Card
+{% endblock %}
+
+{% block content %}
+  <section class="basket-layout">
+    <h1>Your basket</h1>
+
+    {% if basket_items %}
+      {% for item in basket_items %}
+        <article class="basket-item">
+          <div class="basket-item-preview">
+            {% if item.card.background_image %}
+              <img src="{{ item.card.background_image.url }}" alt="Card preview" class="basket-card-image" />
+            {% else %}
+              <p>No background image yet.</p>
+            {% endif %}
+          </div>
+
+          <div class="basket-item-details">
+            <h2>Thank you card</h2>
+
+            {% if item.card.recipient_name %}
+              <p><strong>Recipient:</strong> {{ item.card.recipient_name }}</p>
+            {% endif %}
+
+            <p><strong>Theme:</strong> {{ item.card.theme }}</p>
+            <p><strong>Colour:</strong> {{ item.card.colour }}</p>
+            <p><strong>Element:</strong> {{ item.card.element }}</p>
+
+            {% if not item.card.no_message %}
+              <p><strong>Message:</strong> {{ item.card.message }}</p>
+            {% else %}
+              <p><strong>Message:</strong> No message</p>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    {% else %}
+      <p>Your basket is empty.</p>
+    {% endif %}
+  </section>
+{% endblock %}
