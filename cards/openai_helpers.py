@@ -64,8 +64,10 @@ def generate_card_background(card):
     - visually appealing
     - suitable for a thank-you card
     - create a decorative frame or border design
+    - include the exact title text "Thank You" near the top center, the title must be readable, correctly spelled, and not distorted
+    - use only the words "Thank You"; do not add any other words or letters
+    - leave a large empty central area below the title for the user's message
     - keep the main decorative elements around the edges and corners
-    - leave a large empty central area for text
     - the empty message area should be centered and cover about 50 to 60 percent of the card width
     - leave additional empty space near the top center for the title "Thank You"
     - the central text area must stay light, plain, and uncluttered
@@ -73,8 +75,6 @@ def generate_card_background(card):
     - use the decorative elements only to frame the card, not to fill the middle
     - avoid overly complex patterns that may distract from the message
     - use a style correct to the theme
-    - no words
-    - no letters
     - no watermark
     - the overall result should look like a printable greeting card template with room for text
     """
