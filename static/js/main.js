@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const recipientInput = document.getElementById("id_recipient_name");
   const messageInput = document.getElementById("id_message");
   const noMessageCheckbox = document.getElementById("id_no_message");
+  const clearMessageButton = document.getElementById("clear-message-button");
 
   const recipientPreview = document.getElementById("live-recipient-preview");
   const messagePreview = document.getElementById("live-message-preview");
@@ -79,7 +80,17 @@ document.addEventListener("DOMContentLoaded", function () {
     noMessageCheckbox.addEventListener("change", updateLivePreview);
   }
 
+  // Clear message button functionality: When the "Clear Message" button is clicked, 
+  // it clears the message textarea and updates the live preview to reflect the change.
+  if (clearMessageButton && messageInput) {
+    clearMessageButton.addEventListener("click", function () {
+      messageInput.value = "";
+      updateLivePreview();
+    });
+  }
+
   updateLivePreview();
+
 });
 
 // Auto-refresh page when background generation is in progress
@@ -103,14 +114,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 12000);
   }
 });
-
-
-// Clear message button functionality
-const clearMessageButton = document.getElementById("clear-message-button");
-
-if (clearMessageButton && messageInput) {
-  clearMessageButton.addEventListener("click", function () {
-    messageInput.value = "";
-    updateLivePreview();
-  });
-} 
