@@ -57,6 +57,8 @@ INSTALLED_APPS = [
     
     'cloudinary_storage',
     'cloudinary',
+    
+    'basket',
 ]
 
 MIDDLEWARE = [
