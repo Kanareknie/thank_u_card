@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
 const clearMessageButton = document.getElementById("clear-message-button");
 
 if (clearMessageButton && messageInput) {
-  clearMessageButton.addEventListener("click", () => {
+  clearMessageButton.addEventListener("click", function () {
     messageInput.value = "";
     updateLivePreview();
   });
