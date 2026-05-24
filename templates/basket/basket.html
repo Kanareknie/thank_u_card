@@ -49,7 +49,7 @@
 
             <div class="basket-item-action">
               <h3>Check it again:</h3>
-              <a href="#" class="sg-btn">Preview</a>
+              <a href="{% url 'basket_item_preview' item.id %}" class="sg-btn">Preview</a>
             </div>
           </article>
         {% endfor %}

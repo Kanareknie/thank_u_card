@@ -40,3 +40,21 @@ def remove_basket_item(request, item_id):
         messages.success(request, "The card has been removed from your basket.")
 
     return redirect("basket")
+
+# View to preview a card in the basket
+@login_required
+def basket_item_preview(request, item_id):
+    basket_item = get_object_or_404(
+        BasketItem,
+        id=item_id,
+        basket__user=request.user
+    )
+
+    return render(
+        request,
+        "basket/preview.html",
+        {
+            "basket_item": basket_item,
+            "card": basket_item.card,
+        }
+    )

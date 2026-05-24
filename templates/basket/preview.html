@@ -1,0 +1,55 @@
+{% extends 'cards/base.html' %}
+
+{% block title %}
+  Card Preview | Thank U Card
+{% endblock %}
+
+{% block main_class %}
+  preview-page
+{% endblock %}
+
+{% block content %}
+  <section class="home-hero">
+    <div class="home-logo-area">
+      <p>
+        Create your own thank<br />you card with
+      </p>
+      <h1>Thank U Card</h1>
+    </div>
+
+    <div class="home-instructions">
+      <h2>Card preview</h2>
+    </div>
+  </section>
+
+  <section class="preview-card preview-page-panel">
+    <div class="preview-paper preview-page-paper">
+      {% if card.background_image %}
+        <img src="{{ card.background_image.url }}" alt="Generated card background" class="card-bg-image" />
+      {% endif %}
+
+      <div class="preview-content">
+        <div class="card-message-box">
+          <h3>
+            {% if card.recipient_name %}
+              Dear {{ card.recipient_name }}
+            {% endif %}
+          </h3>
+
+          <p>
+            {% if card.no_message %}
+              This card has no message.
+            {% else %}
+              {{ card.message }}
+            {% endif %}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-page-actions">
+      <a href="{% url 'basket' %}" class="sg-btn">Back to basket</a>
+      <a href="{% url 'home' %}" class="sg-btn">Edit card</a>
+    </div>
+  </section>
+{% endblock %}
