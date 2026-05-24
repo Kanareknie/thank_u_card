@@ -34,25 +34,19 @@
 
             <div class="basket-item-detail">
               <h3>Product details:</h3>
-              <p>
-                Card for {{ card.recipient_type }},
-                theme {{ card.theme }},
-                format square
-              </p>
+              <p>Card for {{ card.recipient_type }}, theme {{ card.theme }}, format square</p>
             </div>
 
             <div class="basket-item-detail">
               <h3>Created on:</h3>
-              <p>{{ card.created_on|date:"d/m/Y" }}</p>
+              <p>{{ card.created_on|date:'d/m/Y' }}</p>
             </div>
 
             <div class="basket-item-detail">
               <h3>Download file:</h3>
 
               {% if card.pdf_file %}
-                <a href="{{ card.pdf_file.url }}" target="_blank" rel="noopener noreferrer">
-                  Download PDF
-                </a>
+                <a href="{{ card.pdf_file.url }}" target="_blank" rel="noopener noreferrer">Download PDF</a>
               {% else %}
                 <p>PDF not available yet.</p>
               {% endif %}
@@ -76,16 +70,12 @@
 
             <div class="basket-item-detail">
               <h3>Product details:</h3>
-              <p>
-                Card for {{ card.recipient_type }},
-                theme {{ card.theme }},
-                format square
-              </p>
+              <p>Card for {{ card.recipient_type }}, theme {{ card.theme }}, format square</p>
             </div>
 
             <div class="basket-item-detail">
               <h3>Created on:</h3>
-              <p>{{ card.created_on|date:"d/m/Y" }}</p>
+              <p>{{ card.created_on|date:'d/m/Y' }}</p>
             </div>
 
             <div class="basket-item-action">
@@ -100,14 +90,18 @@
 
             <div class="basket-item-action">
               <h3>Order now:</h3>
-              {% csrf_token %}
-              <a href="{% url 'add_saved_card_to_basket' card.id %}" class="sg-btn">Add to basket</a>
+              <form method="post" action="{% url 'add_saved_card_to_basket' card.id %}">
+                {% csrf_token %}
+                <button type="submit" class="sg-btn">Add to basket</button>
+              </form>
             </div>
 
             <div class="basket-item-action">
               <h3>Delete:</h3>
-              {% csrf_token %}
-              <a href="{% url 'delete_saved_card' card.id %}" class="sg-btn">Delete</a>
+              <form method="post" action="{% url 'delete_saved_card' card.id %}">
+                {% csrf_token %}
+                <button type="submit" class="sg-btn">Delete</button>
+              </form>
             </div>
           </article>
         {% endfor %}
