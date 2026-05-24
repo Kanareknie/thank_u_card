@@ -31,10 +31,7 @@
 
             <div class="basket-item-detail">
               <h3>Product details:</h3>
-              <p>
-                Card for {{ item.card.recipient_type }},
-                theme {{ item.card.theme }}
-              </p>
+              <p>Card for {{ item.card.recipient_type }}, theme {{ item.card.theme }}</p>
             </div>
 
             <div class="basket-item-price">
@@ -44,16 +41,15 @@
 
             <div class="basket-item-action">
               <h3>Not ready?</h3>
-              <button type="button" class="sg-btn">
-                Remove from basket
-              </button>
+              <form method="post" action="{% url 'remove_basket_item' item.id %}">
+                {% csrf_token %}
+                <button type="submit" class="sg-btn">Remove from basket</button>
+              </form>
             </div>
 
             <div class="basket-item-action">
               <h3>Check it again:</h3>
-              <a href="#" class="sg-btn">
-                Preview
-              </a>
+              <a href="#" class="sg-btn">Preview</a>
             </div>
           </article>
         {% endfor %}
@@ -65,14 +61,9 @@
           <p class="price-box">£1.99</p>
         </div>
 
-        <p class="basket-payment-note">
-          After the successful payment received, the thank you card will be able
-          to download in PDF format from account page.
-        </p>
+        <p class="basket-payment-note">After the successful payment received, the thank you card will be able to download in PDF format from account page.</p>
 
-        <button type="button" class="sg-btn basket-order-button">
-          Order now!
-        </button>
+        <button type="button" class="sg-btn basket-order-button">Order now!</button>
       </div>
     {% else %}
       <div class="basket-items-panel">

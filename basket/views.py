@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 
 from .models import BasketItem
 
@@ -23,3 +25,18 @@ def basket_view(request):
             "basket_items": basket_items,
         }
     )
+    
+# View to handle removing an item from the basket
+@login_required
+def remove_basket_item(request, item_id):
+    basket_item = get_object_or_404(
+        BasketItem,
+        id=item_id,
+        basket__user=request.user
+    )
+
+    if request.method == "POST":
+        basket_item.delete()
+        messages.success(request, "The card has been removed from your basket.")
+
+    return redirect("basket")
