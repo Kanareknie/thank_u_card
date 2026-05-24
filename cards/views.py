@@ -12,6 +12,8 @@ from basket.models import Basket, BasketItem
 from .tasks import generate_background_task
 from .openai_helpers import generate_card_message
 
+from django.shortcuts import get_object_or_404
+
 
 
 
@@ -173,5 +175,35 @@ def home(request):
             "latest_card": latest_card,
             "generated_message": generated_message,
             "preview_card": preview_card,
+        },
+    )
+    
+# This function edits a saved card by allowing the user to update the card's attributes and message.
+
+@login_required
+def edit_card(request, card_id):
+    card = get_object_or_404(
+        Card,
+        id=card_id,
+        user=request.user,
+        is_paid=False,
+    )
+
+    if request.method == "POST":
+        form = CardForm(request.POST, instance=card)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your card has been updated.")
+            return redirect("account")
+    else:
+        form = CardForm(instance=card)
+
+    return render(
+        request,
+        "cards/edit_card.html",
+        {
+            "form": form,
+            "card": card,
         },
     )
