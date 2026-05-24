@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from cards.views import home
-from accounts.views import register, CustomLoginView, CustomLogoutView
+from accounts.views import register, CustomLoginView, CustomLogoutView, account_view
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
@@ -27,6 +27,7 @@ urlpatterns = [
     path('basket/', include('basket.urls')),
     path('register/', register, name='register'),
     path('login/', CustomLoginView.as_view(), name='login'),
+    path('account/', account_view, name='account'),
     path(
         "password-reset/",
         auth_views.PasswordResetView.as_view(

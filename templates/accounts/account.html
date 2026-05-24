@@ -1,0 +1,117 @@
+{% extends 'cards/base.html' %}
+
+{% block title %}
+  Account | Thank U Card
+{% endblock %}
+
+{% block main_class %}
+  account-page
+{% endblock %}
+
+{% block content %}
+  <section class="home-hero">
+    <div class="home-logo-area">
+      <p>
+        Create your own thank<br />you card with
+      </p>
+      <h1>Thank U Card</h1>
+    </div>
+
+    <div class="home-instructions account-welcome">
+      <h2>{{ user.email }}</h2>
+      <p>Welcome to your account!</p>
+    </div>
+  </section>
+
+  <section class="account-section account-download-section">
+    <h2>Ready to download:</h2>
+
+    <div class="basket-items-panel account-list-panel">
+      {% if ready_to_download %}
+        {% for card in ready_to_download %}
+          <article class="basket-item-row account-card-row">
+            <div class="basket-check" aria-hidden="true">✓</div>
+
+            <div class="basket-item-detail">
+              <h3>Product details:</h3>
+              <p>
+                Card for {{ card.recipient_type }},
+                theme {{ card.theme }},
+                format square
+              </p>
+            </div>
+
+            <div class="basket-item-detail">
+              <h3>Created on:</h3>
+              <p>{{ card.created_on|date:"d/m/Y" }}</p>
+            </div>
+
+            <div class="basket-item-detail">
+              <h3>Download file:</h3>
+
+              {% if card.pdf_file %}
+                <a href="{{ card.pdf_file.url }}" target="_blank" rel="noopener noreferrer">
+                  Download PDF
+                </a>
+              {% else %}
+                <p>PDF not available yet.</p>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      {% else %}
+        <p>No cards are ready to download yet.</p>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="preview-card account-section account-saved-section">
+    <h2>Saved cards:</h2>
+
+    <div class="basket-items-panel account-list-panel">
+      {% if saved_cards %}
+        {% for card in saved_cards %}
+          <article class="basket-item-row account-card-row account-card-row--saved">
+            <div class="basket-check" aria-hidden="true">✓</div>
+
+            <div class="basket-item-detail">
+              <h3>Product details:</h3>
+              <p>
+                Card for {{ card.recipient_type }},
+                theme {{ card.theme }},
+                format square
+              </p>
+            </div>
+
+            <div class="basket-item-detail">
+              <h3>Created on:</h3>
+              <p>{{ card.created_on|date:"d/m/Y" }}</p>
+            </div>
+
+            <div class="basket-item-action">
+              <h3>Preview:</h3>
+              <a href="#" class="sg-btn">Preview</a>
+            </div>
+
+            <div class="basket-item-action">
+              <h3>Edit:</h3>
+              <a href="#" class="sg-btn">Edit</a>
+            </div>
+
+            <div class="basket-item-action">
+              <h3>Order now:</h3>
+              <a href="#" class="sg-btn">Add to basket</a>
+            </div>
+
+            <div class="basket-item-action">
+              <h3>Delete:</h3>
+              <button type="button" class="sg-btn">Delete</button>
+            </div>
+          </article>
+        {% endfor %}
+      {% else %}
+        <p>You have no saved cards yet.</p>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}
