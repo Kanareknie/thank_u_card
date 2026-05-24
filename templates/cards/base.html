@@ -70,12 +70,20 @@
               <a href="{% url 'login' %}">Login</a>
             {% endif %}
 
-            <a href="{% url 'home' %}" aria-label="Basket"><i class="fa-solid fa-cart-shopping"></i></a>
+            {% comment %} Basket link with item count {% endcomment %}
+            <a href="{% url 'basket' %}" aria-label="Basket" class="basket-link">
+              <i class="fa-solid fa-cart-shopping"></i>
+
+              {% if basket_item_count > 0 %}
+                <span class="basket-count">{{ basket_item_count }}</span>
+              {% endif %}
+            </a>
+
           </div>
         </nav>
       </header>
 
-      {% comment %} Message content {% endcomment %}
+      {% comment %}Message content{% endcomment %}
       {% if messages %}
         <div class="messages-container">
           {% for message in messages %}
