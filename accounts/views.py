@@ -3,9 +3,11 @@ from accounts.forms import SignUpForm
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import messages
+from django.shortcuts import render, redirect, get_object_or_404
 
 from django.contrib.auth.decorators import login_required
 from cards.models import Card
+from basket.models import Basket, BasketItem
 
 
 # This view is for the user registration page. 
@@ -60,3 +62,61 @@ def account_view(request):
             "saved_cards": saved_cards,
         },
     )
+    
+    
+# This view allows the user to preview a saved card before downloading or adding it to the basket.
+@login_required
+def account_card_preview(request, card_id):
+    card = get_object_or_404(
+        Card,
+        id=card_id,
+        user=request.user,
+    )
+
+    return render(
+        request,
+        "accounts/account_preview.html",
+        {
+            "card": card,
+        }
+    )
+
+# This view allows the user to add a saved card to their basket for checkout.
+@login_required
+def add_saved_card_to_basket(request, card_id):
+    card = get_object_or_404(
+        Card,
+        id=card_id,
+        user=request.user,
+        is_paid=False,
+    )
+
+    if request.method == "POST":
+        basket, created = Basket.objects.get_or_create(
+            user=request.user
+        )
+
+        BasketItem.objects.get_or_create(
+            basket=basket,
+            card=card
+        )
+
+        messages.success(request, "Your saved card has been added to the basket.")
+
+    return redirect("account")
+
+# This view allows the user to delete a saved card that has not been paid for yet.
+@login_required
+def delete_saved_card(request, card_id):
+    card = get_object_or_404(
+        Card,
+        id=card_id,
+        user=request.user,
+        is_paid=False,
+    )
+
+    if request.method == "POST":
+        card.delete()
+        messages.success(request, "Your saved card has been deleted.")
+
+    return redirect("account")
