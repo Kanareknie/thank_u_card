@@ -8,7 +8,13 @@ from .models import BasketItem
 def basket_view(request):
     basket_items = BasketItem.objects.filter(
         basket__user=request.user
-    ).select_related("card")
+    ).select_related(
+        "card",
+        "card__recipient_type",
+        "card__theme",
+        "card__colour",
+        "card__element",
+    ).order_by("-added_on")
 
     return render(
         request,
