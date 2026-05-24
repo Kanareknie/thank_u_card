@@ -61,6 +61,9 @@
             </label>
             {{ form.no_message.errors }}
           </div>
+          {% comment %}Generate background image{% endcomment %}
+          <button type="submit" name="action" value="generate_background" class="sg-btn">Generate background with AI</button>
+          <p class="ai-notice">Background generation uses AI and may send your selected theme, colour, recipient type, and element to OpenAI.</p>
         </div>
       </section>
 
@@ -96,19 +99,33 @@
             </div>
           </div>
 
+          {% comment %}======= Message fields ==========={% endcomment %}
           <div class="preview-form" id="message-fields">
             <div class="form-group">
               <label for="{{ form.recipient_name.id_for_label }}">Recipient name (optional):</label>
               {{ form.recipient_name }}
+
+              {% comment %}Character counter{% endcomment %}
+              <small id="recipient-counter" class="character-counter">0 / 50</small>
               {{ form.recipient_name.errors }}
             </div>
 
             <div class="form-group">
               <label for="{{ form.message.id_for_label }}">Write down the message:</label>
               {{ form.message }}
+
+              {% comment %}Character counter{% endcomment %}
+              <small id="message-counter" class="character-counter">0 / 200</small>
               {{ form.message.errors }}
             </div>
           </div>
+
+          <div class="preview-buttons">
+            <button type="submit" name="action" value="generate_message">Generate / Improve message</button>
+            <button type="button" id="clear-message-button">Clear message</button>
+          </div>
+
+          <p>Do not enter personal, sensitive, or private information. The message may be sent to OpenAI to generate or improve the card text.</p>
         </div>
       </section>
 
@@ -116,8 +133,11 @@
         <h2 id="edit-actions-title">Actions</h2>
 
         <div class="actions-panel">
-          <button type="submit" class="sg-btn">Save changes</button>
-          <a href="{% url 'account' %}" class="sg-btn reset-button">Cancel</a>
+          <button type="submit" name="action" value="save_changes" class="sg-btn">Save changes</button>
+
+          <button type="submit" name="action" value="add_to_basket" class="sg-btn">Add to basket</button>
+
+          <a href="{% url 'account' %}" class="reset-button">Cancel</a>
         </div>
       </section>
     </div>

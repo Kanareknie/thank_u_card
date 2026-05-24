@@ -190,19 +190,59 @@ def edit_card(request, card_id):
     )
 
     if request.method == "POST":
-        existing_background = card.background_image
-        
         form = CardForm(request.POST, instance=card)
+        action = request.POST.get("action")
 
         if form.is_valid():
-            
             updated_card = form.save(commit=False)
-            updated_card.background_image = existing_background
             updated_card.user = request.user
-            updated_card.save()
-            
-            messages.success(request, "Your card has been updated.")
-            return redirect("account")
+
+            if action == "generate_message":
+                generated_message = generate_card_message(
+                    recipient_type=form.cleaned_data["recipient_type"],
+                    theme=form.cleaned_data["theme"],
+                    message=form.cleaned_data.get("message", ""),
+                )
+
+                if generated_message:
+                    updated_card.message = generated_message
+                    updated_card.save()
+                    messages.success(request, "Message updated successfully.")
+                    return redirect("edit_card", card_id=updated_card.id)
+
+                messages.error(request, "AI message generation is currently unavailable.")
+
+            elif action == "generate_background":
+                updated_card.background_status = "generating"
+                updated_card.save()
+
+                generate_background_task.delay(updated_card.id)
+
+                messages.success(request, "New background generation has started.")
+                return redirect("edit_card", card_id=updated_card.id)
+
+            elif action == "save_changes":
+                updated_card.save()
+                messages.success(request, "Your card has been updated.")
+                return redirect("account")
+
+            elif action == "add_to_basket":
+                updated_card.save()
+
+                basket, created = Basket.objects.get_or_create(
+                    user=request.user
+                )
+
+                BasketItem.objects.get_or_create(
+                    basket=basket,
+                    card=updated_card
+                )
+
+                messages.success(request, "Your card has been added to the basket.")
+                return redirect("basket")
+
+        else:
+            messages.error(request, "Please correct the errors below.")
     else:
         form = CardForm(instance=card)
 

@@ -11,5 +11,4 @@ class CardForm(forms.ModelForm):
                   'recipient_name',
                   'message',
                   'no_message',
-                  'background_image',
                   ]
