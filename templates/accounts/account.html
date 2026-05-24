@@ -90,22 +90,24 @@
 
             <div class="basket-item-action">
               <h3>Preview:</h3>
-              <a href="#" class="sg-btn">Preview</a>
+              <a href="{% url 'account_card_preview' card.id %}" class="sg-btn">Preview</a>
             </div>
 
             <div class="basket-item-action">
               <h3>Edit:</h3>
-              <a href="#" class="sg-btn">Edit</a>
+              <a href="{% url 'account_card_edit' card.id %}" class="sg-btn">Edit</a>
             </div>
 
             <div class="basket-item-action">
               <h3>Order now:</h3>
-              <a href="#" class="sg-btn">Add to basket</a>
+              {% csrf_token %}
+              <a href="{% url 'add_saved_card_to_basket' card.id %}" class="sg-btn">Add to basket</a>
             </div>
 
             <div class="basket-item-action">
               <h3>Delete:</h3>
-              <button type="button" class="sg-btn">Delete</button>
+              {% csrf_token %}
+              <a href="{% url 'delete_saved_card' card.id %}" class="sg-btn">Delete</a>
             </div>
           </article>
         {% endfor %}
