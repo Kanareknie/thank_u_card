@@ -307,3 +307,128 @@ textarea {
 
   font-weight: 800;
 }
+
+/* ============== */
+/* Basket page */
+/* ============== */
+.basket-page .content-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Reuse home hero, only align the basket heading */
+.basket-page .home-instructions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.basket-page .home-instructions h2 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* Main pink order area */
+.basket-order-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  padding: 2rem;
+  min-height: 420px;
+}
+
+/* White rounded item area inside pink panel */
+.basket-items-panel {
+  background: var(--white-panel);
+  border-radius: 3rem;
+
+  padding: 2rem;
+  min-height: 220px;
+}
+
+/* One basket item row */
+.basket-item-row {
+  display: grid;
+  grid-template-columns: 40px 2fr 1fr 1fr 1fr;
+  gap: 1rem;
+
+  align-items: start;
+
+  margin-bottom: 1.5rem;
+}
+
+.basket-item-row:last-child {
+  margin-bottom: 0;
+}
+
+/* Tick column */
+.basket-check {
+  color: var(--purple);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Each column in the row */
+.basket-item-detail,
+.basket-item-price,
+.basket-item-action {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Small column headings */
+.basket-item-row h3,
+.basket-summary h3 {
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.basket-item-row p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Price box layout only, not full button styling */
+.price-box {
+  display: inline-block;
+  width: fit-content;
+
+  border: 2px solid var(--purple);
+  border-radius: 0.75rem;
+
+  padding: 0.45rem 1rem;
+
+  background: var(--white-panel);
+
+  font-weight: 800;
+  text-align: center;
+}
+
+/* Bottom summary row */
+.basket-summary {
+  display: grid;
+  grid-template-columns: 1fr 2fr auto;
+  gap: 2rem;
+
+  align-items: center;
+}
+
+.basket-total {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.basket-payment-note {
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.basket-order-button {
+  align-self: center;
+}
