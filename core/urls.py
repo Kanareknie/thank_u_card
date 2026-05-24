@@ -17,7 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from cards.views import home
-from accounts.views import register, CustomLoginView, CustomLogoutView, account_view
+from accounts.views import (
+    register, 
+    CustomLoginView, 
+    CustomLogoutView, 
+    account_view,
+    account_card_preview,
+    add_saved_card_to_basket,
+    delete_saved_card,
+)
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
@@ -28,6 +36,9 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('login/', CustomLoginView.as_view(), name='login'),
     path('account/', account_view, name='account'),
+    path('account/preview/<int:card_id>/', account_card_preview, name='account_card_preview'),
+    path('account/add-to-basket/<int:card_id>/', add_saved_card_to_basket, name='add_saved_card_to_basket'),
+    path('account/delete/<int:card_id>/', delete_saved_card, name='delete_saved_card'),
     path(
         "password-reset/",
         auth_views.PasswordResetView.as_view(
