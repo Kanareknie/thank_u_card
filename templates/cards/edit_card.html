@@ -1,0 +1,125 @@
+{% extends 'cards/base.html' %}
+
+{% block title %}
+  Edit Card | Thank U Card
+{% endblock %}
+
+{% block main_class %}
+  home-page
+{% endblock %}
+
+{% block content %}
+  <section class="home-hero">
+    <div class="home-logo-area">
+      <p>
+        Create your own thank<br />you card with
+      </p>
+      <h1>Thank U Card</h1>
+    </div>
+
+    <div class="home-instructions">
+      <h2>Edit your card</h2>
+    </div>
+  </section>
+
+  <form class="home-builder-form" method="post">
+    {% csrf_token %}
+
+    <div class="home-builder">
+      <section class="builder-column builder-options" aria-labelledby="edit-options-title">
+        <h2 id="edit-options-title">Options</h2>
+
+        <div class="options-panel">
+          <fieldset class="option-group">
+            <legend>Who would you like to say thank you?</legend>
+            {{ form.recipient_type }}
+            {{ form.recipient_type.errors }}
+          </fieldset>
+
+          <fieldset class="option-group">
+            <legend>Pick your theme</legend>
+            {{ form.theme }}
+            {{ form.theme.errors }}
+          </fieldset>
+
+          <div class="option-group">
+            <label for="{{ form.colour.id_for_label }}" class="option-title">Pick main colour</label>
+            {{ form.colour }}
+            {{ form.colour.errors }}
+          </div>
+
+          <div class="option-group">
+            <label for="{{ form.element.id_for_label }}" class="option-title">Include element</label>
+            {{ form.element }}
+            {{ form.element.errors }}
+          </div>
+
+          <div class="option-group option-checkbox">
+            <label>
+              {{ form.no_message }}
+              Card without message
+            </label>
+            {{ form.no_message.errors }}
+          </div>
+        </div>
+      </section>
+
+      <section class="builder-column builder-preview" aria-labelledby="edit-preview-title">
+        <h2 id="edit-preview-title">Preview</h2>
+
+        <div class="preview-card">
+          <div class="preview-display">
+            <h3>Your card preview:</h3>
+
+            <div class="preview-paper">
+              {% if card.background_image %}
+                <img src="{{ card.background_image.url }}" alt="Generated card background" class="card-bg-image" />
+              {% endif %}
+
+              <div class="preview-content">
+                <div class="card-message-box">
+                  <h3 id="live-recipient-preview">
+                    {% if card.recipient_name %}
+                      Dear {{ card.recipient_name }}
+                    {% endif %}
+                  </h3>
+
+                  <p id="live-message-preview">
+                    {% if card.no_message %}
+                      This card has no message.
+                    {% else %}
+                      {{ card.message }}
+                    {% endif %}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="preview-form" id="message-fields">
+            <div class="form-group">
+              <label for="{{ form.recipient_name.id_for_label }}">Recipient name (optional):</label>
+              {{ form.recipient_name }}
+              {{ form.recipient_name.errors }}
+            </div>
+
+            <div class="form-group">
+              <label for="{{ form.message.id_for_label }}">Write down the message:</label>
+              {{ form.message }}
+              {{ form.message.errors }}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="builder-column builder-actions" aria-labelledby="edit-actions-title">
+        <h2 id="edit-actions-title">Actions</h2>
+
+        <div class="actions-panel">
+          <button type="submit" class="sg-btn">Save changes</button>
+          <a href="{% url 'account' %}" class="sg-btn reset-button">Cancel</a>
+        </div>
+      </section>
+    </div>
+  </form>
+{% endblock %}
