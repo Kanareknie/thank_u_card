@@ -190,10 +190,17 @@ def edit_card(request, card_id):
     )
 
     if request.method == "POST":
+        existing_background = card.background_image
+        
         form = CardForm(request.POST, instance=card)
 
         if form.is_valid():
-            form.save()
+            
+            updated_card = form.save(commit=False)
+            updated_card.background_image = existing_background
+            updated_card.user = request.user
+            updated_card.save()
+            
             messages.success(request, "Your card has been updated.")
             return redirect("account")
     else:
