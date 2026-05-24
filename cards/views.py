@@ -112,7 +112,9 @@ def home(request):
                 )
 
                 messages.success(request, "Your card has been added to the basket.")
-                return redirect("basket")
+                return redirect(f"{reverse('home')}?reset=1")
+            else:
+                messages.error(request, "Please complete the card before adding it ti the basket.")
             
         # Generate a background image for the card using AI and save it to the card's background_image field
         # https://docs.djangoproject.com/en/6.0/ref/models/querysets/
