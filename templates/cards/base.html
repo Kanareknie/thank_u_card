@@ -58,6 +58,7 @@
           </div>
 
           <div class="nav-links">
+            {% comment %} Account link {% endcomment %}
             {% if user.is_authenticated %}
               <a href="{% url 'account' %}">Account</a>
 
@@ -69,6 +70,9 @@
               <a href="{% url 'register' %}">Sign Up</a>
               <a href="{% url 'login' %}">Login</a>
             {% endif %}
+
+            {% comment %} Home link {% endcomment %}
+            <a href="{% url 'home' %}">Home</a>
 
             {% comment %} Basket link with item count {% endcomment %}
             <a href="{% url 'basket' %}" aria-label="Basket" class="basket-link">
