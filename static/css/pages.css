@@ -432,3 +432,35 @@ textarea {
 .basket-order-button {
   align-self: center;
 }
+
+/* =========================
+   Basket Navigation Count
+========================= */
+
+.basket-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.basket-count {
+  position: absolute;
+  top: -0.7rem;
+  right: -0.8rem;
+
+  min-width: 1.2rem;
+  height: 1.2rem;
+
+  border-radius: 50%;
+
+  background: var(--purple);
+  color: #000000;
+
+  font-size: 0.7rem;
+  font-weight: 800;
+  line-height: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
