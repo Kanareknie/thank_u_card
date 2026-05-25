@@ -34,6 +34,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # Stripe API keys
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
 STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY")
+STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET")
 
 # OpenAI API
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
