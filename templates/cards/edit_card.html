@@ -25,6 +25,16 @@
   <form class="home-builder-form" method="post">
     {% csrf_token %}
 
+    {% comment %}Background generation progress bar{% endcomment %}
+    {% if latest_card and latest_card.background_status == 'generating' %}
+      <div class="page-progress" data-refresh="true" aria-live="polite">
+        <span class="page-progress-text">Generating your background...</span>
+        <div class="page-progress-track">
+          <div class="page-progress-bar"></div>
+        </div>
+      </div>
+    {% endif %}
+
     <div class="home-builder">
       <section class="builder-column builder-options" aria-labelledby="edit-options-title">
         <h2 id="edit-options-title">Options</h2>
