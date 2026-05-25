@@ -64,6 +64,8 @@ INSTALLED_APPS = [
     'cloudinary',
     
     'basket',
+    
+    'payments',
 ]
 
 MIDDLEWARE = [
