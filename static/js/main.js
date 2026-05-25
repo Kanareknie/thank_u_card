@@ -1,15 +1,5 @@
 /* jshint esversion: 6 */
 
-// Hidden message toggle
-
-const noMessageToggle = document.querySelector("#no-message-toggle");
-const previewForm = document.querySelector(".preview-form");
-
-if (noMessageToggle && previewForm) {
-  noMessageToggle.addEventListener("change", () => {
-    previewForm.hidden = noMessageToggle.checked;
-  });
-}
 
 // Live preview updates
 document.addEventListener("DOMContentLoaded", function () {
@@ -25,6 +15,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const recipientCounter = document.getElementById("recipient-counter");
   const messageCounter = document.getElementById("message-counter");
 
+  // Hidden message toggle
+
+  const noMessageToggle = document.querySelector("#id_no_message");
+  const previewForm = document.querySelector(".preview-form");
+
+  if (noMessageToggle && previewForm) {
+    noMessageToggle.addEventListener("change", () => {
+      previewForm.hidden = noMessageToggle.checked;
+    });
+  }
 
   // Function to update character counters for recipient name and message fields
   function updateCharacterCounters() {
