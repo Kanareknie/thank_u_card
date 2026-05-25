@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const recipientPreview = document.getElementById("live-recipient-preview");
   const messagePreview = document.getElementById("live-message-preview");
   const messageFields = document.getElementById("message-fields");
-
+  const cardMessageBox = document.querySelector(".card-message-box");
+  
   const recipientCounter = document.getElementById("recipient-counter");
   const messageCounter = document.getElementById("message-counter");
 
@@ -34,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    
     const recipientValue = recipientInput ? recipientInput.value.trim() : "";
     const messageValue = messageInput ? messageInput.value.trim() : "";
     const noMessageSelected = noMessageCheckbox ? noMessageCheckbox.checked : false;
@@ -42,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // If "No Message" is selected, show a default message and hide the message fields. 
     // Otherwise, show the user's message and ensure the message fields are visible.
-    
+
     if (noMessageSelected) {
       if (cardMessageBox) {
         cardMessageBox.classList.add("hidden");

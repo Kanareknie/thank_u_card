@@ -29,20 +29,18 @@
       {% endif %}
 
       <div class="preview-content">
-        <div class="card-message-box">
-          <h3>
-            {% if card.recipient_name %}
-              Dear {{ card.recipient_name }}
-            {% endif %}
-          </h3>
+        <div class="preview-content">
+          {% if not card.no_message %}
+            <div class="card-message-box">
+              <h3>
+                {% if card.recipient_name %}
+                  Dear {{ card.recipient_name }}
+                {% endif %}
+              </h3>
 
-          <p>
-            {% if card.no_message %}
-              This card has no message.
-            {% else %}
-              {{ card.message }}
-            {% endif %}
-          </p>
+              <p>{{ card.message }}</p>
+            </div>
+          {% endif %}
         </div>
       </div>
     </div>
