@@ -33,7 +33,8 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('basket/', include('basket.urls')),
+    path('basket/', include('basket.urls')), 
+    path('payments/', include('payments.urls')),
     path('register/', register, name='register'),
     path('login/', CustomLoginView.as_view(), name='login'),
     path('account/', account_view, name='account'),
@@ -73,6 +74,8 @@ urlpatterns = [
     ),
     path('logout/', CustomLogoutView.as_view(), name='logout'),
     path('', home, name='home'),
+    
+   
 ]
 
 if settings.DEBUG:
