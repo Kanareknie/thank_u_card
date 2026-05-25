@@ -15,17 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const recipientCounter = document.getElementById("recipient-counter");
   const messageCounter = document.getElementById("message-counter");
 
-  // Hidden message toggle
-
-  const noMessageToggle = document.querySelector("#id_no_message");
-  const previewForm = document.querySelector(".preview-form");
-
-  if (noMessageToggle && previewForm) {
-    noMessageToggle.addEventListener("change", () => {
-      previewForm.hidden = noMessageToggle.checked;
-    });
-  }
-
   // Function to update character counters for recipient name and message fields
   function updateCharacterCounters() {
     if (recipientInput && recipientCounter) {
@@ -51,14 +40,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     recipientPreview.textContent = recipientValue ? `Dear ${recipientValue}` : "";
 
-    // If "No Message" is selected, show a default message and hide the message fields. Otherwise, show the user's message and ensure the message fields are visible.
+    // If "No Message" is selected, show a default message and hide the message fields. 
+    // Otherwise, show the user's message and ensure the message fields are visible.
+    
     if (noMessageSelected) {
-      messagePreview.textContent = "This card has no message.";
+      if (cardMessageBox) {
+        cardMessageBox.classList.add("hidden");
+      }
+
       if (messageFields) {
         messageFields.classList.add("hidden");
       }
     } else {
+      if (cardMessageBox) {
+        cardMessageBox.classList.remove("hidden");
+      }
+
       messagePreview.textContent = messageValue || "Your message will appear here";
+
       if (messageFields) {
         messageFields.classList.remove("hidden");
       }
