@@ -26,7 +26,7 @@
     {% csrf_token %}
 
     {% comment %}Background generation progress bar{% endcomment %}
-    {% if latest_card and latest_card.background_status == 'generating' %}
+    {% if card and card.background_status == 'generating' %}
       <div class="page-progress" data-refresh="true" aria-live="polite">
         <span class="page-progress-text">Generating your background...</span>
         <div class="page-progress-track">
