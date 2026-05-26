@@ -1,6 +1,8 @@
 from django.db import models
 from django.conf import settings
 
+from cards.storage_backends import PDFCloudinaryStorage
+
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(
@@ -92,7 +94,8 @@ class Card(models.Model):
         blank=True
         )
     pdf_file = models.FileField(
-        upload_to='card_pdfs/', 
+        upload_to='card_pdfs/',
+        storage=PDFCloudinaryStorage(), 
         null=True, 
         blank=True
         )
