@@ -12,6 +12,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from basket.models import BasketItem
 from cards.models import Card
+from cards.pdf_helpers import generate_card_pdf
 
 
 CARD_PRICE_PENCE = 199
@@ -130,6 +131,9 @@ def stripe_webhook(request):
             for card in cards:
                 card.is_paid = True
                 card.save()
+                
+                if not card.pdf_file:
+                    generate_card_pdf(card)
 
             BasketItem.objects.filter(
                 basket__user_id=user_id,
