@@ -1,3 +1,5 @@
+from importlib.metadata import metadata
+
 import stripe
 
 from django.conf import settings
@@ -83,7 +85,8 @@ def payment_success(request):
 
 @login_required
 def payment_cancel(request):
-    messages.info(request, "Payment cancelled. Your basket is still available.")
+    messages.info(
+        request, "Payment cancelled. Your basket is still available.")
     return redirect("basket")
 
 
@@ -106,8 +109,10 @@ def stripe_webhook(request):
     if event["type"] == "checkout.session.completed":
         session = event["data"]["object"]
 
-        user_id = session.get("metadata", {}).get("user_id")
-        card_ids = session.get("metadata", {}).get("card_ids", "")
+        metadata = session.metadata or {}
+
+        user_id = metadata["user_id"] if "user_id" in metadata else None
+        card_ids = metadata["card_ids"] if "card_ids" in metadata else ""
 
         if user_id and card_ids:
             card_id_list = [
