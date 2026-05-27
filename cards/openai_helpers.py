@@ -44,7 +44,7 @@ MAIN_PROMPT = (
     "as the main object. The note panel should be centered, smooth, plushy, "
     "slightly glossy, and have softly rounded corners. It should occupy about "
     "65% of the image width and 65% of the image height, leaving a clean blank "
-    "surface for later text overlay. Use a soft pastel background with gentle "
+    "surface for later text overlay. Use a white background with gentle "
     "studio lighting and a subtle floating shadow under the panel. Add only a "
     "few small decorative accents around the panel corners or outer edges. "
     "Keep the central surface completely blank and uncluttered. Style: cute "
