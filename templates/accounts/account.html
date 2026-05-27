@@ -79,17 +79,14 @@
             </div>
 
             <div class="basket-item-action">
-              <h3>Preview:</h3>
               <a href="{% url 'account_card_preview' card.id %}" class="sg-btn">Preview</a>
             </div>
 
             <div class="basket-item-action">
-              <h3>Edit:</h3>
               <a href="{% url 'edit_card' card.id %}" class="sg-btn">Edit</a>
             </div>
 
             <div class="basket-item-action">
-              <h3>Order now:</h3>
               <form method="post" action="{% url 'add_saved_card_to_basket' card.id %}">
                 {% csrf_token %}
                 <button type="submit" class="sg-btn">Add to basket</button>
@@ -97,7 +94,6 @@
             </div>
 
             <div class="basket-item-action">
-              <h3>Delete:</h3>
               <form method="post" action="{% url 'delete_saved_card' card.id %}">
                 {% csrf_token %}
                 <button type="submit" class="sg-btn">Delete</button>

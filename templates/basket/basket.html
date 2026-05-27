@@ -30,17 +30,14 @@
             <div class="basket-check" aria-hidden="true">✓</div>
 
             <div class="basket-item-detail">
-              <h3>Product details:</h3>
               <p>Card for {{ item.card.recipient_type }}, theme {{ item.card.theme }}</p>
             </div>
 
             <div class="basket-item-price">
-              <h3>Price:</h3>
               <p class="price-box">£1.99</p>
             </div>
 
             <div class="basket-item-action">
-              <h3>Not ready?</h3>
               <form method="post" action="{% url 'remove_basket_item' item.id %}">
                 {% csrf_token %}
                 <button type="submit" class="sg-btn">Remove from basket</button>
@@ -48,7 +45,6 @@
             </div>
 
             <div class="basket-item-action">
-              <h3>Check it again:</h3>
               <a href="{% url 'basket_item_preview' item.id %}" class="sg-btn">Preview</a>
             </div>
           </article>
