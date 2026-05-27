@@ -154,8 +154,7 @@
   justify-content: center;
   text-align: center;
   pointer-events: none;
-  /* moving the content down */
-  transform: translateY(10%);
+
 }
 
 .preview-form {
