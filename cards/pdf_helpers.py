@@ -20,15 +20,24 @@
 # PDF generation helper functions for cards.
 # This implementation uses ReportLab to create the final downloadable card PDF.
 
-from io import BytesIO
+from pathlib import Path
 
-import requests
+from django.conf import settings
 from django.core.files.base import ContentFile
 from reportlab.lib.pagesizes import inch
 from reportlab.lib.utils import ImageReader
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
+from io import BytesIO
+import requests
 
 
+# Register the font used in the card message box
+FONT_PATH = Path(settings.BASE_DIR) / "static" / "fonts" / "TheGirlNextDoor-Regular.ttf"
+pdfmetrics.registerFont(TTFont("GirlNextDoor", str(FONT_PATH)))
+
+# Prompts for image generation INCLUDING main, colour, element, theme, recipient, and safety instructions.
 def draw_wrapped_text(
     pdf,
     text,
@@ -36,7 +45,7 @@ def draw_wrapped_text(
     y,
     max_width,
     line_height,
-    font_name="Helvetica",
+    font_name="GirlNextDoor",
     font_size=14,
 ):
     """
@@ -71,11 +80,8 @@ def draw_wrapped_text(
 
     return y
 
-
+# Main function to generate the PDF for a card, using the above helper function to draw wrapped text.
 def generate_card_pdf(card):
-    """
-    Generate a square PDF for a paid card and save it to card.pdf_file.
-    """
 
     buffer = BytesIO()
 
@@ -105,12 +111,12 @@ def generate_card_pdf(card):
 
     # Draw message box only if user did not select "Card without message".
     if not card.no_message:
-        box_width = width * 0.72
-        box_height = height * 0.34
+        box_width = width * 0.56
+        box_height = height * 0.56
         box_x = (width - box_width) / 2
-        box_y = height * 0.24
+        box_y = (height - box_height) / 2
 
-        pdf.setFillColorRGB(1, 1, 1)
+        pdf.setFillColorRGB(0.1, 0.1, 0.1)
         pdf.roundRect(
             box_x,
             box_y,
@@ -133,23 +139,23 @@ def generate_card_pdf(card):
         if card.recipient_name:
             recipient_text = f"Dear {card.recipient_name}"
 
-            pdf.setFillColorRGB(0, 0, 0)
+            pdf.setFillColorRGB(0.1, 0.1, 0.1)
 
             text_y = draw_wrapped_text(
                 pdf=pdf,
                 text=recipient_text,
                 x=text_center_x,
                 y=text_y,
-                max_width=box_width - 55,
-                line_height=15,
-                font_name="Helvetica-Bold",
-                font_size=12,
+                max_width=box_width - 50,
+                line_height=20,
+                font_name="GirlNextDoor",
+                font_size=20,
             )
 
-            text_y -= 6
+            text_y -= 12  # Extra spacing between recipient name and message
 
         if card.message:
-            pdf.setFillColorRGB(0, 0, 0)
+            pdf.setFillColorRGB(0.15, 0.15, 0.15)
 
             draw_wrapped_text(
                 pdf=pdf,
@@ -157,9 +163,9 @@ def generate_card_pdf(card):
                 x=text_center_x,
                 y=text_y,
                 max_width=box_width - 55,
-                line_height=15,
-                font_name="Helvetica",
-                font_size=12,
+                line_height=18,
+                font_name="GirlNextDoor",
+                font_size=13,
             )
 
     pdf.showPage()
