@@ -1,11 +1,13 @@
-from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 
 from .models import BasketItem
 
+# Price per card in pence (199p = £1.99)
+CARD_PRICE_PENCE = 199
 
+# View to display the user's basket
 @login_required
 def basket_view(request):
     basket_items = BasketItem.objects.filter(
@@ -17,12 +19,18 @@ def basket_view(request):
         "card__colour",
         "card__element",
     ).order_by("-added_on")
+    
+    basket_count = basket_items.count()
+    basket_total_pence = basket_count * CARD_PRICE_PENCE
+    basket_total = basket_total_pence / 100
 
     return render(
         request,
         "basket/basket.html",
         {
             "basket_items": basket_items,
+            "basket_count": basket_count,
+            "basket_total": basket_total,
         }
     )
     
