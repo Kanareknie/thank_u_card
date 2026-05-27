@@ -90,7 +90,7 @@ def generate_card_pdf(card):
     # 2. Draw message only if user did not select "Card without message"
     if not card.no_message:
         box_width = width * 0.7
-        box_height = height * 0.28
+        box_height = height * 0.33
         box_x = (width - box_width) / 2
         box_y = (height / 2) - (box_height / 2) - (height * 0.08)
 
