@@ -113,16 +113,21 @@ def generate_card_pdf(card):
         if card.recipient_name:
             recipient_text = f"Dear {card.recipient_name}"
 
-            if len(recipient_text) > 35:
-                recipient_text = recipient_text[:32] + "..."
+            pdf.setFont("Helvetica-Bold", 13)
+            pdf.setFillColorRGB(0, 0, 0)
 
-            pdf.setFont("Helvetica-Bold", 14)
-            pdf.drawCentredString(
-                text_center_x,
-                text_y,
-                recipient_text,
+            text_y = draw_wrapped_text(
+                pdf=pdf,
+                text=recipient_text,
+                x=text_center_x,
+                y=text_y,
+                max_width=box_width - 55,
+                line_height=16,
+                font_name="Helvetica-Bold",
+                font_size=13,
             )
-            text_y -= 24
+
+            text_y -= 8
 
         if card.message:
             pdf.setFont("Helvetica", 14)
