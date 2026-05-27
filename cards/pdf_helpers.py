@@ -17,6 +17,9 @@
 # a file-like object for the PDF data before saving it to the model.
 # https://docs.python.org/3/library/io.html
 
+# PDF generation helper functions for cards.
+# This implementation uses ReportLab to create the final downloadable card PDF.
+
 from io import BytesIO
 
 import requests
@@ -26,11 +29,24 @@ from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen import canvas
 
 
-# Draw text in wrapped lines, centred around x.
-def draw_wrapped_text(pdf, text, x, y, max_width, line_height):
-   
+def draw_wrapped_text(
+    pdf,
+    text,
+    x,
+    y,
+    max_width,
+    line_height,
+    font_name="Helvetica",
+    font_size=14,
+):
+    """
+    Draw text in wrapped lines, centred around x.
+    """
+
     if not text:
         return y
+
+    pdf.setFont(font_name, font_size)
 
     words = text.split()
     lines = []
@@ -39,12 +55,11 @@ def draw_wrapped_text(pdf, text, x, y, max_width, line_height):
     for word in words:
         test_line = f"{current_line} {word}".strip()
 
-        # Check if the test line fits within the max width using the current font 
-        # settings - Helvetica is the safe default build-in font in ReportLab.
-        if pdf.stringWidth(test_line, "Helvetica", 14) <= max_width:
+        if pdf.stringWidth(test_line, font_name, font_size) <= max_width:
             current_line = test_line
         else:
-            lines.append(current_line)
+            if current_line:
+                lines.append(current_line)
             current_line = word
 
     if current_line:
@@ -57,18 +72,19 @@ def draw_wrapped_text(pdf, text, x, y, max_width, line_height):
     return y
 
 
-# Generate a square PDF for a paid card and save it to card.pdf_file. 
 def generate_card_pdf(card):
-   
-    # Create an in-memory file-like object to hold the PDF data.
+    """
+    Generate a square PDF for a paid card and save it to card.pdf_file.
+    """
+
     buffer = BytesIO()
 
     page_size = (6 * inch, 6 * inch)
-    
+
     pdf = canvas.Canvas(buffer, pagesize=page_size)
     width, height = page_size
 
-     # 1. Draw generated background image full-page
+    # Draw generated background image full-page.
     if card.background_image:
         image_url = card.background_image.url
         response = requests.get(image_url, timeout=20)
@@ -87,15 +103,13 @@ def generate_card_pdf(card):
             mask="auto",
         )
 
-    # 2. Draw message only if user did not select "Card without message"
+    # Draw message box only if user did not select "Card without message".
     if not card.no_message:
         box_width = width * 0.72
         box_height = height * 0.34
         box_x = (width - box_width) / 2
         box_y = height * 0.24
 
-        # White transparent-style box. ReportLab does not always handle opacity
-        # reliably across viewers, so this uses solid white for consistency.
         pdf.setFillColorRGB(1, 1, 1)
         pdf.roundRect(
             box_x,
@@ -108,12 +122,17 @@ def generate_card_pdf(card):
         )
 
         text_center_x = width / 2
-        text_y = box_y + box_height - 45
 
+        if card.recipient_name:
+            text_y = box_y + box_height - 38
+        else:
+            text_y = box_y + box_height - 65
+
+
+        # Draw recipient name and message, wrapped to fit inside the box with some padding.
         if card.recipient_name:
             recipient_text = f"Dear {card.recipient_name}"
 
-            pdf.setFont("Helvetica-Bold", 13)
             pdf.setFillColorRGB(0, 0, 0)
 
             text_y = draw_wrapped_text(
@@ -122,15 +141,14 @@ def generate_card_pdf(card):
                 x=text_center_x,
                 y=text_y,
                 max_width=box_width - 55,
-                line_height=16,
+                line_height=15,
                 font_name="Helvetica-Bold",
-                font_size=13,
+                font_size=12,
             )
 
-            text_y -= 8
+            text_y -= 6
 
         if card.message:
-            pdf.setFont("Helvetica", 14)
             pdf.setFillColorRGB(0, 0, 0)
 
             draw_wrapped_text(
@@ -139,7 +157,9 @@ def generate_card_pdf(card):
                 x=text_center_x,
                 y=text_y,
                 max_width=box_width - 55,
-                line_height=16,
+                line_height=15,
+                font_name="Helvetica",
+                font_size=12,
             )
 
     pdf.showPage()
@@ -149,7 +169,7 @@ def generate_card_pdf(card):
 
     filename = f"thank_u_card_{card.id}.pdf"
 
-    # Replace old PDF if one already exists
+    # Replace old PDF if one already exists.
     if card.pdf_file:
         card.pdf_file.delete(save=False)
 
