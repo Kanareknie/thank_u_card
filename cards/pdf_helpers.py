@@ -108,7 +108,7 @@ def generate_card_pdf(card):
         )
 
         text_center_x = width / 2
-        text_y = box_y + box_height - 35
+        text_y = box_y + box_height - 45
 
         if card.recipient_name:
             pdf.setFont("Helvetica-Bold", 16)
@@ -130,7 +130,7 @@ def generate_card_pdf(card):
                 x=text_center_x,
                 y=text_y,
                 max_width=box_width - 40,
-                line_height=18,
+                line_height=16,
             )
 
     pdf.showPage()
