@@ -19,11 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to update character counters for recipient name and message fields
   function updateCharacterCounters() {
     if (recipientInput && recipientCounter) {
-      recipientCounter.textContent = `${recipientInput.value.length} / 50`;
+      recipientCounter.textContent = `${recipientInput.value.length} / 20`;
     }
 
     if (messageInput && messageCounter) {
-      messageCounter.textContent = `${messageInput.value.length} / 200`;
+      messageCounter.textContent = `${messageInput.value.length} / 150`;
     }
   }
 
