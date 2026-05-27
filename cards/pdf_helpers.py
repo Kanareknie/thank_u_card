@@ -4,7 +4,7 @@
 # so the message is split into shorter lines that fit inside the card message box.
 # https://docs.reportlab.com/reportlab/userguide/ch2_graphics/
 
-# This is a simple implementation using ReportLab to create a placeholder PDF.
+# This implementation uses ReportLab to create the final downloadable card PDF.
 # Uses canvas.Canvas(...), setFont(...), drawCentredString(...), showPage(), and save()
 # https://docs.reportlab.com/reportlab/userguide/ch2_graphics/
 
@@ -19,11 +19,12 @@
 
 from io import BytesIO
 
+import requests
 from django.core.files.base import ContentFile
 from reportlab.lib.pagesizes import inch
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen import canvas
-import requests
+
 
 # Draw text in wrapped lines, centred around x.
 def draw_wrapped_text(pdf, text, x, y, max_width, line_height):
@@ -57,7 +58,6 @@ def draw_wrapped_text(pdf, text, x, y, max_width, line_height):
 
 
 # Generate a square PDF for a paid card and save it to card.pdf_file. 
-# First simple version: placeholder PDF only.
 def generate_card_pdf(card):
    
     # Create an in-memory file-like object to hold the PDF data.
@@ -89,10 +89,10 @@ def generate_card_pdf(card):
 
     # 2. Draw message only if user did not select "Card without message"
     if not card.no_message:
-        box_width = width * 0.7
-        box_height = height * 0.33
+        box_width = width * 0.72
+        box_height = height * 0.34
         box_x = (width - box_width) / 2
-        box_y = (height / 2) - (box_height / 2) - (height * 0.08)
+        box_y = height * 0.24
 
         # White transparent-style box. ReportLab does not always handle opacity
         # reliably across viewers, so this uses solid white for consistency.
@@ -111,14 +111,18 @@ def generate_card_pdf(card):
         text_y = box_y + box_height - 45
 
         if card.recipient_name:
-            pdf.setFont("Helvetica-Bold", 16)
-            pdf.setFillColorRGB(0, 0, 0)
+            recipient_text = f"Dear {card.recipient_name}"
+
+            if len(recipient_text) > 35:
+                recipient_text = recipient_text[:32] + "..."
+
+            pdf.setFont("Helvetica-Bold", 14)
             pdf.drawCentredString(
                 text_center_x,
                 text_y,
-                f"Dear {card.recipient_name}",
+                recipient_text,
             )
-            text_y -= 28
+            text_y -= 24
 
         if card.message:
             pdf.setFont("Helvetica", 14)
@@ -129,7 +133,7 @@ def generate_card_pdf(card):
                 text=card.message,
                 x=text_center_x,
                 y=text_y,
-                max_width=box_width - 40,
+                max_width=box_width - 55,
                 line_height=16,
             )
 
