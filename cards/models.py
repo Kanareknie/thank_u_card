@@ -78,12 +78,12 @@ class Card(models.Model):
         blank = False
         )
     recipient_name = models.CharField(
-        max_length=50, 
+        max_length=20, 
         null=True, 
         blank=True
         )
     message = models.TextField(
-        max_length=200, 
+        max_length=150, 
         null=True, 
         blank=True
         )
