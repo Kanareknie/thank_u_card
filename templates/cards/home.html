@@ -94,7 +94,7 @@
               <div class="preview-content">
                 {% if preview_card %}
                   {% if not preview_card.no_message %}
-                    <div class="card-message-box">
+                    <div class="card-message-box" id="card-message-box">
                       <h3 id="live-recipient-preview">
                         {% if preview_card.recipient_name %}
                           Dear {{ preview_card.recipient_name }}
@@ -104,14 +104,14 @@
                       <p id="live-message-preview">{{ preview_card.message }}</p>
                     </div>
                   {% else %}
-                    <div class="card-message-box hidden">
+                    <div class="card-message-box hidden" id="card-message-box">
                       <h3 id="live-recipient-preview"></h3>
                       <p id="live-message-preview"></p>
                     </div>
                   {% endif %}
                 {% elif latest_card %}
                   {% if not latest_card.no_message %}
-                    <div class="card-message-box">
+                    <div class="card-message-box" id="card-message-box">
                       <h3 id="live-recipient-preview">
                         {% if latest_card.recipient_name %}
                           Dear {{ latest_card.recipient_name }}
@@ -121,13 +121,13 @@
                       <p id="live-message-preview">{{ latest_card.message }}</p>
                     </div>
                   {% else %}
-                    <div class="card-message-box hidden">
+                    <div class="card-message-box hidden" id="card-message-box">
                       <h3 id="live-recipient-preview"></h3>
                       <p id="live-message-preview"></p>
                     </div>
                   {% endif %}
                 {% else %}
-                  <div class="card-message-box">
+                  <div class="card-message-box" id="card-message-box">
                     <h3 id="live-recipient-preview"></h3>
                     <p id="live-message-preview">Your card preview will appear here</p>
                   </div>

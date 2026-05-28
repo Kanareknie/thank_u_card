@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const recipientPreview = document.getElementById("live-recipient-preview");
   const messagePreview = document.getElementById("live-message-preview");
   const messageFields = document.getElementById("message-fields");
-  const cardMessageBox = document.querySelector(".card-message-box");
-  
+  const cardMessageBox = document.getElementById("card-message-box");
+
   const recipientCounter = document.getElementById("recipient-counter");
   const messageCounter = document.getElementById("message-counter");
 
@@ -46,6 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Otherwise, show the user's message and ensure the message fields are visible.
 
     if (noMessageSelected) {
+
+      recipientPreview.textContent = "";
+      messagePreview.textContent = "";
+
       if (cardMessageBox) {
         cardMessageBox.classList.add("hidden");
       }
