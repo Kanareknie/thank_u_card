@@ -241,6 +241,7 @@ textarea {
   white-space: normal;
 }
 
+
 /* ============== */
 /* Options Panel - main settings */
 /* ============== */
@@ -575,4 +576,11 @@ textarea {
 .account-card-row p {
   font-size: 0.9rem;
   line-height: 1.4;
+}
+
+
+/* Card Message Box - hidden */
+
+.card-message-box.hidden {
+  display: none;
 }
