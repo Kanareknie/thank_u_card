@@ -135,9 +135,9 @@ def generate_card_pdf(card):
         text_center_x = width / 2
 
         if card.recipient_name:
-            text_y = box_y + box_height - 38
+            text_y = box_y + box_height - 30
         else:
-            text_y = box_y + box_height - 65
+            text_y = box_y + box_height - 60
 
 
         # Draw recipient name and message, wrapped to fit inside the box with some padding.
