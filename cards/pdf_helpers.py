@@ -139,7 +139,15 @@ def generate_card_pdf(card):
         if card.recipient_name:
             recipient_text = f"Dear {card.recipient_name}"
 
-            pdf.setFillColorRGB(0.1, 0.1, 0.1)
+            pdf.setFillColorRGB(1, 1, 1)
+
+            # Set fill alpha for recipient name to make it slightly transparent, 
+            # so it doesn't overpower the message text.
+            try:
+                pdf.setFillAlpha(0.55)
+            except AttributeError:
+                pass
+            
 
             text_y = draw_wrapped_text(
                 pdf=pdf,
