@@ -59,48 +59,57 @@ MAIN_PROMPT = (
 COLOUR_PROMPTS = {
     "Blush Pink": (
         "Use a blush pink pastel colour palette with a soft rose gold metallic "
-        "accent. Keep the background light blush pink, and use subtle rose gold "
-        "highlights in tiny decorative details."
+        "accent. Keep the background of the card light blush pink, and use subtle rose gold "
+        "highlights in tiny decorative details. Behind the panel, use a white background with gentle studio lighting "
+        "and a subtle floating shadow under the panel to create a soft 3D look."
     ),
     "Dusty Rose": (
         "Use a dusty rose pastel colour palette with a soft rose gold metallic "
-        "accent. Keep the background muted rosy pink, and use subtle rose gold "
-        "highlights in tiny decorative details."
+        "accent. Keep the background of the card muted rosy pink, and use subtle rose gold "
+        "highlights in tiny decorative details. Behind the panel, use a white background with gentle studio lighting "
+        "   and a subtle floating shadow under the panel to create a soft 3D look."
     ),
     "Peach Apricot": (
         "Use a peach apricot pastel colour palette with a soft rose gold metallic "
-        "accent. Keep the background warm and peachy, and use subtle rose gold "
-        "highlights in tiny decorative details."
+        "accent. Keep the background of the card warm and peachy, and use subtle rose gold "
+        "highlights in tiny decorative details. Behind the panel, use a white background with gentle studio lighting "
+        "and a subtle floating shadow under the panel to create a soft 3D look."
     ),
     "Dove Grey": (
         "Use a dove grey pastel colour palette with a soft silver metallic "
-        "accent. Keep the background light grey and airy, and use subtle silver "
-        "highlights in tiny decorative details."
+        "accent. Keep the background of the card light grey and airy, and use subtle silver "
+        "highlights in tiny decorative details. Behind the panel, use a white background with gentle studio lighting "
+        "and a subtle floating shadow under the panel to create a soft 3D look."
     ),
     "Powder Blue": (
         "Use a powder blue pastel colour palette with a soft silver metallic "
-        "accent. Keep the background light powder blue, and use subtle silver "
-        "highlights in tiny decorative details."
+        "accent. Keep the background of the card light powder blue, and use subtle silver "
+        "highlights in tiny decorative details. Behind the panel, use a white background with gentle studio lighting "
+        "and a subtle floating shadow under the panel to create a soft 3D look."
     ),
     "Lavender": (
         "Use a lavender pastel colour palette with a soft silver metallic accent. "
-        "Keep the background soft lavender, and use subtle silver highlights in "
-        "tiny decorative details."
+        "Keep the background of the card soft lavender, and use subtle silver highlights in "
+        "tiny decorative details. Behind the panel, use a white background with gentle studio lighting "
+        "and a subtle floating shadow under the panel to create a soft 3D look."
     ),
     "Butter Yellow": (
         "Use a butter yellow pastel colour palette with a soft yellow gold "
-        "metallic accent. Keep the background soft buttery yellow, and use subtle "
-        "gold highlights in tiny decorative details."
+        "metallic accent. Keep the background of the card soft buttery yellow, and use subtle "
+        "gold highlights in tiny decorative details. Behind the panel, use a white background with gentle studio lighting "
+        "and a subtle floating shadow under the panel to create a soft 3D look."
     ),
     "Cream Beige": (
         "Use a cream beige pastel colour palette with a soft champagne gold "
-        "metallic accent. Keep the background creamy beige, and use subtle "
-        "champagne gold highlights in tiny decorative details."
+        "metallic accent. Keep the background of the card creamy beige, and use subtle "
+        "champagne gold highlights in tiny decorative details. Behind the panel, use a white background with gentle "
+        "studio lighting and a subtle floating shadow under the panel to create a soft 3D look."
     ),
     "Soft Mint": (
         "Use a soft mint pastel colour palette with a soft champagne gold "
-        "metallic accent. Keep the background fresh mint green, and use subtle "
-        "champagne gold highlights in tiny decorative details."
+        "metallic accent. Keep the background of the card fresh mint green, and use subtle "
+        "champagne gold highlights in tiny decorative details. Behind the panel, use a white background with gentle "
+        "studio lighting and a subtle floating shadow under the panel to create a soft 3D look."
     ),
 }
 
