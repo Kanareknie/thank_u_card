@@ -24,8 +24,14 @@ def home(request):
     
     latest_card = None
     
+    # Display on the preview only if the user is authenticated and has a card that has
+    # a generated background image that is not paid for
     if request.user.is_authenticated:
-        latest_card = Card.objects.filter(user=request.user).order_by("-created_on").first()
+        latest_card = Card.objects.filter(
+            user=request.user, is_paid=False,
+            background_status="completed",
+            background_image__isnull=False,
+        ).order_by("-created_on").first()
 
     # Handle form submissions for generating messages, 
     # updating preview, and saving cards
