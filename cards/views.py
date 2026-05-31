@@ -119,26 +119,29 @@ def home(request):
             
         # Add the card to the user's basket by creating a BasketItem linking the card to the user's Basket
         elif action == "add_to_basket":
-            if form.is_valid():
-                if latest_card:
-                    form_card = form.save(commit=False)
+            if not request.user.is_authenticated:
+                messages.error(
+                    request,
+                    "Please log in or create an account to add your card to the basket."
+                )
+                return redirect("login")
 
-                    # Update the latest card with the current form data and generated message, 
-                    # then save it to the database
-                    latest_card.recipient_type = form_card.recipient_type
-                    latest_card.theme = form_card.theme
-                    latest_card.colour = form_card.colour
-                    latest_card.element = form_card.element
-                    latest_card.recipient_name = form_card.recipient_name
-                    latest_card.message = form_card.message
-                    latest_card.no_message = form_card.no_message
-                    latest_card.save()
+            if not latest_card or not latest_card.background_image:
+                messages.error(
+                    request,
+                    "Please generate a background before adding your card to the basket."
+                )
+            elif form.is_valid():
+                form_card = form.save(commit=False)
 
-                    card = latest_card
-                else:
-                    card = form.save(commit=False)
-                    card.user = request.user
-                    card.save()
+                latest_card.recipient_type = form_card.recipient_type
+                latest_card.theme = form_card.theme
+                latest_card.colour = form_card.colour
+                latest_card.element = form_card.element
+                latest_card.recipient_name = form_card.recipient_name
+                latest_card.message = form_card.message
+                latest_card.no_message = form_card.no_message
+                latest_card.save()
 
                 basket, created = Basket.objects.get_or_create(
                     user=request.user
@@ -146,13 +149,12 @@ def home(request):
 
                 BasketItem.objects.get_or_create(
                     basket=basket,
-                    card=card
+                    card=latest_card
                 )
 
                 messages.success(request, "Your card has been added to the basket.")
                 return redirect(f"{reverse('home')}?reset=1")
-            else:
-                messages.error(request, "Please complete the card before adding it to the basket.")
+            
         # Generate a background image for the card using AI and save it to the card's background_image field
         # https://docs.djangoproject.com/en/6.0/ref/models/querysets/
         # https://stackoverflow.com/questions/32510123/django-datetime-timedelta-how-does-its-subtract-from-timezone-now-if-they-ar
@@ -297,3 +299,4 @@ def edit_card(request, card_id):
             "card": card,
         },
     )
+    
