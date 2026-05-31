@@ -16,15 +16,16 @@ from django.shortcuts import get_object_or_404
 
 
 
-
-@login_required
 def home(request):
     generated_message = None
     preview_card = None
     # Check if the reset query parameter is set to "1" to determine if the form and preview should be reset
     reset_page = request.GET.get("reset") == "1"
     
-    latest_card = Card.objects.filter(user=request.user).order_by("-created_on").first()
+    lastet_card = None
+    
+    if request.user.is_authenticated:
+        latest_card = Card.objects.filter(user=request.user).order_by("-created_on").first()
 
     # Handle form submissions for generating messages, 
     # updating preview, and saving cards
@@ -153,6 +154,14 @@ def home(request):
         # https://docs.djangoproject.com/en/6.0/ref/models/querysets/
         # https://stackoverflow.com/questions/32510123/django-datetime-timedelta-how-does-its-subtract-from-timezone-now-if-they-ar
         elif action == "generate_background":
+            if not request.user.is_authenticated:
+                messages.error(
+                    request,
+                "   Please log in or create an account to generate a card background."
+                )
+                return redirect("login")
+            
+            
             if form.is_valid():
                 twenty_four_hours_ago = timezone.now() - timedelta(hours=24)
 
