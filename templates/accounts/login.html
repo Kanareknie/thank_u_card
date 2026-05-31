@@ -1,8 +1,9 @@
 {% extends 'cards/base.html' %}
 {% load static %}
+{% load socialaccount %}
 
 {% block title %}
- Login | Thank U Card
+  Login | Thank U Card
 {% endblock %}
 
 {% block content %}
@@ -28,11 +29,16 @@
             <label for="password" class="form-label">Password</label>
             <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password" autocomplete="current-password" />
           </div>
-          {% comment %} Password reset link {% endcomment %}
+          {% comment %}Password reset link{% endcomment %}
           <div class="login-meta">
             <a class="login-link" href="{% url 'password_reset' %}">Forgot password?</a>
-          </div> 
+          </div>
           <button type="submit" class="sg-btn login-btn">Login</button>
+          <div class="social-login-area">
+            <p class="login-subtitle">Or continue with Google</p>
+
+            <a href="{% provider_login_url 'google' %}" class="sg-btn google-auth-btn">Continue with Google</a>
+          </div>
         </form>
       </div>
       <!-- RIGHT: Signup -->

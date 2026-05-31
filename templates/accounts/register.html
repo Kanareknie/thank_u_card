@@ -1,5 +1,6 @@
 {% extends 'cards/base.html' %}
 {% load static %}
+{% load socialaccount %}
 
 {% block title %}
   Register | Thank U Card
@@ -30,7 +31,7 @@
               {% endfor %}
             </div>
           {% endif %}
-          {% comment %} Notification for form errors {% endcomment %}
+          {% comment %}Notification for form errors{% endcomment %}
           {% if form.errors %}
             <div class="form-error">
               <p>Please correct the errors below and try again.</p>
@@ -76,8 +77,13 @@
               </div>
             {% endif %}
           </div>
-          
+
           <button type="submit" class="sg-btn register-btn">Create account</button>
+          <div class="social-login-area">
+            <p class="register-subtitle">Or sign up with Google</p>
+
+            <a href="{% provider_login_url 'google' %}" class="sg-btn google-auth-btn">Sign up with Google</a>
+          </div>
         </form>
       </div>
     </div>
