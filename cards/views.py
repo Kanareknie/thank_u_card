@@ -22,7 +22,7 @@ def home(request):
     # Check if the reset query parameter is set to "1" to determine if the form and preview should be reset
     reset_page = request.GET.get("reset") == "1"
     
-    lastet_card = None
+    latest_card = None
     
     if request.user.is_authenticated:
         latest_card = Card.objects.filter(user=request.user).order_by("-created_on").first()
