@@ -90,26 +90,29 @@ def home(request):
                 messages.success(request, "Preview updated.")
         # Save the card to the database with the current form data and generated message
         elif action == "save_card":
-            if form.is_valid():
-                if latest_card:
-                    form_card = form.save(commit=False)
+            if not request.user.is_authenticated:
+                messages.error(
+                    request,
+                    "Please log in or create an account to save your card."
+                )
+                return redirect("login")
 
-                    # Update the latest card with the form data and generated message, 
-                    # then save it to the database
-                    latest_card.recipient_type = form_card.recipient_type
-                    latest_card.theme = form_card.theme
-                    latest_card.colour = form_card.colour
-                    latest_card.element = form_card.element
-                    latest_card.recipient_name = form_card.recipient_name
-                    latest_card.message = form_card.message
-                    latest_card.no_message = form_card.no_message
-                    latest_card.save()
+            if not latest_card or not latest_card.background_image:
+                messages.error(
+                    request,
+                    "Please generate a background before saving your card."
+                )
+            elif form.is_valid():
+                form_card = form.save(commit=False)
 
-                    card = latest_card
-                else:
-                    card = form.save(commit=False)
-                    card.user = request.user
-                    card.save()
+                latest_card.recipient_type = form_card.recipient_type
+                latest_card.theme = form_card.theme
+                latest_card.colour = form_card.colour
+                latest_card.element = form_card.element
+                latest_card.recipient_name = form_card.recipient_name
+                latest_card.message = form_card.message
+                latest_card.no_message = form_card.no_message
+                latest_card.save()
 
                 messages.success(request, "Your card has been saved successfully.")
                 return redirect(f"{reverse('home')}?reset=1")
