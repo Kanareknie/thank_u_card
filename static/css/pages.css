@@ -1194,3 +1194,22 @@ textarea {
 }
 
 
+/* =========================
+   Home Notes
+========================= */
+
+.home-note {
+  padding: 1.1rem 1.5rem;
+
+  color: var(--text-color);
+  font-size: 0.88rem;
+  line-height: 1.45;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.home-note p {
+  margin: 0;
+}
