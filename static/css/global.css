@@ -268,11 +268,7 @@ textarea {
 
 .site-main {
   flex: 1;
-
   width: 100%;
-
-  padding: 0 2rem 2rem;
-
   display: flex;
   justify-content: center;
   align-items: stretch;
@@ -282,17 +278,48 @@ textarea {
    WHITE CONTENT PANEL
 ========================= */
 
+
 .content-panel {
   width: 100%;
   max-width: var(--content-width);
-
-  background: var(--white-panel);
-
-  border-radius: var(--border-radius);
-
+  min-height: 700px;
   padding: 2rem;
 
-  min-height: 700px;
+  background: rgba(251, 247, 240, 0.76);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft), var(--shadow-inset);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* =========================
+   MESSAGES
+========================= */
+
+.messages-container {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.message {
+  margin-bottom: 0.75rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid var(--glass-line);
+  box-shadow: var(--shadow-raised);
+  color: var(--ink);
+}
+
+.message.success {
+  border-color: rgba(122, 129, 108, 0.35);
+}
+
+.message.error,
+.message.danger {
+  border-color: rgba(174, 105, 101, 0.42);
 }
 
 /* =========================
@@ -300,26 +327,117 @@ textarea {
 ========================= */
 
 .site-footer {
-  padding: 1.5rem;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 1.15rem 1.5rem;
 
   text-align: center;
-
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 500;
+  color: var(--muted-ink);
+
+  background: rgba(251, 247, 240, 0.62);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft), var(--shadow-inset);
 }
 
 .site-footer p {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.25rem;
 }
 
 /* =========================
    LINKS
 ========================= */
 
-a {
-  transition: 0.2s ease;
+a,
+button {
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
 }
 
-a:hover {
-  opacity: 0.7;
+a:hover,
+button:hover {
+  opacity: 0.86;
+  transform: translateY(-1px);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(174, 105, 101, 0.36);
+  outline-offset: 4px;
+}
+
+/* =========================
+   SHARED BUTTON BASE
+========================= */
+
+.sg-btn,
+.reset-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.45rem;
+
+  min-height: 48px;
+  padding: 0.75rem 1.25rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: var(--radius-md);
+  background: var(--crystal-glow);
+  color: var(--ink);
+  box-shadow: var(--shadow-raised);
+  text-decoration: none;
+  cursor: pointer;
+
+  font-weight: 700;
+}
+
+/* =========================
+   RESPONSIVE BASE
+========================= */
+
+@media (max-width: 900px) {
+  .site-shell {
+    padding: 0.85rem;
+  }
+
+  .site-nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-socials,
+  .nav-links {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .content-panel {
+    padding: 1.1rem;
+    border-radius: 24px;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-shell {
+    padding: 0.6rem;
+  }
+
+  .nav-links {
+    gap: 0.45rem;
+  }
+
+  .nav-links a:not(.basket-link),
+  .nav-form button {
+    font-size: 0.9rem;
+    padding: 0.35rem 0.55rem;
+  }
+
+  .content-panel {
+    padding: 0.85rem;
+  }
 }
