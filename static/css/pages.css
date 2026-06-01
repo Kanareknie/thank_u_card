@@ -925,4 +925,147 @@ textarea:focus {
 }
 
 
+/* =========================
+   Step 2 Preview Panel
+========================= */
+
+.builder-preview .preview-card {
+  min-height: 565px;
+}
+
+.preview-card {
+  padding: 1.55rem;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.55), transparent 36%),
+    linear-gradient(145deg, rgba(209, 169, 165, 0.52), rgba(229, 223, 214, 0.38)),
+    var(--dusty-rose);
+}
+
+.preview-display {
+  padding: 1.25rem 1.25rem 1.4rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 1.65rem;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.56), rgba(229, 223, 214, 0.28)),
+    #fff7ef;
+  box-shadow:
+    0 18px 34px rgba(70, 59, 45, 0.17),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.preview-display h3 {
+  margin: 0 0 0.3rem;
+  color: var(--sage);
+  font-family: "The Girl Next Door", cursive;
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  font-weight: 400;
+}
+
+.preview-display > p,
+.preview-card > p {
+  color: rgba(55, 61, 51, 0.72);
+  font-size: 0.78rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.preview-paper {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  aspect-ratio: 1 / 1;
+  margin: 0.8rem auto 0;
+  overflow: hidden;
+
+  border: 12px solid rgba(122, 129, 108, 0.82);
+  border-radius: 1.45rem;
+  background: #fffaf4;
+  box-shadow:
+    0 20px 34px rgba(70, 59, 45, 0.26),
+    0 8px 15px rgba(70, 59, 45, 0.15),
+    inset 0 2px 0 rgba(255, 255, 255, 0.9);
+}
+
+.card-bg-image {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+  object-fit: cover;
+}
+
+.preview-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  padding: 8% 10%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+  text-align: center;
+}
+
+.card-message-box {
+  width: 58%;
+  max-width: 58%;
+  aspect-ratio: 1 / 1;
+  padding: 1.25rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 1.4rem;
+  background: rgba(255, 250, 244, 0.62);
+  box-shadow:
+    0 12px 26px rgba(70, 59, 45, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  backdrop-filter: blur(3px);
+  text-align: center;
+}
+
+.card-message-box h3 {
+  margin: 0 0 0.6rem;
+
+  color: var(--sage);
+  font-family: "The Girl Next Door", cursive;
+  font-size: clamp(1.1rem, 2.6vw, 1.65rem);
+  font-weight: 400;
+  line-height: 1.2;
+
+  overflow-wrap: anywhere;
+  text-align: center;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.card-message-box p {
+  margin: 0;
+
+  color: var(--text-color);
+  font-family: "The Girl Next Door", cursive;
+  font-size: clamp(0.8rem, 1.8vw, 1rem);
+  line-height: 1.35;
+
+  overflow-wrap: anywhere;
+  text-align: center;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.card-message-box.hidden {
+  display: none;
+}
 
