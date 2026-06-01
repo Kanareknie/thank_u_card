@@ -8,21 +8,63 @@
   box-sizing: border-box;
 }
 
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+}
+
 /* =========================
    ROOT VARIABLES
 ========================= */
 
 :root {
-  --blue-bg: #c7ebff;
-  --white-panel: #ffffff;
-  --text-color: #1d3557;
-  --purple: #d86df5;
-  --pink: #ffd4dc;
+  /* Core palette from the design board */
+  --sage: #7a816c;
+  --dusty-rose: #d1a9a5;
+  --faded-rust: #ae6965;
+  --warm-oak: #a58b71;
+  --bone: #e5dfd6;
+  --cream: #f7f1e8;
+  --soft-cream: #fbf7f0;
+  --ink: #34392f;
+  --muted-ink: #5f6457;
 
+  /* Backwards-compatible names used by pages.css */
+  --blue-bg: var(--cream);
+  --white-panel: rgba(251, 247, 240, 0.78);
+  --text-color: var(--ink);
+  --purple: var(--dusty-rose);
+  --pink: rgba(209, 169, 165, 0.34);
+
+  /* UI tokens */
   --border-radius: 32px;
+  --radius-xl: 32px;
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --radius-pill: 999px;
 
   --page-width: 1440px;
-  --content-width: 1200px;
+  --content-width: 1380px;
+
+  --shadow-soft: 0 18px 45px rgba(84, 70, 54, 0.16);
+  --shadow-raised: 8px 8px 18px rgba(84, 70, 54, 0.18),
+    -8px -8px 18px rgba(255, 255, 255, 0.75);
+  --shadow-inset: inset 4px 4px 10px rgba(84, 70, 54, 0.12),
+    inset -5px -5px 12px rgba(255, 255, 255, 0.75);
+  --line-soft: rgba(122, 129, 108, 0.16);
+  --glass-line: rgba(255, 255, 255, 0.72);
+
+  --crystal-glow: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.82) 0%,
+    rgba(228, 245, 244, 0.72) 28%,
+    rgba(246, 214, 238, 0.64) 56%,
+    rgba(210, 244, 244, 0.72) 100%
+  );
 }
 
 /* =========================
