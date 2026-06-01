@@ -1213,3 +1213,63 @@ textarea {
 .home-note p {
   margin: 0;
 }
+
+
+/* =========================
+   Progress Bar
+========================= */
+
+.page-progress {
+  width: 100%;
+  margin: 0 0 1rem;
+  padding: 0.8rem 1rem;
+
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.56);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84);
+
+  text-align: center;
+}
+
+.page-progress-text {
+  display: block;
+  margin-bottom: 0.45rem;
+
+  color: var(--sage);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.page-progress-track {
+  width: 100%;
+  height: 0.45rem;
+
+  border-radius: 999px;
+  background: rgba(229, 223, 214, 0.8);
+  overflow: hidden;
+}
+
+.page-progress-bar {
+  width: 45%;
+  height: 100%;
+
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, rgba(210, 245, 242, 0.9), rgba(245, 213, 238, 0.95), rgba(255, 250, 194, 0.9));
+  animation: pageProgressMove 1.4s infinite ease-in-out;
+}
+
+@keyframes pageProgressMove {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  50% {
+    transform: translateX(90%);
+  }
+
+  100% {
+    transform: translateX(250%);
+  }
+}
+
