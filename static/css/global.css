@@ -116,16 +116,14 @@ textarea {
 ========================= */
 
 .site-shell {
-  width: 100%;
-  max-width: var(--page-width);
+  width: min(100%, var(--page-width));
   min-height: 100vh;
-
   margin: 0 auto;
-
-  background: var(--blue-bg);
+  padding: 1.35rem;
 
   display: flex;
   flex-direction: column;
+  gap: 1.15rem;
 }
 
 /* =========================
@@ -134,7 +132,7 @@ textarea {
 
 .site-header {
   width: 100%;
-  padding: 1rem 2rem;
+ 
 }
 
 /* =========================
@@ -142,9 +140,19 @@ textarea {
 ========================= */
 
 .site-nav {
+  min-height: 86px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; 
+  padding: 1rem 1.5rem;
+  gap: 1rem;
+
+  background: rgba(251, 247, 240, 0.78);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft), var(--shadow-inset);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 .nav-socials,
@@ -154,17 +162,54 @@ textarea {
   gap: 1rem;
 }
 
+.nav-socials {
+  min-height: 58px;
+  padding: 0.45rem 0.8rem;
+  border-radius: var(--radius-lg);
+  background: rgba(229, 223, 214, 0.48);
+  box-shadow: var(--shadow-inset);
+}
+
 .nav-socials a,
-.nav-links a {
+.nav-links a,
+.nav-form button {
+  min-height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   text-decoration: none;
   color: var(--text-color);
-
   font-size: 1rem;
   font-weight: 600;
 }
 
+.nav-socials a {
+  width: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.52);
+  box-shadow: 4px 4px 10px rgba(84, 70, 54, 0.14),
+    -4px -4px 10px rgba(255, 255, 255, 0.76);
+}
+
 .nav-socials i {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
+}
+
+
+.nav-socials .fa-instagram {
+  color: var(--dusty-rose);
+}
+
+.nav-socials .fa-facebook {
+  color: var(--sage);
+}
+
+.nav-links a:not(.basket-link),
+.nav-form button {
+  padding: 0.45rem 0.8rem;
+  border-radius: var(--radius-pill);
 }
 
 .nav-form button {
@@ -176,6 +221,45 @@ textarea {
   font-weight: 600;
 
   color: var(--text-color);
+}
+
+/* Basket Link */
+
+.basket-link {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border-radius: 20px;
+  background: rgba(251, 247, 240, 0.72);
+  box-shadow: var(--shadow-raised);
+}
+
+.basket-link i {
+  font-size: 1.35rem;
+  color: var(--sage);
+}
+
+.basket-count {
+  position: absolute;
+  top: -0.45rem;
+  right: -0.45rem;
+
+  min-width: 1.4rem;
+  height: 1.4rem;
+  padding: 0 0.35rem;
+
+  border-radius: 50%;
+  background: var(--faded-rust);
+  color: #fff;
+  border: 2px solid var(--soft-cream);
+
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* =========================
