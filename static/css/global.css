@@ -65,7 +65,7 @@ body {
     0 5px 10px rgba(70, 59, 45, 0.16),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
 
-  --shadow-inset: inset 4px 4px 10px rgba(84, 70, 54, 0.12),
+  --shadow-inset: inset 4px 4px 10px rgba(84, 70, 54, 0.297),
     inset -5px -5px 12px rgba(255, 255, 255, 0.75);
 
   --line-soft: rgba(122, 129, 108, 0.16);
@@ -79,7 +79,7 @@ body {
     rgba(246, 214, 238, 0.64) 56%,
     rgba(210, 244, 244, 0.72) 100%
   );
-  
+
 }
 
 /* =========================
@@ -204,7 +204,7 @@ textarea {
   width: 42px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.52);
-  box-shadow: 4px 4px 10px rgba(84, 70, 54, 0.14),
+  box-shadow: 4px 4px 10px rgba(84, 70, 54, 0.55),
     -4px -4px 10px rgba(255, 255, 255, 0.76);
 }
 
