@@ -696,3 +696,53 @@ textarea {
   font-weight: 400;
   text-align: center;
 }
+
+
+/* =========================
+   Builder Layout
+========================= */
+
+.home-builder {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.9fr) minmax(430px, 2.2fr) minmax(220px, 0.85fr);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.builder-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.builder-column h2 {
+  margin: 0;
+  color: var(--sage);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* =========================
+   Shared Soft Panels
+========================= */
+
+.options-panel,
+.preview-card,
+.actions-panel,
+.home-note,
+.basket-items-panel,
+.account-list-panel {
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 2rem;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.42), rgba(229, 223, 214, 0.24)),
+    var(--bone);
+  box-shadow:
+    0 25px 55px rgba(70, 59, 45, 0.2),
+    0 9px 22px rgba(70, 59, 45, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
