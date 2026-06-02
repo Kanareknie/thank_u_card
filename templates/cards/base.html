@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% comment %} Google Site Verification {% endcomment %}
+    {% comment %}Google Site Verification{% endcomment %}
     <meta name="google-site-verification" content="QYVVqlNT4FwfxiTs9NeLk-6keTZBDNg5IyoGek9uzis" />
     <!-- Head meta basic information -->
     <title>
@@ -38,7 +38,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=The+Girl+Next+Door&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=The+Girl+Next+Door&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
     <!-- Fontawesome link -->
     <script src="https://kit.fontawesome.com/f981d07300.js" crossorigin="anonymous"></script>
@@ -51,9 +51,7 @@
       <header class="site-header">
         <nav class="site-nav" aria-label="Main navigation">
           <div class="nav-socials">
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <span class="demo-label">Student demo project</span>
 
             {% if user.is_authenticated %}
               <span>Logged in as <b>{{ user.email }}</b></span>
@@ -61,7 +59,7 @@
           </div>
 
           <div class="nav-links">
-            {% comment %} Account link {% endcomment %}
+            {% comment %}Account link{% endcomment %}
             {% if user.is_authenticated %}
               <a href="{% url 'account' %}">Account</a>
 
@@ -74,10 +72,10 @@
               <a href="{% url 'login' %}">Login</a>
             {% endif %}
 
-            {% comment %} Home link {% endcomment %}
+            {% comment %}Home link{% endcomment %}
             <a href="{% url 'home' %}">Home</a>
 
-            {% comment %} Basket link with item count {% endcomment %}
+            {% comment %}Basket link with item count{% endcomment %}
             <a href="{% url 'basket' %}" aria-label="Basket" class="basket-link">
               <i class="fa-solid fa-cart-shopping"></i>
 
@@ -85,7 +83,6 @@
                 <span class="basket-count">{{ basket_item_count }}</span>
               {% endif %}
             </a>
-
           </div>
         </nav>
       </header>
@@ -110,7 +107,10 @@
       </main>
 
       <footer class="site-footer">
-        <p>All rights reserved. This website is a student project created for educational purposes only.</p>
+        <p>
+          <strong>Student project / demo website.</strong> This website was created for educational purposes only.
+        </p>
+        <p>Please do not enter real payment details or sensitive personal information.</p>
         <p>Katarzyna Gawronska 2026</p>
       </footer>
     </div>

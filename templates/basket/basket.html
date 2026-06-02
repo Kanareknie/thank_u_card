@@ -23,6 +23,12 @@
   </section>
 
   <section class="preview-card basket-order-panel">
+    <div class="demo-notice">
+      <p>
+        <strong>Student project/demo checkout.</strong>
+        This payment flow is for educational testing only. Please do not enter real payment details.
+      </p>
+    </div>
     {% if basket_items %}
       <div class="basket-items-panel">
         {% for item in basket_items %}
@@ -57,11 +63,11 @@
           <p class="price-box">£{{ basket_total|floatformat:2 }}</p>
         </div>
 
-        <p class="basket-payment-note">After the successful payment received, the thank you card will be able to download in PDF format from account page.</p>
+        <p class="basket-payment-note">This is a student project checkout flow. After a successful test payment, the thank you card can be downloaded in PDF format from the account page.</p>
 
         <form method="post" action="{% url 'create_checkout_session' %}">
           {% csrf_token %}
-          <button type="submit" class="sg-btn basket-order-button">Order now!</button>
+         <button type="submit" class="sg-btn basket-order-button">Continue to test checkout</button>
         </form>
       </div>
     {% else %}

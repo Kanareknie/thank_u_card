@@ -22,6 +22,13 @@
     </div>
   </section>
 
+  <section class="demo-notice" aria-label="Student project notice">
+    <p>
+      <strong>Student project / demo website.</strong>
+      This site is created for educational purposes only. Please do not enter real payment details or sensitive personal information.
+    </p>
+  </section>
+
   <form class="home-builder-form" method="post" action="">
     {% csrf_token %}
 
@@ -179,9 +186,14 @@
   </form>
 
   <section class="home-note">
-    <p>
+   <p>
       <strong>*Background generation is limited to 3 per 24h per user.</strong>
     </p>
-    <p>After the successful payment received, the thank you card will be able to download in PDF format from account page.</p>
+    <p>
+      This is a student project/demo checkout flow. No real physical product will be sent.
+    </p>
+    <p>
+      After a successful test payment, the thank you card can be downloaded in PDF format from the account page.
+    </p>
   </section>
 {% endblock %}
