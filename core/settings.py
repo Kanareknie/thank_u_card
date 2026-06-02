@@ -42,10 +42,11 @@ OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ['https://thank-u-card-535f2cd79ec9.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['https://thank-u-card-535f2cd79ec9.herokuapp.com', 'localhost', '127.0.0.1', "thank-u-card.herokuapp.com",]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://thank-u-card-535f2cd79ec9.herokuapp.com",
+    "https://thank-u-card.herokuapp.com",
 ]
 
 if not DEBUG:
