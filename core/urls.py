@@ -30,7 +30,7 @@ from accounts.views import (
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
-from core.views import google_site_verification
+from core.views import google_site_verification, google_site_verification_2
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -77,11 +77,15 @@ urlpatterns = [
     path('logout/', CustomLogoutView.as_view(), name='logout'),
     path('', home, name='home'),
     path(
-    "googlef4d17be882e1d42b.html",
-    google_site_verification,
-    name="google_site_verification",
-),
-    
+        "googlef4d17be882e1d42b.html",
+        google_site_verification,
+        name="google_site_verification",
+    ),
+    path(
+        "googlec94b0d1d7d47336b.html",
+        google_site_verification_2,
+        name="google_site_verification_2",
+    ),
    
 ]
 
