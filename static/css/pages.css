@@ -193,7 +193,7 @@
   border: 1px solid rgba(218, 200, 215, 0.42);
   background-size: cover;
   background-position: center;
-  box-shadow: 0 10px 18px rgba(157, 82, 33, 0.55);
+  box-shadow: 0 10px 18px rgba(157, 82, 33, 0.30);
 }
 
 .options-panel,
@@ -204,16 +204,6 @@
   padding: 1.35rem;
 }
 
-
-.builder-preview .preview-card {
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.9),
-      rgba(253, 218, 192, 0.52)
-    ),
-    url("../images/container2.png");
-}
 
 
 /* =========================
@@ -249,7 +239,7 @@
   display: flex;
   align-items: center;
   gap: 0.55rem;
-  color: var(--muted-ink);
+  color: var(--ink);
   font-size: 1.25rem;
   font-weight: 700;
 }
@@ -360,9 +350,7 @@ textarea:focus {
 .preview-card {
   min-height: 610px;
   padding: 1.2rem;
-  background:
-    linear-gradient(145deg, rgba(255, 250, 244, 0.80), rgba(253, 218, 192, 0.68)),
-    url("../images/container2.png");
+  background: url("../images/background.png");
   background-size: cover;
   background-position: center bottom;
 }
@@ -488,8 +476,8 @@ textarea:focus {
 }
 
 .form-group label {
-  color: var(--muted-ink);
-  font-size: 0.76rem;
+  color: var(--ink);
+  font-size: 1.25rem;
   font-weight: 900;
 }
 
@@ -555,6 +543,9 @@ textarea {
   color: var(--muted-ink);
   font-size: 0.86rem;
   line-height: 1.45;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 244, 0.36), rgba(255, 250, 244, 0.08))
+    var(--cream);
 }
 
 .home-note p {
