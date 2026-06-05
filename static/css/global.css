@@ -87,9 +87,6 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: url("../images/background.png");
-  background-size: cover;
-  background-position: center bottom;
   opacity: 0.28;
   z-index: -2;
 }
@@ -140,6 +137,8 @@ textarea {
 
 .site-header {
   width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
  
 }
 
@@ -148,6 +147,7 @@ textarea {
 ========================= */
 
 .site-nav {
+  width: 100%;
   min-height: 76px;
   display: flex;
   justify-content: space-between;
@@ -156,10 +156,9 @@ textarea {
   padding: 0.85rem 1.1rem;
   border: 1px solid rgba(255, 255, 255, 0.78);
   border-radius: 28px;
-  background: rgba(255, 250, 244, 0.70);
+  background: white;
   box-shadow: var(--shadow-soft);
   backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
 }
 
 .nav-socials,
@@ -272,7 +271,7 @@ textarea {
   padding: 1.4rem;
   border: 1px solid rgba(255, 255, 255, 0.78);
   border-radius: var(--radius-xl);
-  background: rgba(255, 250, 244, 0.62);
+  background: white;
   box-shadow: var(--shadow-soft);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -311,7 +310,6 @@ textarea {
   padding: 1rem 1.2rem;
   border: 1px solid rgba(255, 255, 255, 0.70);
   border-radius: 24px;
-  background: rgba(255, 250, 244, 0.58);
   box-shadow: var(--shadow-soft);
   color: var(--muted-ink);
   font-size: 0.84rem;
@@ -386,9 +384,8 @@ textarea:focus-visible {
 
 .demo-notice {
   padding: 0.85rem 1.1rem;
-  border: 1px solid rgba(174, 105, 101, 0.28);
+  border: 1px solid rgba(174, 105, 101, 0.50);
   border-radius: 1.2rem;
-  background: linear-gradient(145deg, rgba(255, 250, 244, 0.92), rgba(229, 223, 214, 0.7));
   color: var(--ink);
   box-shadow:
     0 10px 20px rgba(70, 59, 45, 0.12),

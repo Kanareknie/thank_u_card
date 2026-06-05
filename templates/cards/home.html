@@ -11,14 +11,14 @@
         Create your own thank<br />you card with
       </p>
       <h1>Thank U Card</h1>
-    </div>
 
-    <div class="home-instructions">
-      <ul>
-        <li>Use filters on the left to set up the card</li>
-        <li>Add text and generate the background</li>
-        <li>Add to basket</li>
-      </ul>
+      <div class="home-instructions">
+        <ul>
+          <li>Use filters on the left to set up the card</li>
+          <li>Add text and generate the background</li>
+          <li>Add to basket</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -47,6 +47,7 @@
         <h2 id="step-one-title">Step 1</h2>
 
         <div class="options-panel">
+          <p class="ai-notice">Start by choosing who the card is for, then pick the style, colour, and small detail you would like on the card.</p>
           <fieldset class="option-group">
             <legend>Who would you like to say thank you?</legend>
             {{ form.recipient_type }}
@@ -186,14 +187,10 @@
   </form>
 
   <section class="home-note">
-   <p>
+    <p>
       <strong>*Background generation is limited to 3 per 24h per user.</strong>
     </p>
-    <p>
-      This is a student project/demo checkout flow. No real physical product will be sent.
-    </p>
-    <p>
-      After a successful test payment, the thank you card can be downloaded in PDF format from the account page.
-    </p>
+    <p>This is a student project/demo checkout flow. No real physical product will be sent.</p>
+    <p>After a successful test payment, the thank you card can be downloaded in PDF format from the account page.</p>
   </section>
 {% endblock %}
