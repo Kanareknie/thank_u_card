@@ -310,12 +310,33 @@ textarea:focus {
   text-decoration: none;
 }
 
-.sg-btn:hover,
-.preview-buttons button:hover,
+.sg-btn:not(.button):hover,
+.preview-buttons button:not(.button):hover,
 .actions-panel button:hover,
-.reset-button:hover {
+.reset-button:hover,
+.basket-item-action a:hover,
+.basket-item-action button:hover,
+.preview-page-actions a:hover,
+.google-auth-btn:hover,
+.login-btn:hover,
+.signup-btn:hover,
+.register-btn:hover {
   opacity: 1;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+
+  border-color: rgba(250, 110, 25, 0.65);
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff 0%,
+      #fddac0 100%
+    );
+
+  box-shadow:
+    0 18px 30px rgba(250, 110, 25, 0.32),
+    0 8px 16px rgba(157, 82, 33, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.98);
 }
 
 .options-panel>.sg-btn,
@@ -330,6 +351,25 @@ textarea:focus {
   box-shadow: var(--shadow-button);
 }
 
+.options-panel > .sg-btn:hover,
+.actions-panel button[name="action"][value="add_to_basket"]:hover,
+.actions-panel button[name="action"][value="save_card"]:hover,
+.actions-panel button[name="action"][value="save_changes"]:hover {
+  background:
+    linear-gradient(
+      145deg,
+      #ffb36f 0%,
+      #fa6e19 100%
+    );
+
+  border-color: rgba(250, 110, 25, 0.75);
+
+  box-shadow:
+    0 18px 32px rgba(250, 110, 25, 0.38),
+    0 8px 18px rgba(157, 82, 33, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
 .options-panel>.sg-btn {
   margin-top: 0.6rem;
 }
@@ -342,132 +382,8 @@ textarea:focus {
   color: var(--ink);
 }
 
-/* =========================
-   NORMAL BUTTONS - FILL HOVER
-   Inspired by Uiverse.io:
-   https://uiverse.io/cssbuttons-io/slippery-jellyfish-67
-   Applied to normal buttons only, not AI generate buttons
-
-========================= */
-
-.sg-btn:not(.button),
-.preview-buttons button:not(.button),
-.actions-panel button,
-.reset-button,
-.basket-item-action a,
-.basket-item-action button,
-.preview-page-actions a,
-.google-auth-btn,
-.login-btn,
-.signup-btn,
-.register-btn {
-  --button-color: var(--orange);
-
-  font-family: inherit;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  min-width: 8em;
-  min-height: 2.8em;
-  padding: 0.75rem 1.15rem;
-
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
-
-  border: 2px solid var(--button-color);
-  border-radius: 16px;
-
-  background: rgba(255, 250, 244, 0.88);
-  color: var(--button-color);
-
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1.15;
-  text-align: center;
-  text-decoration: none;
-
-  box-shadow:
-    0 10px 18px rgba(157, 82, 33, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-
-  transition:
-    color 0.5s ease,
-    transform 0.18s ease,
-    box-shadow 0.18s ease;
-
-  z-index: 1;
-}
-
-/* animated orange circle fill */
-.sg-btn:not(.button)::before,
-.preview-buttons button:not(.button)::before,
-.actions-panel button::before,
-.reset-button::before,
-.basket-item-action a::before,
-.basket-item-action button::before,
-.preview-page-actions a::before,
-.google-auth-btn::before,
-.login-btn::before,
-.signup-btn::before,
-.register-btn::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-
-  width: 200px;
-  height: 150px;
-  border-radius: 50%;
-
-  background: var(--button-color);
-
-  top: 100%;
-  left: 100%;
-
-  transition: all 0.7s ease;
-}
-
-/* hover */
-.sg-btn:not(.button):hover,
-.preview-buttons button:not(.button):hover,
-.actions-panel button:hover,
-.reset-button:hover,
-.basket-item-action a:hover,
-.basket-item-action button:hover,
-.preview-page-actions a:hover,
-.google-auth-btn:hover,
-.login-btn:hover,
-.signup-btn:hover,
-.register-btn:hover {
-  color: #fff;
-  opacity: 1;
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 14px 24px rgba(250, 110, 25, 0.24),
-    inset 0 1px 0 rgba(255, 255, 255, 0.45);
-}
-
-/* hover fill movement */
-.sg-btn:not(.button):hover::before,
-.preview-buttons button:not(.button):hover::before,
-.actions-panel button:hover::before,
-.reset-button:hover::before,
-.basket-item-action a:hover::before,
-.basket-item-action button:hover::before,
-.preview-page-actions a:hover::before,
-.google-auth-btn:hover::before,
-.login-btn:hover::before,
-.signup-btn:hover::before,
-.register-btn:hover::before {
-  top: -30px;
-  left: -30px;
-}
-
-/* active/click */
-.sg-btn:not(.button):active,
-.preview-buttons button:not(.button):active,
+.sg-btn:active,
+.preview-buttons button:active,
 .actions-panel button:active,
 .reset-button:active,
 .basket-item-action a:active,
@@ -478,76 +394,12 @@ textarea:focus {
 .signup-btn:active,
 .register-btn:active {
   transform: translateY(1px);
-}
-
-/* active fill colour */
-.sg-btn:not(.button):active::before,
-.preview-buttons button:not(.button):active::before,
-.actions-panel button:active::before,
-.reset-button:active::before,
-.basket-item-action a:active::before,
-.basket-item-action button:active::before,
-.preview-page-actions a:active::before,
-.google-auth-btn:active::before,
-.login-btn:active::before,
-.signup-btn:active::before,
-.register-btn:active::before {
-  background: #ef7431;
-  transition: background 0s;
-}
-
-.sg-btn:not(.button),
-.preview-buttons button:not(.button),
-.actions-panel button,
-.reset-button,
-.basket-item-action a,
-.basket-item-action button,
-.preview-page-actions a,
-.google-auth-btn,
-.login-btn,
-.signup-btn,
-.register-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  outline: none;
-  cursor: pointer;
-
-  min-width: 150px;
-  min-height: 50px;
-  padding: 0.85rem 1.2rem;
-
-  background-image:
-    linear-gradient(
-      to top,
-      #fddac0 0%,
-      #fffaf4 80%,
-      #ffffff 100%
-    );
-
-  border-radius: 30px;
-  border: 1px solid rgba(250, 110, 25, 0.38);
-
-  transition: all 0.2s ease;
-
-  font-family: "Open Sans", system-ui, sans-serif;
-  font-size: 0.9rem;
-  font-weight: 800;
-  line-height: 1.15;
-  color: var(--ink);
-  text-align: center;
-  text-decoration: none;
-
-  text-shadow: 0 1px rgba(255, 255, 255, 0.9);
 
   box-shadow:
-    0 4px 3px 1px rgba(255, 250, 244, 0.95),
-    0 6px 8px rgba(214, 167, 132, 0.22),
-    0 -4px 4px rgba(252, 238, 224, 0.9),
-    0 -6px 4px rgba(255, 255, 255, 0.95),
-    inset 0 0 3px 2px rgba(255, 250, 244, 0.72);
+    0 8px 14px rgba(157, 82, 33, 0.18),
+    inset 0 3px 8px rgba(157, 82, 33, 0.16);
 }
+
 
 /* =========================
    STEP 2 - PREVIEW
