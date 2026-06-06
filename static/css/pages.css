@@ -184,7 +184,6 @@
 .options-panel,
 .preview-card,
 .actions-panel,
-.home-note,
 .basket-items-panel,
 .account-list-panel,
 .basket-order-panel,
@@ -274,7 +273,7 @@ textarea:focus {
 }
 
 .ai-notice {
-  color: var(--muted-ink);
+  color: var(--ink);
   font-size: 1rem;
   text-align: center;
 }
@@ -353,6 +352,8 @@ textarea:focus {
   background: url("../images/background.png");
   background-size: cover;
   background-position: center bottom;
+  display: flex;
+  flex-direction: column;
 }
 
 .preview-display {
@@ -497,17 +498,20 @@ textarea {
 
 .preview-buttons {
   display: flex;
-  justify-content: center;
+  justify-content: right;
   gap: 0.75rem;
-  margin-top: 1rem;
+  margin-top: 3rem;
 }
 
 .preview-card>p {
-  margin-top: 0.7rem;
-  color: var(--muted-ink);
-  font-size: 0.68rem;
+  margin-top: auto;
+  padding: 0.75rem 1rem;
+  color: var(--ink);
+  font-size: 1rem;
   line-height: 1.35;
   text-align: center;
+  background: rgba(255, 250, 244, 0.36);
+  border-radius: 18px;
 }
 
 /* =========================
@@ -539,13 +543,14 @@ textarea {
 ========================= */
 
 .home-note {
-  padding: 1rem 1.35rem;
-  color: var(--muted-ink);
-  font-size: 0.86rem;
+  padding: 0;
+  margin: 1rem;
+  color: var(--ink);
+  font-size: 1rem;
   line-height: 1.45;
-  background:
-    linear-gradient(180deg, rgba(255, 250, 244, 0.36), rgba(255, 250, 244, 0.08))
-    var(--cream);
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
 
 .home-note p {
@@ -671,6 +676,7 @@ textarea {
   justify-content: center;
   gap: 1rem;
 }
+
 
 /* =========================
    RESPONSIVE
