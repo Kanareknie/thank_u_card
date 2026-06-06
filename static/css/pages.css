@@ -970,7 +970,7 @@ textarea {
    RESPONSIVE
 ========================= */
 
-@media (max-width: 1150px) {
+@media (max-width: 1289px) {
   .home-hero {
     grid-template-columns: 1fr;
     background-position: center right;
