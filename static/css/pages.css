@@ -221,13 +221,13 @@
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .option-group,
 .option-title {
   width: 100%;
-  padding: 0.78rem 0.95rem;
+  padding: 0.5rem 0.5rem;
   border-radius: 18px;
   font-size: 1rem;
   font-weight: 900;
@@ -275,6 +275,7 @@ textarea:focus {
   color: var(--ink);
   font-size: 1rem;
   text-align: center;
+  padding: 1rem;
 }
 
 /* =========================
@@ -814,6 +815,20 @@ textarea {
 .button:hover .fold {
   margin-top: -1rem;
   margin-right: -1rem;
+}
+
+.button:hover {
+  opacity: 1;
+  transform: translateY(-4px) scale(1.03);
+
+  filter: brightness(1.08) saturate(1.08);
+
+  box-shadow:
+    0 18px 30px rgba(201, 108, 211, 0.38),
+    0 8px 18px rgba(157, 82, 33, 0.24),
+    0 0 24px rgba(250, 162, 82, 0.45),
+    0 0 34px rgba(201, 108, 211, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
 }
 
 .points_wrapper {
