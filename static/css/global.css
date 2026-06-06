@@ -358,6 +358,75 @@ textarea:focus-visible {
 }
 
 /* =========================
+   NAV BUTTON HIGHLIGHT
+========================= */
+
+.nav-links a:not(.basket-link),
+.nav-form button {
+  --nav-highlight: var(--orange);
+
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  border: 1.5px solid rgba(250, 110, 25, 0.28);
+  background: rgba(255, 250, 244, 0.78);
+  color: var(--ink);
+
+  transition:
+    color 0.4s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.nav-links a:not(.basket-link)::before,
+.nav-form button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  width: 160px;
+  height: 120px;
+  border-radius: 50%;
+
+  background: var(--nav-highlight);
+
+  top: 100%;
+  left: 100%;
+
+  transition: all 0.55s ease;
+}
+
+.nav-links a:not(.basket-link):hover,
+.nav-form button:hover {
+  color: #fff;
+  opacity: 1;
+  transform: translateY(-1px);
+  border-color: rgba(250, 110, 25, 0.55);
+
+  box-shadow:
+    0 10px 18px rgba(250, 110, 25, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.nav-links a:not(.basket-link):hover::before,
+.nav-form button:hover::before {
+  top: -35px;
+  left: -35px;
+}
+
+.basket-link:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 16px 28px rgba(250, 110, 25, 0.24),
+    0 0 22px rgba(250, 162, 82, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* =========================
    RESPONSIVE BASE
 ========================= */
 
