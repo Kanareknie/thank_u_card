@@ -1782,6 +1782,60 @@ textarea {
   }
 }
 
+
+/* =========================
+   HERO IMAGE SOFTENING
+========================= */
+
+/* All non-home hero sections get a milky layer */
+.basket-page .home-hero,
+.preview-page .home-hero,
+.account-page .home-hero,
+.auth-page .home-hero {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Milky overlay over hero image */
+.basket-page .home-hero::before,
+.preview-page .home-hero::before,
+.account-page .home-hero::before,
+.auth-page .home-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 250, 244, 0.86) 0%,
+      rgba(255, 250, 244, 0.76) 45%,
+      rgba(255, 250, 244, 0.66) 100%
+    );
+
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
+}
+
+/* Keep text above the milky layer */
+.basket-page .home-logo-area,
+.basket-page .home-instructions,
+.preview-page .home-logo-area,
+.preview-page .home-instructions,
+.account-page .home-logo-area,
+.account-page .home-instructions,
+.auth-page .home-logo-area,
+.auth-page .home-instructions {
+  position: relative;
+  z-index: 1;
+}
+
+/* Home page stays normal and clear */
+.home-page .home-hero::before {
+  display: none;
+}
+
 /* =========================
    RESPONSIVE - HERO
 ========================= */
