@@ -72,7 +72,28 @@
             {{ form.no_message.errors }}
           </div>
           {% comment %}Generate background image{% endcomment %}
-          <button type="submit" name="action" value="generate_background" class="sg-btn">Generate background with AI</button>
+          <button type="submit" name="action" value="generate_background" class="button">
+            <span class="fold"></span>
+
+            <span class="points_wrapper">
+              <i class="point"></i>
+              <i class="point"></i>
+              <i class="point"></i>
+              <i class="point"></i>
+              <i class="point"></i>
+              <i class="point"></i>
+              <i class="point"></i>
+              <i class="point"></i>
+              <i class="point"></i>
+              <i class="point"></i>
+            </span>
+
+            <span class="inner">
+              <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" aria-hidden="true">
+                <polyline points="13.18 1.37 13.18 9.64 21.45 9.64 10.82 22.63 10.82 14.36 2.55 14.36 13.18 1.37"></polyline>
+              </svg>Generate background with AI
+            </span>
+          </button>
           <p class="ai-notice">Background generation uses AI and may send your selected theme, colour, recipient type, and element to OpenAI.</p>
         </div>
       </section>
@@ -132,7 +153,28 @@
           </div>
 
           <div class="preview-buttons">
-            <button type="submit" name="action" value="generate_message">Generate / Improve message</button>
+            <button type="submit" name="action" value="generate_message" class="button">
+              <span class="fold"></span>
+
+              <span class="points_wrapper">
+                <i class="point"></i>
+                <i class="point"></i>
+                <i class="point"></i>
+                <i class="point"></i>
+                <i class="point"></i>
+                <i class="point"></i>
+                <i class="point"></i>
+                <i class="point"></i>
+                <i class="point"></i>
+                <i class="point"></i>
+              </span>
+
+              <span class="inner">
+                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="13.18 1.37 13.18 9.64 21.45 9.64 10.82 22.63 10.82 14.36 2.55 14.36 13.18 1.37"></polyline>
+                </svg>Generate / Improve message
+              </span>
+            </button>
             <button type="button" id="clear-message-button">Clear message</button>
           </div>
 
