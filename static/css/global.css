@@ -526,3 +526,30 @@ textarea:focus-visible {
   margin: 0;
 }
 
+/* =========================
+   GLOBAL PAGE SCALE
+   Make whole site use 80% of screen width
+========================= */
+
+:root {
+  --page-width: 80vw;
+  --content-width: 80vw;
+}
+
+.site-shell {
+  width: 100%;
+  max-width: 80vw;
+  padding: 1rem 0;
+}
+
+.site-header,
+.site-footer,
+.messages-container,
+.content-panel {
+  max-width: 80vw;
+}
+
+.content-panel {
+  min-height: auto;
+}
+
