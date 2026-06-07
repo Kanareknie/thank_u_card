@@ -279,130 +279,6 @@ textarea:focus {
 }
 
 /* =========================
-   BUTTONS
-========================= */
-
-.sg-btn,
-.preview-buttons button,
-.actions-panel button,
-.reset-button,
-.basket-item-action a,
-.basket-item-action button,
-.preview-page-actions a,
-.google-auth-btn,
-.login-btn,
-.signup-btn,
-.register-btn {
-  min-height: 3.15rem;
-  padding: 0.8rem 1.05rem;
-  border-radius: 18px;
-  border: 1px solid rgba(250, 110, 25, 0.18);
-  background: linear-gradient(145deg, #fffaf4, #fceee0);
-  color: var(--ink);
-  box-shadow: 0 10px 18px rgba(157, 82, 33, 0.55);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.86rem;
-  font-weight: 700;
-  line-height: 1.15;
-  text-align: center;
-  text-decoration: none;
-}
-
-.sg-btn:not(.button):hover,
-.preview-buttons button:not(.button):hover,
-.actions-panel button:hover,
-.reset-button:hover,
-.basket-item-action a:hover,
-.basket-item-action button:hover,
-.preview-page-actions a:hover,
-.google-auth-btn:hover,
-.login-btn:hover,
-.signup-btn:hover,
-.register-btn:hover {
-  opacity: 1;
-  transform: translateY(-3px);
-
-  border-color: rgba(250, 110, 25, 0.65);
-
-  background:
-    linear-gradient(
-      145deg,
-      #ffffff 0%,
-      #fddac0 100%
-    );
-
-  box-shadow:
-    0 18px 30px rgba(250, 110, 25, 0.32),
-    0 8px 16px rgba(157, 82, 33, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.98);
-}
-
-.options-panel>.sg-btn,
-.preview-buttons button[type="submit"],
-.options-panel button[type="submit"],
-.actions-panel button[name="action"][value="add_to_basket"],
-.actions-panel button[name="action"][value="save_card"],
-.actions-panel button[name="action"][value="save_changes"] {
-  border-color: rgba(250, 110, 25, 0.40);
-  background: linear-gradient(145deg, var(--orange-soft), var(--orange));
-  color: #fff;
-  box-shadow: var(--shadow-button);
-}
-
-.options-panel > .sg-btn:hover,
-.actions-panel button[name="action"][value="add_to_basket"]:hover,
-.actions-panel button[name="action"][value="save_card"]:hover,
-.actions-panel button[name="action"][value="save_changes"]:hover {
-  background:
-    linear-gradient(
-      145deg,
-      #ffb36f 0%,
-      #fa6e19 100%
-    );
-
-  border-color: rgba(250, 110, 25, 0.75);
-
-  box-shadow:
-    0 18px 32px rgba(250, 110, 25, 0.38),
-    0 8px 18px rgba(157, 82, 33, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.55);
-}
-
-.options-panel>.sg-btn {
-  margin-top: 0.6rem;
-}
-
-.preview-buttons button[type="button"],
-.actions-panel .reset-button,
-.actions-panel a.reset-button {
-  border-color: rgba(250, 110, 25, 0.30);
-  background: linear-gradient(145deg, #fffaf4, #fceee0);
-  color: var(--ink);
-}
-
-.sg-btn:active,
-.preview-buttons button:active,
-.actions-panel button:active,
-.reset-button:active,
-.basket-item-action a:active,
-.basket-item-action button:active,
-.preview-page-actions a:active,
-.google-auth-btn:active,
-.login-btn:active,
-.signup-btn:active,
-.register-btn:active {
-  transform: translateY(1px);
-
-  box-shadow:
-    0 8px 14px rgba(157, 82, 33, 0.18),
-    inset 0 3px 8px rgba(157, 82, 33, 0.16);
-}
-
-
-/* =========================
    STEP 2 - PREVIEW
 ========================= */
 
@@ -1653,51 +1529,104 @@ textarea {
   margin-bottom: 1rem;
 }
 
+
 /* =========================
-   FINAL BUTTON COLOURS
+   BUTTONS - FINAL SINGLE VERSION
 ========================= */
+
+/* Base style for normal site buttons */
+
+.sg-btn,
+.preview-buttons button,
+.actions-panel button,
+.reset-button,
+.basket-item-action a,
+.basket-item-action button,
+.preview-page-actions a,
+.google-auth-btn,
+.login-btn,
+.signup-btn,
+.register-btn {
+  min-height: 3.15rem;
+  padding: 0.8rem 1.05rem;
+  border-radius: 18px;
+  border: 2px solid rgba(250, 110, 25, 0.25);
+  background: linear-gradient(145deg, #fffaf4, #fceee0);
+  color: var(--ink);
+  box-shadow: 0 10px 18px rgba(157, 82, 33, 0.28);
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0.86rem;
+  font-weight: 900;
+  line-height: 1.15;
+  text-align: center;
+  text-decoration: none;
+
+  transition:
+    transform 0.22s ease,
+    background 0.22s ease,
+    color 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+
+/* =========================
+   MAIN ORANGE BUTTONS
+========================= */
+
+/* Login page: Login
+   Register page: Create account
+   Account page: Add to basket
+   Basket total: Continue to checkout
+   Builder: Add to basket / Save
+*/
 
 .login-btn,
 .register-btn,
 .basket-page .basket-order-button,
-.basket-page .basket-item-action a[href*="preview"],
 .account-page .account-card-row--saved form[action*="basket"] button,
-.actions-panel button[name="action"][value="add_to_basket"] {
-  border: 2px solid var(--orange) !important;
-  background: linear-gradient(145deg, var(--orange-soft), var(--orange)) !important;
-  color: #fff !important;
-  box-shadow: var(--shadow-button) !important;
-  font-weight: 900;
+.actions-panel button[name="action"][value="add_to_basket"],
+.actions-panel button[name="action"][value="save_card"],
+.actions-panel button[name="action"][value="save_changes"] {
+  border-color: var(--orange);
+  background: linear-gradient(145deg, var(--orange-soft), var(--orange));
+  color: #fff;
+  box-shadow: var(--shadow-button);
 }
 
-/* Hover for main orange buttons:
+/* Main orange hover:
    white background, orange border, black font
 */
 
 .login-btn:hover,
 .register-btn:hover,
 .basket-page .basket-order-button:hover,
-.basket-page .basket-item-action a[href*="preview"]:hover,
 .account-page .account-card-row--saved form[action*="basket"] button:hover,
-.actions-panel button[name="action"][value="add_to_basket"]:hover {
-  opacity: 1 !important;
+.actions-panel button[name="action"][value="add_to_basket"]:hover,
+.actions-panel button[name="action"][value="save_card"]:hover,
+.actions-panel button[name="action"][value="save_changes"]:hover {
+  opacity: 1;
   transform: translateY(-3px);
 
-  border: 2px solid var(--orange) !important;
-  background: #fff !important;
-  color: var(--ink) !important;
+  border-color: var(--orange);
+  background: #fff;
+  color: var(--ink);
 
   box-shadow:
     0 18px 30px rgba(250, 110, 25, 0.28),
     0 8px 16px rgba(157, 82, 33, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.98) !important;
+    inset 0 1px 0 rgba(255, 255, 255, 0.98);
 }
 
 
 /* =========================
-   BUTTONS : CANCEL / CLEAR / DELETE / REMOVE BUTTONS
+   CLEAR / CANCEL / DELETE / REMOVE BUTTONS
 ========================= */
-
 
 #clear-message-button,
 .reset-button,
@@ -1707,27 +1636,28 @@ textarea {
 .account-page form[action*="delete"] button,
 .preview-page-actions a[href*="basket"],
 .preview-page-actions a[href*="account"] {
+  --button-color: var(--orange);
+
   position: relative;
   overflow: hidden;
+  z-index: 1;
 
-  border: 2px solid rgba(250, 110, 25, 0.35) !important;
-  background: linear-gradient(145deg, #fffaf4, #fceee0) !important;
-  color: var(--ink) !important;
+  border: 2px solid var(--button-color);
+  background: rgba(255, 250, 244, 0.88);
+  color: var(--button-color);
 
   box-shadow:
-    0 10px 18px rgba(157, 82, 33, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.85) !important;
+    0 10px 18px rgba(157, 82, 33, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
 
-  font-weight: 900;
   transition:
-    transform 0.22s ease,
-    background 0.22s ease,
-    color 0.22s ease,
-    border-color 0.22s ease,
-    box-shadow 0.22s ease;
+    color 0.5s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
 }
 
-/* little shine animation */
+/* Orange bubble animation */
 #clear-message-button::before,
 .reset-button::before,
 .actions-panel .reset-button::before,
@@ -1738,21 +1668,21 @@ textarea {
 .preview-page-actions a[href*="account"]::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: -120%;
-  width: 80%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.75) 50%,
-    transparent 100%
-  );
-  transform: skewX(-20deg);
-  transition: left 0.55s ease;
+  z-index: -1;
+
+  width: 260px;
+  height: 190px;
+  border-radius: 50%;
+
+  background: var(--button-color);
+
+  top: 100%;
+  left: 100%;
+
+  transition: all 0.7s ease;
 }
 
-/* hover same as clear button but a little cleaner */
+/* Hover for cleaning buttons */
 #clear-message-button:hover,
 .reset-button:hover,
 .actions-panel .reset-button:hover,
@@ -1761,17 +1691,15 @@ textarea {
 .account-page form[action*="delete"] button:hover,
 .preview-page-actions a[href*="basket"]:hover,
 .preview-page-actions a[href*="account"]:hover {
-  opacity: 1 !important;
-  transform: translateY(-3px);
+  opacity: 1;
+  transform: translateY(-2px);
 
-  border-color: var(--orange) !important;
-  background: #fff !important;
-  color: var(--ink) !important;
+  border-color: var(--orange);
+  color: #fff;
 
   box-shadow:
-    0 18px 30px rgba(250, 110, 25, 0.24),
-    0 8px 16px rgba(157, 82, 33, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.98) !important;
+    0 14px 24px rgba(250, 110, 25, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
 
 #clear-message-button:hover::before,
@@ -1782,10 +1710,11 @@ textarea {
 .account-page form[action*="delete"] button:hover::before,
 .preview-page-actions a[href*="basket"]:hover::before,
 .preview-page-actions a[href*="account"]:hover::before {
-  left: 130%;
+  top: -70px;
+  left: -70px;
 }
 
-/* Pressed effect */
+/* Click effect */
 #clear-message-button:active,
 .reset-button:active,
 .actions-panel .reset-button:active,
@@ -1795,9 +1724,60 @@ textarea {
 .preview-page-actions a[href*="basket"]:active,
 .preview-page-actions a[href*="account"]:active {
   transform: translateY(1px);
-  box-shadow:
-    0 8px 14px rgba(157, 82, 33, 0.18),
-    inset 0 3px 8px rgba(157, 82, 33, 0.16) !important;
+}
+
+#clear-message-button:active::before,
+.reset-button:active::before,
+.actions-panel .reset-button:active::before,
+.actions-panel a.reset-button:active::before,
+.basket-page form[action*="remove"] button:active::before,
+.account-page form[action*="delete"] button:active::before,
+.preview-page-actions a[href*="basket"]:active::before,
+.preview-page-actions a[href*="account"]:active::before {
+  background: #d95510;
+  transition: background 0s;
+}
+
+
+/* =========================
+   BUTTON WIDTH HELPERS
+========================= */
+
+.login-btn,
+.register-btn,
+.google-auth-btn,
+.signup-btn {
+  width: 100%;
+}
+
+.actions-panel button,
+.actions-panel .reset-button {
+  width: 100%;
+  min-height: 4rem;
+  font-size: 0.95rem;
+}
+
+.account-card-row .sg-btn,
+.account-card-row--saved .sg-btn,
+.account-card-row button,
+.account-card-row--saved button {
+  width: 100%;
+  min-height: 46px;
+  font-size: 0.82rem;
+}
+
+.basket-page .basket-order-button {
+  width: 100%;
+  min-width: 220px;
+}
+
+.options-panel > .sg-btn {
+  margin-top: 0.6rem;
+}
+
+.actions-panel button[name="action"][value="save_card"],
+.actions-panel button[name="action"][value="save_changes"] {
+  margin-top: 4rem;
 }
 
 /* =========================
