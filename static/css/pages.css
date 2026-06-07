@@ -1255,6 +1255,199 @@ textarea {
     var(--shadow-inset);
 }
 
+/* =========================
+   ACCOUNT PAGE
+========================= */
+
+.account-page .content-panel,
+.preview-page .content-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.account-page .home-hero,
+.preview-page .home-hero {
+  min-height: 340px;
+  grid-template-columns: 1fr 1fr;
+  padding: clamp(1.8rem, 4vw, 3.2rem);
+}
+
+.account-welcome {
+  align-self: center;
+  text-align: center;
+}
+
+.account-welcome h2 {
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  word-break: break-word;
+}
+
+.account-welcome p {
+  margin-top: 0.6rem;
+  color: var(--muted-ink);
+  font-weight: 800;
+}
+
+.account-section {
+  width: 100%;
+  padding: clamp(1.1rem, 2vw, 1.6rem);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background:
+    linear-gradient(180deg, rgba(255, 250, 244, 0.32), rgba(255, 250, 244, 0.18)),
+    url("../images/container1.png") no-repeat center / cover;
+  box-shadow: var(--shadow-soft);
+}
+
+.account-saved-section {
+  background:
+    linear-gradient(180deg, rgba(255, 250, 244, 0.32), rgba(255, 250, 244, 0.18)),
+    url("../images/container2.png") no-repeat center / cover;
+}
+
+.account-section > h2 {
+  margin: 0 0 1rem;
+  color: var(--ink);
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  text-align: center;
+}
+
+.account-list-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: clamp(1rem, 2vw, 1.4rem);
+  border-radius: 26px;
+  background: rgba(255, 250, 244, 0.68);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.account-card-row,
+.account-card-row--saved {
+  padding: 1rem;
+  margin: 0;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: rgba(255, 250, 244, 0.76);
+  box-shadow: var(--shadow-soft);
+}
+
+.account-card-row {
+  grid-template-columns: 42px 2fr 1fr 1.2fr;
+}
+
+.account-card-row--saved {
+  grid-template-columns: 42px 2fr 1fr repeat(4, minmax(100px, 0.8fr));
+}
+
+.account-card-row h3,
+.account-card-row--saved h3 {
+  margin: 0;
+  color: var(--orange);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.account-card-row p,
+.account-card-row--saved p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.account-card-row a:not(.sg-btn),
+.account-card-row--saved a:not(.sg-btn) {
+  color: var(--orange);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.account-card-row a:not(.sg-btn):hover,
+.account-card-row--saved a:not(.sg-btn):hover {
+  text-decoration: underline;
+}
+
+.account-card-row .sg-btn,
+.account-card-row--saved .sg-btn,
+.account-card-row button,
+.account-card-row--saved button {
+  width: 100%;
+  min-height: 46px;
+  font-size: 0.82rem;
+}
+
+.account-card-row form,
+.account-card-row--saved form {
+  width: 100%;
+}
+
+.account-list-panel > p {
+  margin: 0;
+  padding: 1.2rem;
+  border-radius: 22px;
+  background: rgba(255, 250, 244, 0.72);
+  color: var(--muted-ink);
+  font-size: 1rem;
+  font-weight: 800;
+  text-align: center;
+  box-shadow: var(--shadow-inset);
+}
+
+/* =========================
+   ACCOUNT PREVIEW PAGE
+========================= */
+
+.preview-page-panel {
+  width: min(100%, 840px);
+  margin: 0 auto;
+  padding: clamp(1.1rem, 2vw, 1.6rem);
+  border-radius: 30px;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 244, 0.28), rgba(255, 250, 244, 0.16)),
+    url("../images/container3.png") no-repeat center / cover;
+}
+
+.preview-page-paper {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.preview-page-actions {
+  margin-top: 1.4rem;
+}
+
+/* =========================
+   PASSWORD RESET PAGES
+   small finishing touches
+========================= */
+
+.auth-page .login-panel:has(.login-col--form:only-child) {
+  width: min(100%, 680px);
+  grid-template-columns: 1fr;
+}
+
+.auth-page .login-panel:has(.login-col--form:only-child) .login-col--form {
+  text-align: center;
+}
+
+.auth-page .login-panel:has(.login-col--form:only-child) .login-btn {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.auth-page .login-panel .login-header + .alert,
+.auth-page .login-panel .login-header + .form-error {
+  margin-bottom: 1rem;
+}
 
 /* =========================
    RESPONSIVE - HERO
@@ -1353,5 +1546,26 @@ textarea {
 
   .login-col--signup {
     min-height: 240px;
+  }
+}
+
+/* =========================
+   RESPONSIVE - ACCOUNT / PREVIEW PAGES
+========================= */
+
+@media (max-width: 900px) {
+  .account-page .home-hero,
+  .preview-page .home-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .account-card-row,
+  .account-card-row--saved {
+    grid-template-columns: 1fr;
+  }
+
+  .basket-check {
+    justify-self: center;
   }
 }
