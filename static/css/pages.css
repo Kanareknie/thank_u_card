@@ -1289,6 +1289,48 @@ textarea {
   margin-bottom: 1rem;
 }
 
+/* =========================
+   PREVIEW PAGES - CLEAN CARD AREA
+   Account preview + Basket preview
+========================= */
+
+.preview-page .preview-page-panel {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 250, 244, 0.34),
+      rgba(255, 250, 244, 0.20)
+    ),
+    url("../images/container3.png") no-repeat center / cover;
+
+  box-shadow: var(--shadow-raised);
+}
+
+.preview-page .preview-page-paper {
+  padding: clamp(0.8rem, 2vw, 1.2rem);
+  border-radius: 30px;
+
+  background: rgba(255, 250, 244, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+
+  box-shadow:
+    0 18px 35px rgba(157, 82, 33, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.preview-page .preview-page-paper .card-bg-image {
+  border-radius: 22px;
+}
+
+.preview-page .preview-page-actions {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 24px;
+
+  background: rgba(255, 250, 244, 0.68);
+  box-shadow: var(--shadow-soft);
+}
+
 
 /* =========================
    BUTTONS - FINAL SINGLE VERSION
@@ -1782,59 +1824,6 @@ textarea {
   }
 }
 
-
-/* =========================
-   HERO IMAGE SOFTENING
-========================= */
-
-/* All non-home hero sections get a milky layer */
-.basket-page .home-hero,
-.preview-page .home-hero,
-.account-page .home-hero,
-.auth-page .home-hero {
-  position: relative;
-  isolation: isolate;
-}
-
-/* Milky overlay over hero image */
-.basket-page .home-hero::before,
-.preview-page .home-hero::before,
-.account-page .home-hero::before,
-.auth-page .home-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(255, 250, 244, 0.86) 0%,
-      rgba(255, 250, 244, 0.76) 45%,
-      rgba(255, 250, 244, 0.66) 100%
-    );
-
-  backdrop-filter: blur(1.5px);
-  -webkit-backdrop-filter: blur(1.5px);
-}
-
-/* Keep text above the milky layer */
-.basket-page .home-logo-area,
-.basket-page .home-instructions,
-.preview-page .home-logo-area,
-.preview-page .home-instructions,
-.account-page .home-logo-area,
-.account-page .home-instructions,
-.auth-page .home-logo-area,
-.auth-page .home-instructions {
-  position: relative;
-  z-index: 1;
-}
-
-/* Home page stays normal and clear */
-.home-page .home-hero::before {
-  display: none;
-}
 
 /* =========================
    RESPONSIVE - HERO
