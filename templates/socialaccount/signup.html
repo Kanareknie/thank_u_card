@@ -1,0 +1,78 @@
+{% extends 'cards/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+  Finish Google Signup | Thank U Card
+{% endblock %}
+
+{% block main_class %}
+  auth-page
+{% endblock %}
+
+{% block content %}
+  <section class="register-container">
+    <div class="google-auth-panel">
+      <div class="google-auth-card">
+        <header class="register-header">
+          <h1 class="register-title">Almost there</h1>
+
+          <p class="register-subtitle">
+            You are signing up with Google. Please check your email address below and finish creating your account.
+          </p>
+        </header>
+
+        <div class="demo-notice">
+          <p>
+            <strong>Student project/demo registration.</strong>
+            This account area is for testing an educational Django project.
+          </p>
+        </div>
+
+        {% if form.errors %}
+          <div class="form-error">
+            <p>Please correct the errors below and try again.</p>
+          </div>
+        {% endif %}
+
+        <form method="post" class="register-form">
+          {% csrf_token %}
+
+          {% for field in form %}
+            <div class="mb-3">
+              <label for="{{ field.id_for_label }}" class="form-label">
+                {{ field.label }}
+              </label>
+
+              {{ field }}
+
+              {% if field.help_text %}
+                <p class="form-hint">{{ field.help_text }}</p>
+              {% endif %}
+
+              {% if field.errors %}
+                <div class="form-error">
+                  {% for error in field.errors %}
+                    <p>{{ error }}</p>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+
+          {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          {% endif %}
+
+          <button type="submit" class="sg-btn register-btn">
+            Finish signup
+          </button>
+        </form>
+
+        <a href="{% url 'login' %}" class="login-link google-auth-back-link">
+          Back to login
+        </a>
+      </div>
+    </div>
+  </section>
+{% endblock %}

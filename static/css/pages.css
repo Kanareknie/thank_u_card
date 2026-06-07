@@ -1181,7 +1181,79 @@ textarea {
   margin: 0;
 }
 
+/* =========================
+   GOOGLE ALLAUTH PAGES
+   socialaccount/login.html
+   socialaccount/signup.html
+========================= */
 
+.google-auth-panel {
+  width: min(100%, 720px);
+  min-height: 520px;
+  padding: clamp(1.1rem, 2.5vw, 1.8rem);
+  border-radius: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  background:
+    linear-gradient(180deg, rgba(255, 250, 244, 0.28), rgba(255, 250, 244, 0.18)),
+    url("../images/container1.png") no-repeat center / cover;
+  box-shadow: var(--shadow-raised);
+}
+
+.google-auth-card {
+  min-height: 480px;
+  padding: clamp(1.5rem, 4vw, 2.6rem);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: rgba(255, 250, 244, 0.76);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.1rem;
+  text-align: center;
+}
+
+.google-auth-form {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.google-auth-back-link {
+  display: inline-flex;
+  justify-content: center;
+  margin-top: 0.2rem;
+}
+
+.google-auth-card .register-form {
+  text-align: left;
+}
+
+.google-auth-card .register-btn,
+.google-auth-card .login-btn {
+  width: 100%;
+}
+
+.google-auth-card input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.8rem 0.95rem;
+  border-radius: 16px;
+  border: 1px solid rgba(218, 200, 215, 0.82);
+  background: rgba(255, 250, 244, 0.82);
+  color: var(--ink);
+  box-shadow: var(--shadow-inset);
+}
+
+.google-auth-card input:focus {
+  outline: none;
+  border-color: rgba(250, 110, 25, 0.62);
+  box-shadow:
+    0 0 0 4px rgba(250, 110, 25, 0.12),
+    var(--shadow-inset);
+}
 
 
 /* =========================

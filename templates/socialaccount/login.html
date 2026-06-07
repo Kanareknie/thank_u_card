@@ -1,0 +1,46 @@
+{% extends 'cards/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+  Continue with Google | Thank U Card
+{% endblock %}
+
+{% block main_class %}
+  auth-page
+{% endblock %}
+
+{% block content %}
+  <section class="login-container">
+    <div class="google-auth-panel">
+      <div class="google-auth-card">
+        <header class="login-header">
+          <h1 class="login-title">Continue with Google</h1>
+
+          <p class="login-subtitle">
+            You are about to sign in to Thank U Card using your Google account.
+          </p>
+        </header>
+
+        <div class="demo-notice">
+          <p>
+            <strong>Student project/demo login.</strong>
+            Use this only for testing the project. Do not enter sensitive personal information.
+          </p>
+        </div>
+
+        <form method="post" class="google-auth-form">
+          {% csrf_token %}
+
+          <button type="submit" class="sg-btn login-btn">
+            Continue with Google
+          </button>
+        </form>
+
+        <a href="{% url 'login' %}" class="login-link google-auth-back-link">
+          Back to normal login
+        </a>
+      </div>
+    </div>
+  </section>
+{% endblock %}
