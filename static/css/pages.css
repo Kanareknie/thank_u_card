@@ -1297,9 +1297,9 @@ textarea {
 /* Base style for normal site buttons */
 
 .sg-btn,
-.preview-buttons button,
 .actions-panel button,
 .reset-button,
+#clear-message-button,
 .basket-item-action a,
 .basket-item-action button,
 .preview-page-actions a,
