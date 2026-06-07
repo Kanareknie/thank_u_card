@@ -967,7 +967,225 @@ textarea {
 
 
 /* =========================
-   RESPONSIVE
+   AUTH PAGES
+   Login / Register / Password reset
+========================= */
+
+.auth-page .content-panel {
+  min-height: calc(100vh - 180px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.2rem, 3vw, 3rem);
+}
+
+.login-container,
+.register-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-panel,
+.register-panel {
+  width: min(100%, 980px);
+  min-height: 560px;
+  display: grid;
+  grid-template-columns: minmax(320px, 1.15fr) minmax(260px, 0.85fr);
+  gap: 1.4rem;
+  padding: clamp(1.1rem, 2vw, 1.8rem);
+  border-radius: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  background: url("../images/container1.png") no-repeat center / cover;
+  box-shadow: var(--shadow-raised);
+  overflow: hidden;
+}
+
+.register-panel {
+  width: min(100%, 760px);
+  grid-template-columns: 1fr;
+  background-image: url("../images/container2.png");
+}
+
+.login-col,
+.register-col {
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: rgba(255, 250, 244, 0.72);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.login-col--form,
+.register-col--form {
+  padding: clamp(1.4rem, 3vw, 2.4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-col--signup {
+  padding: clamp(1.4rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 244, 0.52), rgba(255, 250, 244, 0.28)),
+    url("../images/container3.png") no-repeat center / cover;
+}
+
+.login-header,
+.register-header {
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.login-title,
+.register-title,
+.signup-title {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.login-title,
+.register-title {
+  font-size: clamp(2.4rem, 5vw, 4.6rem);
+  letter-spacing: -0.04em;
+}
+
+.signup-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.login-subtitle,
+.register-subtitle,
+.signup-subtitle {
+  margin: 0.7rem auto 0;
+  max-width: 440px;
+  color: var(--muted-ink);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.login-form,
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-form .mb-3,
+.register-form .mb-3 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-label {
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 900;
+}
+
+.form-control,
+.login-form input,
+.register-form input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.8rem 0.95rem;
+  border-radius: 16px;
+  border: 1px solid rgba(218, 200, 215, 0.82);
+  background: rgba(255, 250, 244, 0.82);
+  color: var(--ink);
+  box-shadow: var(--shadow-inset);
+}
+
+.form-control:focus,
+.login-form input:focus,
+.register-form input:focus {
+  outline: none;
+  border-color: rgba(250, 110, 25, 0.62);
+  box-shadow:
+    0 0 0 4px rgba(250, 110, 25, 0.12),
+    var(--shadow-inset);
+}
+
+.form-hint {
+  margin: 0;
+  color: var(--muted-ink);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.login-meta {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -0.25rem;
+}
+
+.login-link {
+  color: var(--orange);
+  font-size: 0.9rem;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+.login-btn,
+.register-btn,
+.google-auth-btn,
+.signup-btn {
+  width: 100%;
+}
+
+.social-login-area {
+  margin-top: 0.7rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(250, 110, 25, 0.16);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.demo-notice {
+  margin-top: 1rem;
+}
+
+.alert,
+.alert-danger,
+.form-error {
+  padding: 0.8rem 1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(250, 110, 25, 0.26);
+  background: rgba(255, 250, 244, 0.78);
+  color: var(--ink);
+  box-shadow: var(--shadow-soft);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.form-error p {
+  margin: 0;
+}
+
+
+
+
+/* =========================
+   RESPONSIVE - HERO
 ========================= */
 
 @media (max-width: 1289px) {
@@ -1040,5 +1258,28 @@ textarea {
   .card-message-box {
     width: 68%;
     max-width: 68%;
+  }
+}
+
+
+/* =========================
+   RESPONSIVE - AUTH PAGES
+========================= */
+
+/* Small safety only, so it does not explode on narrow screen */
+@media (max-width: 760px) {
+  .auth-page .content-panel {
+    min-height: auto;
+    padding: 1rem;
+  }
+
+  .login-panel,
+  .register-panel {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .login-col--signup {
+    min-height: 240px;
   }
 }
