@@ -2034,11 +2034,6 @@ textarea {
     min-height: auto;
   }
 
-  .basket-page .basket-item-row,
-  .basket-page .basket-summary {
-    grid-template-columns: 1fr;
-  }
-
   .preview-page .preview-page-actions {
     flex-direction: column;
   }
@@ -2439,3 +2434,194 @@ textarea {
   }
 }
 
+
+/* =========================
+   BASKET RESPONSIVE
+   From 1302px down: flexible, not giant buttons
+========================= */
+
+@media (max-width: 1302px) {
+  .basket-page .basket-item-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .basket-page .basket-check {
+    flex: 0 0 36px;
+    text-align: center;
+  }
+
+  .basket-page .basket-item-detail {
+    flex: 2 1 280px;
+  }
+
+  .basket-page .basket-item-price {
+    flex: 0 1 120px;
+    align-items: center;
+  }
+
+  .basket-page .basket-item-action {
+    flex: 1 1 130px;
+  }
+
+  .basket-page .basket-item-action .sg-btn,
+  .basket-page .basket-item-action button,
+  .basket-page .basket-item-action a {
+    width: 100%;
+    min-height: 42px;
+    padding: 0.65rem 0.8rem;
+    font-size: 0.76rem;
+    white-space: nowrap;
+  }
+
+  .basket-page .basket-item-action form {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 1289px) {
+  .basket-page .basket-summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .basket-page .basket-total {
+    flex: 1 1 160px;
+  }
+
+  .basket-page .basket-payment-note {
+    flex: 2 1 320px;
+  }
+
+  .basket-page .basket-order-button {
+    flex: 0 0 auto;
+    width: fit-content;
+    min-width: 220px;
+    max-width: 260px;
+  }
+}
+
+@media (max-width: 1017px) and (min-width: 827px) {
+  .basket-page .basket-item-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.85rem;
+    justify-content: center;
+  }
+
+  .basket-page .basket-check {
+    order: 1;
+    flex: 0 0 36px;
+    text-align: center;
+  }
+
+  .basket-page .basket-item-detail {
+    order: 1;
+    flex: 1 1 360px;
+  }
+
+  .basket-page .basket-item-price {
+    order: 1;
+    flex: 0 0 90px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .basket-page .basket-item-row::after {
+    content: "";
+    order: 1;
+    flex-basis: 100%;
+    height: 0;
+  }
+
+  .basket-page .basket-item-action {
+    order: 2;
+    flex: 0 0 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .basket-page .basket-item-action form {
+    width: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .basket-page .basket-item-action .sg-btn,
+  .basket-page .basket-item-action a,
+  .basket-page .basket-item-action button {
+    width: 180px;
+    max-width: 180px;
+    min-height: 40px;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.72rem;
+    white-space: nowrap;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+    .basket-page .basket-summary {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .basket-page .basket-summary > form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .basket-page .basket-order-button {
+    width: 220px;
+    max-width: 220px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-self: center;
+    align-self: center;
+  }
+}
+
+@media (max-width: 826px) {
+  .basket-page .basket-item-row,
+  .basket-page .basket-summary {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .basket-page .basket-check,
+  .basket-page .basket-item-detail,
+  .basket-page .basket-item-price,
+  .basket-page .basket-item-action,
+  .basket-page .basket-total,
+  .basket-page .basket-payment-note {
+    width: 100%;
+    flex: none;
+  }
+
+  .basket-page .price-box {
+    margin-inline: auto;
+  }
+
+  .basket-page .basket-item-action .sg-btn,
+  .basket-page .basket-item-action button,
+  .basket-page .basket-item-action a,
+  .basket-page .basket-order-button {
+    width: min(100%, 280px);
+    max-width: 280px;
+    margin-inline: auto;
+  }
+
+  .basket-page .basket-item-action form {
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -158,7 +158,7 @@ textarea {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .nav-socials {
@@ -500,7 +500,70 @@ textarea:focus-visible {
   .content-panel { padding: 0.9rem; border-radius: 24px; }
 }
 
+/* =========================
+   NAVBAR MIDDLE LOCK
+   1117px - 850px = exactly 2 clean lines
+========================= */
 
+@media (max-width: 1117px) and (min-width: 850px) {
+  .site-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  /* Top line: demo/student/user info */
+  .nav-socials {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: nowrap;
+  }
+
+  /* Bottom line: all nav buttons together */
+  .nav-links {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.65rem;
+  }
+
+  .nav-links a,
+  .nav-form button,
+  .basket-link {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .nav-links a:not(.basket-link),
+  .nav-form button {
+    min-height: 40px;
+    padding: 0.45rem 0.8rem;
+    font-size: 0.82rem;
+  }
+
+  .basket-link {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+  }
+}
+
+@media (max-width: 900px) {
+  .site-nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-socials,
+  .nav-links {
+    justify-content: center;
+  }
+}
 
 /* =========================
    Demo / Safety Notice
