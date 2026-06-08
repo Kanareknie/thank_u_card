@@ -42,9 +42,6 @@ body {
   --radius-pill: 999px;
   --border-radius: var(--radius-xl);
 
-  --page-width: 1580px;
-  --content-width: 1500px;
-
   --line-soft: rgba(250, 110, 25, 0.16);
   --glass-line: rgba(255, 255, 255, 0.72);
 
@@ -532,13 +529,13 @@ textarea:focus-visible {
 ========================= */
 
 :root {
-  --page-width: 80vw;
-  --content-width: 80vw;
+  --page-width: 2100px;
+  --content-width: 1900px;
 }
 
 .site-shell {
-  width: 100%;
-  max-width: 80vw;
+  width: min(94vw, var(--page-width));
+  max-width: var(--page-width);
   padding: 1rem 0;
 }
 
@@ -546,10 +543,31 @@ textarea:focus-visible {
 .site-footer,
 .messages-container,
 .content-panel {
-  max-width: 80vw;
+  width: 100%;
+  max-width: var(--content-width);
 }
 
 .content-panel {
   min-height: auto;
 }
 
+@media (max-width: 900px) {
+  .site-shell {
+    width: 94vw;
+    max-width: none;
+    padding: 0.75rem 0;
+  }
+
+  .site-header,
+  .site-footer,
+  .messages-container,
+  .content-panel {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-shell {
+    width: 96vw;
+  }
+}
