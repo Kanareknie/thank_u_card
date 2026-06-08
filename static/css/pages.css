@@ -2163,28 +2163,6 @@ textarea {
 }
 
 /* =========================
-   RESPONSIVE - ACCOUNT / PREVIEW PAGES
-========================= */
-
-@media (max-width: 900px) {
-
-  .account-page .home-hero,
-  .preview-page .home-hero {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-
-  .account-card-row,
-  .account-card-row--saved {
-    grid-template-columns: 1fr;
-  }
-
-  .basket-check {
-    justify-self: center;
-  }
-}
-
-/* =========================
    ACCOUNT SAVED CARDS
    Keep action buttons same shape from 1422px down
 ========================= */
@@ -2205,5 +2183,65 @@ textarea {
 
   .account-card-row--saved form {
     width: 100%;
+  }
+}
+
+/* =========================
+   ACCOUNT SAVED CARDS
+   Below 1024px switch to flex layout to keep buttons full width and stacked
+========================= */
+
+@media (max-width: 1024px) {
+  .account-card-row--saved {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .account-card-row--saved .basket-check {
+    flex: 0 0 36px;
+    text-align: center;
+  }
+
+  .account-card-row--saved > div {
+    flex: 1 1 220px;
+  }
+
+  .account-card-row--saved > a,
+  .account-card-row--saved > form {
+    flex: 1 1 120px;
+  }
+
+  .account-card-row--saved .sg-btn,
+  .account-card-row--saved button {
+    width: 100%;
+    min-height: 42px;
+    padding: 0.65rem 0.75rem;
+    font-size: 0.76rem;
+    white-space: nowrap;
+  }
+}
+
+
+/* =========================
+   RESPONSIVE - ACCOUNT / PREVIEW PAGES
+========================= */
+
+@media (max-width: 900px) {
+
+  .account-page .home-hero,
+  .preview-page .home-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .account-card-row,
+  .account-card-row--saved {
+    grid-template-columns: 1fr;
+  }
+
+  .basket-check {
+    justify-self: center;
   }
 }
