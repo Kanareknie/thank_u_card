@@ -1323,6 +1323,7 @@ textarea {
   margin-top: 1.4rem;
 }
 
+
 /* =========================
    PASSWORD RESET PAGES
 ========================= */
@@ -1351,41 +1352,82 @@ textarea {
    Account preview + Basket preview
 ========================= */
 
-.preview-page .preview-page-panel {
+.preview-page .content-panel {
   background:
-    linear-gradient(180deg,
-      rgba(255, 250, 244, 0.34),
-      rgba(255, 250, 244, 0.20)),
+    linear-gradient(
+      180deg,
+      rgba(255, 250, 244, 0.30),
+      rgba(255, 250, 244, 0.14)
+    ),
     url("../images/container3.png") no-repeat center / cover;
 
+  border-radius: var(--radius-xl);
   box-shadow: var(--shadow-raised);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: auto;
+  padding: clamp(1.4rem, 3vw, 2.6rem);
+}
+
+
+.preview-page .preview-page-panel {
+  width: min(100%, 640px);
+  min-height: auto;
+  margin: 0 auto;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
 
 .preview-page .preview-page-paper {
-  padding: clamp(0.8rem, 2vw, 1.2rem);
-  border-radius: 30px;
+  width: min(100%, 540px);
+  max-width: 540px;
+  margin: 0 auto;
+  padding: clamp(0.9rem, 2vw, 1.2rem);
 
-  background: rgba(255, 250, 244, 0.94);
-  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+
+  background: rgba(255, 250, 244, 0.96);
 
   box-shadow:
     0 18px 35px rgba(157, 82, 33, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
-.preview-page .preview-page-paper .card-bg-image {
-  border-radius: 22px;
-}
 
 .preview-page .preview-page-actions {
-  margin-top: 1.5rem;
+  width: min(100%, 540px);
+  margin: 0 auto;
   padding: 1rem;
-  border-radius: 24px;
 
-  background: rgba(255, 250, 244, 0.68);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.85rem;
+
+  border-radius: 24px;
+  background: rgba(255, 250, 244, 0.72);
   box-shadow: var(--shadow-soft);
 }
 
+.preview-page .preview-page-actions .sg-btn,
+.preview-page .preview-page-actions a,
+.preview-page .preview-page-actions button {
+  width: min(100%, 180px);
+  max-width: 180px;
+  min-height: 42px;
+}
 
 /* =========================
    BUTTONS - FINAL SINGLE VERSION
@@ -2396,3 +2438,4 @@ textarea {
     justify-self: center;
   }
 }
+
