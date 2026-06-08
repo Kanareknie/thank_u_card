@@ -710,7 +710,7 @@ textarea {
 }
 
 /* Empty basket message */
-.basket-page .basket-items-panel > p {
+.basket-page .basket-items-panel>p {
   margin: 0;
   padding: 1.4rem;
   border-radius: 22px;
@@ -786,8 +786,8 @@ textarea {
 /* Slightly softer inner boxes on edit page */
 .home-page .preview-display,
 .home-page .preview-form,
-.home-page .actions-panel > button,
-.home-page .actions-panel > a {
+.home-page .actions-panel>button,
+.home-page .actions-panel>a {
   position: relative;
   z-index: 1;
 }
@@ -1147,7 +1147,7 @@ textarea {
     url("../images/container2.png") no-repeat center / cover;
 }
 
-.account-section > h2 {
+.account-section>h2 {
   margin: 0 0 1rem;
   color: var(--ink);
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;
@@ -1231,7 +1231,7 @@ textarea {
   width: 100%;
 }
 
-.account-list-panel > p {
+.account-list-panel>p {
   margin: 0;
   padding: 1.2rem;
   border-radius: 22px;
@@ -1284,8 +1284,8 @@ textarea {
   margin-top: 1rem;
 }
 
-.auth-page .login-panel .login-header + .alert,
-.auth-page .login-panel .login-header + .form-error {
+.auth-page .login-panel .login-header+.alert,
+.auth-page .login-panel .login-header+.form-error {
   margin-bottom: 1rem;
 }
 
@@ -1296,11 +1296,9 @@ textarea {
 
 .preview-page .preview-page-panel {
   background:
-    linear-gradient(
-      180deg,
+    linear-gradient(180deg,
       rgba(255, 250, 244, 0.34),
-      rgba(255, 250, 244, 0.20)
-    ),
+      rgba(255, 250, 244, 0.20)),
     url("../images/container3.png") no-repeat center / cover;
 
   box-shadow: var(--shadow-raised);
@@ -1573,7 +1571,7 @@ textarea {
   min-width: 220px;
 }
 
-.options-panel > .sg-btn {
+.options-panel>.sg-btn {
   margin-top: 0.6rem;
 }
 
@@ -1587,7 +1585,7 @@ textarea {
    AI GENERATE BUTTONS ONLY
    Uiverse-inspired purple button
 ========================= */
-/* From Uiverse.io by ilkhoeri */ 
+/* From Uiverse.io by ilkhoeri */
 /* https://uiverse.io/ilkhoeri/foolish-shrimp-59 */
 
 .button {
@@ -1601,17 +1599,16 @@ textarea {
   justify-content: center;
   overflow: hidden;
   transition: all 0.25s ease;
-  background: radial-gradient(
-      65.28% 65.28% at 50% 100%,
+  background: radial-gradient(65.28% 65.28% at 50% 100%,
       rgba(250, 162, 82, 0.45) 0%,
-      rgba(250, 162, 82, 0) 100%
-    ),
+      rgba(250, 162, 82, 0) 100%),
     linear-gradient(0deg, #c96cd3, #c96cd3);
   border-radius: var(--round);
   border: none;
   outline: none;
   padding: 12px 18px;
 }
+
 .button::before,
 .button::after {
   content: "";
@@ -1621,23 +1618,22 @@ textarea {
   border-radius: calc(var(--round) - var(--space));
   z-index: 0;
 }
+
 .button::before {
   --space: 1px;
-  background: linear-gradient(
-    177.95deg,
-    rgba(253, 127, 228, 0.745) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(177.95deg,
+      rgba(253, 127, 228, 0.745) 0%,
+      rgba(255, 255, 255, 0) 100%);
 }
+
 .button::after {
   --space: 2px;
-  background: radial-gradient(
-      65.28% 65.28% at 50% 100%,
+  background: radial-gradient(65.28% 65.28% at 50% 100%,
       rgba(238, 151, 74, 0.904) 0%,
-      rgba(223, 113, 255, 0) 100%
-    ),
-    linear-gradient(0deg,#daaf92 #de96e6, );
+      rgba(223, 113, 255, 0) 100%),
+    linear-gradient(0deg, #daaf92 #de96e6, );
 }
+
 .button:active {
   transform: scale(0.95);
 }
@@ -1651,15 +1647,14 @@ textarea {
   width: 1rem;
   display: inline-block;
   transition: all 0.5s ease-in-out;
-  background: radial-gradient(
-    100% 75% at 55%,
-    rgba(162, 139, 102, 0.8) 0%,
-    rgba(223, 113, 255, 0) 100%
-  );
+  background: radial-gradient(100% 75% at 55%,
+      rgba(162, 139, 102, 0.8) 0%,
+      rgba(223, 113, 255, 0) 100%);
   box-shadow: 0 0 3px black;
   border-bottom-left-radius: 0.5rem;
   border-top-right-radius: var(--round);
 }
+
 .fold::after {
   content: "";
   position: absolute;
@@ -1671,6 +1666,7 @@ textarea {
   background-color: #e8e8e8;
   pointer-events: none;
 }
+
 .button:hover .fold {
   margin-top: -1rem;
   margin-right: -1rem;
@@ -1709,70 +1705,83 @@ textarea {
   background-color: #fff;
   border-radius: 9999px;
 }
+
 @keyframes floating-points {
   0% {
     transform: translateY(0);
   }
+
   85% {
     opacity: 0;
   }
+
   100% {
     transform: translateY(-55px);
     opacity: 0;
   }
 }
+
 .points_wrapper .point:nth-child(1) {
   left: 10%;
   opacity: 1;
   animation-duration: 2.35s;
   animation-delay: 0.2s;
 }
+
 .points_wrapper .point:nth-child(2) {
   left: 30%;
   opacity: 0.7;
   animation-duration: 2.5s;
   animation-delay: 0.5s;
 }
+
 .points_wrapper .point:nth-child(3) {
   left: 25%;
   opacity: 0.8;
   animation-duration: 2.2s;
   animation-delay: 0.1s;
 }
+
 .points_wrapper .point:nth-child(4) {
   left: 44%;
   opacity: 0.6;
   animation-duration: 2.05s;
 }
+
 .points_wrapper .point:nth-child(5) {
   left: 50%;
   opacity: 1;
   animation-duration: 1.9s;
 }
+
 .points_wrapper .point:nth-child(6) {
   left: 75%;
   opacity: 0.5;
   animation-duration: 1.5s;
   animation-delay: 1.5s;
 }
+
 .points_wrapper .point:nth-child(7) {
   left: 88%;
   opacity: 0.9;
   animation-duration: 2.2s;
   animation-delay: 0.2s;
 }
+
 .points_wrapper .point:nth-child(8) {
   left: 58%;
   opacity: 0.8;
   animation-duration: 2.25s;
   animation-delay: 0.2s;
 }
+
 .points_wrapper .point:nth-child(9) {
   left: 98%;
   opacity: 0.6;
   animation-duration: 2.6s;
   animation-delay: 0.1s;
 }
+
 .points_wrapper .point:nth-child(10) {
   left: 65%;
   opacity: 1;
@@ -1804,20 +1813,24 @@ textarea {
 .button:focus svg.icon {
   fill: white;
 }
+
 .button:hover svg.icon {
   fill: transparent;
   animation:
     dasharray 1s linear forwards,
     filled 0.1s linear forwards 0.95s;
 }
+
 @keyframes dasharray {
   from {
     stroke-dasharray: 0 0 0 0;
   }
+
   to {
     stroke-dasharray: 68 68 0 0;
   }
 }
+
 @keyframes filled {
   to {
     fill: white;
@@ -1871,11 +1884,9 @@ textarea {
 @media (max-width: 1024px) {
   .home-hero {
     background:
-      linear-gradient(
-        180deg,
+      linear-gradient(180deg,
         rgba(255, 250, 244, 0.94),
-        rgba(255, 250, 244, 0.64)
-      ),
+        rgba(255, 250, 244, 0.64)),
       url("../images/hero.png") no-repeat center right / cover;
   }
 }
@@ -1919,6 +1930,7 @@ textarea {
 ========================= */
 
 @media (max-width: 900px) {
+
   .basket-page .home-hero,
   .preview-page .home-hero {
     grid-template-columns: 1fr;
@@ -1959,11 +1971,18 @@ textarea {
     width: 100%;
   }
 
-  .options-panel > .button,
-  .options-panel > .sg-btn,
+  .options-panel>.button,
+  .options-panel>.sg-btn,
   .options-panel button {
-    width: min(100%, 520px);
+    width: min(100%, 420px);
     align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .options-panel .button .inner {
+  width: auto;
+  white-space: nowrap;
   }
 
   .ai-notice {
@@ -1978,14 +1997,89 @@ textarea {
     width: min(100%, 540px);
   }
 
-  .options-panel > .button,
-  .options-panel > .sg-btn,
+  .options-panel>.button,
+  .options-panel>.sg-btn,
   .options-panel button {
     width: min(100%, 460px);
   }
 
   .ai-notice {
     max-width: 540px;
+  }
+}
+
+/* =========================
+   STEP 2 MOBILE SPACING
+========================= */
+
+@media (max-width: 760px) {
+  .preview-card {
+    padding: 1.5rem;
+  }
+
+  .preview-display,
+  .preview-form,
+  .preview-card > p {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .preview-display {
+    padding: 1rem;
+    border-radius: 22px;
+  }
+
+  .preview-paper {
+    max-width: 100%;
+    border-width: 8px;
+  }
+
+  .preview-form {
+    padding-inline: 0;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+
+  .preview-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* =========================
+   RESPONSIVE - PREVIEW BUTTONS
+========================= */
+
+@media (max-width: 760px) {
+  .preview-card .preview-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .preview-card .preview-buttons .button,
+  .preview-card .preview-buttons #clear-message-button,
+  .preview-card .preview-buttons .reset-button,
+  .preview-card .preview-buttons button {
+    width: min(100%, 456px) !important;
+    max-width: 456px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .actions-panel {
+    align-items: center;
+  }
+
+  .actions-panel button,
+  .actions-panel .reset-button {
+    width: min(100%, 456px);
+    max-width: 456px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -2016,6 +2110,7 @@ textarea {
 ========================= */
 
 @media (max-width: 900px) {
+
   .account-page .home-hero,
   .preview-page .home-hero {
     grid-template-columns: 1fr;
@@ -2031,5 +2126,3 @@ textarea {
     justify-self: center;
   }
 }
-
-
