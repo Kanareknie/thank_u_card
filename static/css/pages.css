@@ -20,7 +20,7 @@
   padding: clamp(2.4rem, 5vw, 5.2rem);
   border-radius: 34px;
   border: 1px solid rgba(255, 255, 255, 0.80);
-  background: url("../images/hero.png") no-repeat center;
+  background: url("../images/hero.png") no-repeat center center / cover;
   box-shadow: var(--shadow-soft);
 }
 
