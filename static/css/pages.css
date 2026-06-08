@@ -1868,6 +1868,18 @@ textarea {
   }
 }
 
+@media (max-width: 1024px) {
+  .home-hero {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 250, 244, 0.94),
+        rgba(255, 250, 244, 0.64)
+      ),
+      url("../images/hero.png") no-repeat center right / cover;
+  }
+}
+
 @media (max-width: 760px) {
   .home-hero {
     min-height: 520px;
