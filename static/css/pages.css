@@ -1939,6 +1939,56 @@ textarea {
   }
 }
 
+
+/* =========================
+   STEP 1 - RESPONSIVE OPTIONS PANEL
+========================= */
+
+@media (max-width: 1289px) {
+  .options-panel {
+    align-items: center;
+  }
+
+  .option-group {
+    width: min(100%, 620px);
+  }
+
+  .option-group select,
+  .option-group input,
+  .option-group textarea {
+    width: 100%;
+  }
+
+  .options-panel > .button,
+  .options-panel > .sg-btn,
+  .options-panel button {
+    width: min(100%, 520px);
+    align-self: center;
+  }
+
+  .ai-notice {
+    max-width: 620px;
+    margin-inline: auto;
+  }
+}
+
+
+@media (max-width: 900px) {
+  .option-group {
+    width: min(100%, 540px);
+  }
+
+  .options-panel > .button,
+  .options-panel > .sg-btn,
+  .options-panel button {
+    width: min(100%, 460px);
+  }
+
+  .ai-notice {
+    max-width: 540px;
+  }
+}
+
 /* =========================
    RESPONSIVE - AUTH PAGES
 ========================= */
