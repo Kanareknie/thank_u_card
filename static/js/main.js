@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const messagePreview = document.getElementById("live-message-preview");
   const messageFields = document.getElementById("message-fields");
   const cardMessageBox = document.getElementById("card-message-box");
+  const previewButtons = document.getElementById("preview-buttons");
+  const messageDisclaimer = document.getElementById("message-disclaimer");
 
   const recipientCounter = document.getElementById("recipient-counter");
   const messageCounter = document.getElementById("message-counter");
@@ -57,7 +59,17 @@ document.addEventListener("DOMContentLoaded", function () {
       if (messageFields) {
         messageFields.classList.add("hidden");
       }
+
+      if (previewButtons) {
+        previewButtons.classList.add("hidden");
+      }
+
+      if (messageDisclaimer) {
+        messageDisclaimer.classList.add("hidden");
+      }
+
     } else {
+
       if (cardMessageBox) {
         cardMessageBox.classList.remove("hidden");
       }
@@ -66,6 +78,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (messageFields) {
         messageFields.classList.remove("hidden");
+      }
+      
+      if (previewButtons) {
+        previewButtons.classList.remove("hidden");
+      }
+
+      if (messageDisclaimer) {
+        messageDisclaimer.classList.remove("hidden");
       }
     }
 

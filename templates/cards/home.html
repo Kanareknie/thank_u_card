@@ -190,7 +190,7 @@
             </div>
           </div>
 
-          <div class="preview-buttons">
+          <div class="preview-buttons" id="preview-buttons">
 
              {% comment %}Generate AI message{% endcomment %}
           <!-- From Uiverse.io by ilkhoeri - adapted for Django form action -->
@@ -221,7 +221,7 @@
             <button type="button" id="clear-message-button">Clear message</button>
           </div>
 
-          <p>Do not enter personal, sensitive, or private information. The message may be sent to OpenAI to generate or improve the card text.</p>
+          <p id="message-disclaimer">Do not enter personal, sensitive, or private information. The message may be sent to OpenAI to generate or improve the card text.</p>
         </div>
       </section>
 
