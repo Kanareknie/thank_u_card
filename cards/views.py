@@ -28,9 +28,9 @@ def home(request):
     # a generated background image that is not paid for
     if request.user.is_authenticated:
         latest_card = Card.objects.filter(
-            user=request.user, is_paid=False,
-            background_status="completed",
-            background_image__isnull=False,
+            user=request.user,
+            is_paid=False,
+            background_status__in=["generating", "completed", "failed"],
         ).order_by("-created_on").first()
 
     # Handle form submissions for generating messages, 
