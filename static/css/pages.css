@@ -2625,3 +2625,51 @@ textarea {
     justify-content: center;
   }
 }
+
+
+/* =========================
+   404 ERROR PAGE
+========================= */
+
+.error-page {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-container {
+  width: min(90%, 760px);
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+.error-card {
+  text-align: center;
+  padding: 3rem 2rem;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 18px 45px rgba(31, 31, 31, 0.12);
+  backdrop-filter: blur(6px);
+}
+
+.error-code {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 12vw, 8rem);
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+.error-card h1 {
+  margin: 1rem 0;
+  font-family: var(--font-heading);
+  color: var(--color-heading);
+}
+
+.error-card p {
+  max-width: 520px;
+  margin: 0 auto 1.8rem;
+  color: var(--color-text);
+  font-size: 1rem;
+}
