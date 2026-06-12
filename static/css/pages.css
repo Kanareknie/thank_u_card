@@ -1023,7 +1023,8 @@ textarea {
   color: red;
   box-shadow: var(--shadow-soft);
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: 500;
+  margin-bottom: 1rem;
 }
 
 .form-error p {
