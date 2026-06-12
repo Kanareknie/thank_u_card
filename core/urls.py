@@ -25,6 +25,7 @@ from accounts.views import (
     account_card_preview,
     add_saved_card_to_basket,
     delete_saved_card,
+    download_card_pdf,
     
 )
 from django.conf import settings
@@ -43,6 +44,7 @@ urlpatterns = [
     path('account/add-to-basket/<int:card_id>/', add_saved_card_to_basket, name='add_saved_card_to_basket'),
     path('account/delete/<int:card_id>/', delete_saved_card, name='delete_saved_card'),
     path("accounts/", include("allauth.urls")),
+    path('account/download/<int:card_id>/', download_card_pdf, name='download_card_pdf'),
     path('cards/edit/<int:card_id>/', edit_card, name='edit_card'),
     path(
         "password-reset/",
