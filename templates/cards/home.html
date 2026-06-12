@@ -5,7 +5,19 @@
 {% endblock %}
 
 {% block content %}
+
   <section class="home-hero">
+    
+ {% comment %}Background generation progress bar{% endcomment %}
+    {% if latest_card and latest_card.background_status == 'generating' %}
+      <div class="page-progress" data-refresh="true" aria-live="polite">
+        <span class="page-progress-text">Generating your background...</span>
+        <div class="page-progress-track">
+          <div class="page-progress-bar"></div>
+        </div>
+      </div>
+    {% endif %}
+
     <div class="home-logo-area">
       <p>
         Create your own thank<br />you card with
@@ -32,15 +44,7 @@
   <form class="home-builder-form" method="post" action="">
     {% csrf_token %}
 
-    {% comment %}Background generation progress bar{% endcomment %}
-    {% if latest_card and latest_card.background_status == 'generating' %}
-      <div class="page-progress" data-refresh="true" aria-live="polite">
-        <span class="page-progress-text">Generating your background...</span>
-        <div class="page-progress-track">
-          <div class="page-progress-bar"></div>
-        </div>
-      </div>
-    {% endif %}
+   
 
     <div class="home-builder">
       <section class="builder-column builder-options" aria-labelledby="step-one-title">
