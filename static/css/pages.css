@@ -600,13 +600,10 @@ textarea {
   gap: 1rem;
 }
 
-.home-hero .page-progress {
-  grid-column: 1 / -1;
-  align-self: start;
-  width: min(100%, 1100px);
-  margin: 0 auto 1.2rem;
-  position: relative;
-  z-index: 2;
+.page-progress-wrapper {
+  width: min(100%, 990px);
+  margin: 0 auto 1rem;
+  padding: 0 1rem;
 }
 
 /* =========================

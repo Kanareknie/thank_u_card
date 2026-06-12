@@ -6,8 +6,7 @@
 
 {% block content %}
 
-  <section class="home-hero">
-    
+
  {% comment %}Background generation progress bar{% endcomment %}
     {% if latest_card and latest_card.background_status == 'generating' %}
       <div class="page-progress" data-refresh="true" aria-live="polite">
@@ -18,6 +17,7 @@
       </div>
     {% endif %}
 
+  <section class="home-hero">
     <div class="home-logo-area">
       <p>
         Create your own thank<br />you card with
