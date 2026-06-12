@@ -2025,6 +2025,103 @@ textarea {
 }
 
 /* =========================
+   EXTRA SMALL SCREENS - HOME PAGE + OPTIONS PANEL
+========================= */
+
+@media (max-width: 420px) {
+  .home-page .content-panel {
+    gap: 0.9rem;
+  }
+
+  .home-hero {
+    min-height: auto;
+    padding: 0.85rem;
+    border-radius: 22px;
+  }
+
+  .home-logo-area {
+    padding: 0.7rem;
+    gap: 0.75rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .home-logo-area p {
+    max-width: 100%;
+    font-size: 0.78rem;
+  }
+
+  .home-logo-area h1 {
+    font-size: clamp(2.35rem, 15vw, 3.3rem);
+    line-height: 0.9;
+  }
+
+  .home-logo-area h1::after {
+    width: 120px;
+    height: 4px;
+    margin: 0.7rem auto 0;
+  }
+
+  .home-instructions {
+    width: 100%;
+    padding: 0.85rem;
+    border-radius: 18px;
+  }
+
+  .home-instructions li {
+    font-size: 0.76rem;
+    line-height: 1.3;
+  }
+
+  .home-builder {
+    gap: 1rem;
+  }
+
+  .builder-column > h2 {
+    min-height: auto;
+    margin: 1rem 0 0.6rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+  }
+
+  .builder-column > h2::before {
+    width: 58px;
+    height: 58px;
+    border-radius: 14px;
+  }
+
+  .options-panel,
+  .preview-card,
+  .actions-panel {
+    padding: 0.9rem;
+    border-radius: 22px;
+  }
+
+  .option-group,
+  .option-title {
+    padding: 0.35rem 0;
+  }
+
+  .option-group label {
+    font-size: 0.9rem;
+  }
+
+  .option-group select,
+  input,
+  textarea {
+    min-height: 42px;
+    padding: 0.65rem 0.75rem;
+    font-size: 0.82rem;
+    border-radius: 14px;
+  }
+
+  .ai-notice {
+    padding: 0.75rem 0.3rem;
+    font-size: 0.78rem;
+  }
+}
+
+/* =========================
    RESPONSIVE - BASKET / PREVIEW PAGES
 ========================= */
 
