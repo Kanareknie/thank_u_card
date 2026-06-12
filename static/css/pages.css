@@ -2659,6 +2659,7 @@ textarea {
   font-size: clamp(4rem, 12vw, 8rem);
   line-height: 1;
   color: var(--color-primary);
+
 }
 
 .error-card h1 {
@@ -2671,5 +2672,4 @@ textarea {
   max-width: 520px;
   margin: 0 auto 1.8rem;
   color: var(--color-text);
-  font-size: 1rem;
 }
