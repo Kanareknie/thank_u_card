@@ -1,9 +1,12 @@
-from django.shortcuts import redirect, render
+import requests
+
+from django.http import FileResponse, Http404
+
+from django.shortcuts import redirect, render, get_object_or_404
 from accounts.forms import SignUpForm
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import messages
-from django.shortcuts import render, redirect, get_object_or_404
 
 from django.contrib.auth.decorators import login_required
 from cards.models import Card
@@ -63,6 +66,37 @@ def account_view(request):
         },
     )
     
+# Only the owner of the card can download the PDF, and only if the card is paid for and has a PDF file available.
+@login_required
+def download_card_pdf(request, card_id):
+    card = get_object_or_404(
+        Card,
+        id=card_id,
+        user=request.user,
+        is_paid=True,
+        pdf_file__isnull=False,
+    )
+
+    if not card.pdf_file:
+        raise Http404("PDF not found.")
+
+    cloudinary_response = requests.get(
+        card.pdf_file.url,
+        stream=True,
+        timeout=20,
+    )
+
+    if cloudinary_response.status_code != 200:
+        raise Http404("PDF could not be downloaded.")
+
+    filename = f"thank_u_card_{card.id}.pdf"
+
+    return FileResponse(
+        cloudinary_response.raw,
+        as_attachment=True,
+        filename=filename,
+        content_type="application/pdf",
+    )
     
 # This view allows the user to preview a saved card before downloading or adding it to the basket.
 @login_required
