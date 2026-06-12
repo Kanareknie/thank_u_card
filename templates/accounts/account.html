@@ -32,7 +32,7 @@
               <h3>Download file:</h3>
 
               {% if card.pdf_file %}
-                <a href="{% url 'download_card_pdf' card.id %}" class="sg-btn">Download PDF</a>
+                <a href="{% url 'download_card_pdf' card.id %}" class="sg-btn download-pdf-link">Download PDF</a>
               {% else %}
                 <p>PDF not available yet.</p>
               {% endif %}

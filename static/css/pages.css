@@ -1260,8 +1260,8 @@ textarea {
    ACCOUNT DOWNLOAD PDF LINK
 ========================= */
 
-.account-card-row a[href*="pdf"],
-.account-card-row--saved a[href*="pdf"] {
+.account-card-row .download-pdf-link,
+.account-card-row--saved .download-pdf-link {
   width: fit-content;
   min-height: 36px;
   display: inline-flex;
@@ -1292,8 +1292,8 @@ textarea {
     box-shadow 0.18s ease;
 }
 
-.account-card-row a[href*="pdf"]:hover,
-.account-card-row--saved a[href*="pdf"]:hover {
+.account-card-row .download-pdf-link:hover,
+.account-card-row--saved .download-pdf-link:hover {
   text-decoration: none;
   transform: translateY(-1px);
 
@@ -1684,7 +1684,6 @@ textarea {
 .actions-panel button[name="action"][value="save_changes"] {
   margin-top: 4rem;
 }
-
 
 /* =========================
    AI GENERATE BUTTONS ONLY
