@@ -286,7 +286,8 @@ textarea {
   border-radius: 20px;
   background: rgba(255, 250, 244, 0.78);
   box-shadow: var(--shadow-soft);
-  color: var(--muted-ink);
+  color: red;
+  font-weight: 700;
   text-align: center;
 }
 

@@ -1020,7 +1020,7 @@ textarea {
   border-radius: 18px;
   border: 1px solid rgba(250, 110, 25, 0.26);
   background: rgba(255, 250, 244, 0.78);
-  color: var(--ink);
+  color: red;
   box-shadow: var(--shadow-soft);
   font-size: 0.9rem;
   font-weight: 700;
