@@ -1262,7 +1262,7 @@ textarea {
 
 .account-card-row .download-pdf-link,
 .account-card-row--saved .download-pdf-link {
-  width: fit-content;
+  width: 70%;
   min-height: 36px;
   display: inline-flex;
   align-items: center;
