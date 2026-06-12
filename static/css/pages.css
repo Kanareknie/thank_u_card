@@ -374,7 +374,7 @@ textarea:focus {
 
 .card-message-box h3 {
   margin: 0 0 0.45rem;
-  color: var(--orange);
+  color: var(--ink);
   font-size: clamp(1rem, 2.2vw, 1.45rem);
   font-weight: 400;
 }
@@ -2021,7 +2021,7 @@ textarea {
   .actions-panel {
     grid-template-columns: 1fr;
   }
-  
+
 }
 
 /* =========================
