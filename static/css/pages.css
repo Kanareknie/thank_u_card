@@ -690,7 +690,7 @@ textarea {
   box-shadow: var(--shadow-soft);
 }
 
-.basket-page .basket-total h3 {
+.basket-page .basket-total h2 {
   margin: 0 0 0.5rem;
   color: var(--orange);
   font-size: 0.9rem;
