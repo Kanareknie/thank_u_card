@@ -9,31 +9,33 @@
 {% endblock %}
 
 {% block content %}
-  <section class="preview-card preview-page-panel">
-    <h1>Card Preview</h1>
+
+  <h1 class="page-title">Card Preview</h1>
+
+  <div class="preview-card preview-page-panel">
     <div class="preview-paper preview-page-paper">
       {% if card.background_image %}
         <img src="{{ card.background_image.url }}" alt="Generated card background" class="card-bg-image" />
       {% endif %}
 
       <div class="preview-content">
-          {% if not card.no_message %}
-            <div class="card-message-box">
-              <h2 class="card-message-title">
-                {% if card.recipient_name %}
-                  Dear {{ card.recipient_name }}
-                {% endif %}
-              </h2>
+        {% if not card.no_message %}
+          <div class="card-message-box">
+            <h2 class="card-message-title">
+              {% if card.recipient_name %}
+                Dear {{ card.recipient_name }}
+              {% endif %}
+            </h2>
 
-              <p>{{ card.message }}</p>
-            </div>
-          {% endif %}
-        </div>
+            <p>{{ card.message }}</p>
+          </div>
+        {% endif %}
+      </div>
     </div>
 
     <div class="preview-page-actions">
       <a href="{% url 'account' %}" class="sg-btn">Back to account</a>
       <a href="{% url 'edit_card' card.id %}" class="sg-btn">Edit card</a>
     </div>
-  </section>
+  </div>
 {% endblock %}
