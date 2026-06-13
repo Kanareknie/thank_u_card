@@ -37,7 +37,8 @@ def generate_card_message(recipient_type, theme, message=""):
 
     return response.output_text.strip()
 
-# Prompts for image generation INCLUDING main, colour, element, theme, recipient, and safety instructions.
+# Prompts for image generation INCLUDING main, colour, element, theme, recipient,
+# and safety instructions.
 
 MAIN_PROMPT = (
     "Create a square image featuring one large soft 3D rounded foam note panel "
@@ -257,3 +258,4 @@ def generate_card_background(card):
     except Exception as error:
         print(f"OpenAI image generation failed: {error}")
         return None
+    

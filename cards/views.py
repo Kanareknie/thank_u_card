@@ -19,7 +19,8 @@ from django.shortcuts import get_object_or_404
 def home(request):
     generated_message = None
     preview_card = None
-    # Check if the reset query parameter is set to "1" to determine if the form and preview should be reset
+    # Check if the reset query parameter is set to "1" to determine if the form and 
+    # preview should be reset
     reset_page = request.GET.get("reset") == "1"
     
     latest_card = None
@@ -48,7 +49,8 @@ def home(request):
                     message=form.cleaned_data.get("message", ""),
                 )
                 
-                # If a message was generated, update the form and preview card with the new message
+                # If a message was generated, update the form and preview card with
+                # the new message
                 if generated_message:
                     form = CardForm(
                         initial={
@@ -92,9 +94,11 @@ def home(request):
                     "no_message": form.cleaned_data.get("no_message"),
                 }
 
-                # Display a success message to the user indicating that the preview has been updated
+                # Display a success message to the user indicating that 
+                # the preview has been updated
                 messages.success(request, "Preview updated.")
-        # Save the card to the database with the current form data and generated message
+        # Save the card to the database with the current form data
+        # and generated message
         elif action == "save_card":
             if not request.user.is_authenticated:
                 messages.error(
@@ -123,7 +127,8 @@ def home(request):
                 messages.success(request, "Your card has been saved successfully.")
                 return redirect(f"{reverse('home')}?reset=1")
             
-        # Add the card to the user's basket by creating a BasketItem linking the card to the user's Basket
+        # Add the card to the user's basket by creating a BasketItem linking 
+        # the card to the user's Basket
         elif action == "add_to_basket":
             if not request.user.is_authenticated:
                 messages.error(
@@ -184,7 +189,8 @@ def home(request):
                     background_status__in=["generating", "completed", "failed"],
                 ).count()
 
-                # If the user has already made 3 or more background generation requests in the last 24 hours, 
+                # If the user has already made 3 or more background generation 
+                # requests in the last 24 hours, 
                 # display an error message and do not allow them to generate 
                 # another background until the 24-hour period has
                 if generated_count >= 3:
@@ -305,4 +311,3 @@ def edit_card(request, card_id):
             "card": card,
         },
     )
-    

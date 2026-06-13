@@ -32,3 +32,4 @@ class BasketItem(models.Model):
 
     def __str__(self):
         return f"Card {self.card.id} in basket"
+    

@@ -37,7 +37,8 @@ import requests
 FONT_PATH = Path(settings.BASE_DIR) / "static" / "fonts" / "TheGirlNextDoor-Regular.ttf"
 pdfmetrics.registerFont(TTFont("GirlNextDoor", str(FONT_PATH)))
 
-# Prompts for image generation INCLUDING main, colour, element, theme, recipient, and safety instructions.
+# Prompts for image generation INCLUDING main, colour, element, theme, recipient, 
+# and safety instructions.
 def draw_wrapped_text(
     pdf,
     text,

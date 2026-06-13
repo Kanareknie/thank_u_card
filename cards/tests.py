@@ -56,7 +56,8 @@ class CardCreationTests(TestCase):
             }
         )
 
-        # Check that the card was created successfully and that the user is redirected to the home page
+        # Check that the card was created successfully and that 
+        # the user is redirected to the home page
         self.assertEqual(Card.objects.count(), 1)
 
         card = Card.objects.first()
@@ -64,3 +65,4 @@ class CardCreationTests(TestCase):
         self.assertEqual(card.recipient_name, "Mrs Smith")
         self.assertEqual(card.message, "Thank you for helping me.")
         self.assertRedirects(response, reverse("home"))
+        

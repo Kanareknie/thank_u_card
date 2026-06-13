@@ -67,3 +67,4 @@ class CardAdmin(admin.ModelAdmin):
         "created_on",
         "updated_on",
     )
+    

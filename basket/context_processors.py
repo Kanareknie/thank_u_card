@@ -19,3 +19,4 @@ def basket_item_count(request):
     return {
         "basket_item_count": count
     }
+    
