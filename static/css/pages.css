@@ -1735,7 +1735,7 @@ textarea {
   background: radial-gradient(65.28% 65.28% at 50% 100%,
       rgba(238, 151, 74, 0.904) 0%,
       rgba(223, 113, 255, 0) 100%),
-    linear-gradient(0deg, #daaf92 #de96e6);
+    linear-gradient(0deg, #daaf92, #de96e6);
 }
 
 .button:active {
