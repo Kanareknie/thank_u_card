@@ -20,7 +20,7 @@
     {% if basket_items %}
       <div class="basket-items-panel">
         {% for item in basket_items %}
-          <article class="basket-item-row">
+          <div class="basket-item-row">
             <div class="basket-check" aria-hidden="true">✓</div>
 
             <div class="basket-item-detail">
@@ -41,7 +41,7 @@
             <div class="basket-item-action">
               <a href="{% url 'basket_item_preview' item.id %}" class="sg-btn">Preview</a>
             </div>
-          </article>
+          </div>
         {% endfor %}
       </div>
 
