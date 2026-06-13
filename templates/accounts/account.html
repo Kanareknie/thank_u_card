@@ -19,17 +19,17 @@
             <div class="basket-check" aria-hidden="true">✓</div>
 
             <div class="basket-item-detail">
-              <h3>Product details:</h3>
+              <h2>Product details:</h2>
               <p>Card for {{ card.recipient_type }}, theme {{ card.theme }}, format square</p>
             </div>
 
             <div class="basket-item-detail">
-              <h3>Created on:</h3>
+              <h2>Created on:</h2>
               <p>{{ card.created_on|date:'d/m/Y' }}</p>
             </div>
 
             <div class="basket-item-detail">
-              <h3>Download file:</h3>
+              <h2>Download file:</h2>
 
               {% if card.pdf_file %}
                 <a href="{% url 'download_card_pdf' card.id %}" class="sg-btn download-pdf-link">Download PDF</a>
@@ -55,12 +55,12 @@
             <div class="basket-check" aria-hidden="true">✓</div>
 
             <div class="basket-item-detail">
-              <h3>Product details:</h3>
+              <h2>Product details:</h2>
               <p>Card for {{ card.recipient_type }}, theme {{ card.theme }}, format square</p>
             </div>
 
             <div class="basket-item-detail">
-              <h3>Created on:</h3>
+              <h2>Created on:</h2>
               <p>{{ card.created_on|date:'d/m/Y' }}</p>
             </div>
 

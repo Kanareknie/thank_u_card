@@ -1200,8 +1200,8 @@ textarea {
 .account-card-row--saved {
   grid-template-columns: 42px 2fr 1fr repeat(4, minmax(100px, 0.8fr));
 }
-.account-card-row h3,
-.account-card-row--saved h3 {
+.account-card-row h2,
+.account-card-row--saved h2 {
   margin: 0;
   color: var(--orange);
   font-size: 0.78rem;
