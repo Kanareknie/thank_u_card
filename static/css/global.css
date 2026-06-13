@@ -113,7 +113,8 @@ textarea {
 ========================= */
 
 .site-shell {
-  width: min(100%, var(--page-width));
+  width: 100%;
+  max-width: var(--page-width);
   min-height: 100vh;
   margin: 0 auto;
   padding: 1.35rem;
