@@ -10,6 +10,7 @@
 
 {% block content %}
   <section class="preview-card basket-order-panel">
+    <h1>Your basket</h1>
     <div class="demo-notice">
       <p>
         <strong>Student project/demo checkout.</strong>
@@ -18,7 +19,6 @@
     </div>
     {% if basket_items %}
       <div class="basket-items-panel">
-        <h1>Your basket</h1>
         {% for item in basket_items %}
           <article class="basket-item-row">
             <div class="basket-check" aria-hidden="true">✓</div>
