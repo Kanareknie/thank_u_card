@@ -365,14 +365,16 @@ textarea:focus {
 }
 
 .card-message-box h3,
-.card-message-box p {
+.card-message-box p,
+.card-message-title {
   font-family: "The Girl Next Door", cursive;
   color: var(--ink);
   overflow-wrap: anywhere;
   word-break: break-word;
 }
 
-.card-message-box h3 {
+.card-message-box h3,
+.card-message-title {
   margin: 0 0 0.45rem;
   color: var(--ink);
   font-size: clamp(1rem, 2.2vw, 1.45rem);
@@ -2586,7 +2588,8 @@ textarea {
     border-radius: 14px;
   }
 
-  .card-message-box h3 {
+  .card-message-box h3,
+  .card-message-title {
     margin-bottom: 0.18rem;
     font-size: clamp(0.48rem, 2.8vw, 0.7rem);
     line-height: 1.1;

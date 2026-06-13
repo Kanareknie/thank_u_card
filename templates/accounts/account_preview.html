@@ -19,11 +19,11 @@
       <div class="preview-content">
           {% if not card.no_message %}
             <div class="card-message-box">
-              <h3>
+              <h2 class="card-message-title">
                 {% if card.recipient_name %}
                   Dear {{ card.recipient_name }}
                 {% endif %}
-              </h3>
+              </h2>
 
               <p>{{ card.message }}</p>
             </div>
