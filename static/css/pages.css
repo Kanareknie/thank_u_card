@@ -1153,7 +1153,10 @@ textarea {
     url("../images/container2.png") no-repeat center / cover;
 }
 
-.account-section>h2 {
+.account-section>h1,
+.account-section>h2,
+.preview-card>h1,
+.home-builder>h1 {
   margin: 0 0 1rem;
   color: var(--ink);
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;
