@@ -41,10 +41,9 @@
     </p>
   </section>
 
-  <form class="home-builder-form" method="post" action="">
+  <form class="home-builder-form" method="post">
     {% csrf_token %}
 
-   
 
     <div class="home-builder">
       <section class="builder-column builder-options" aria-labelledby="step-one-title">
@@ -132,11 +131,11 @@
                 {% if preview_card %}
                   {% if not preview_card.no_message %}
                     <div class="card-message-box" id="card-message-box">
-                      <h3 id="live-recipient-preview">
+                      <p id="live-recipient-preview">
                         {% if preview_card.recipient_name %}
                           Dear {{ preview_card.recipient_name }}
                         {% endif %}
-                      </h3>
+                      </p>
 
                       <p id="live-message-preview">{{ preview_card.message }}</p>
                     </div>
@@ -241,11 +240,11 @@
     </div>
   </form>
 
-  <section class="home-note">
+  <div class="home-note">
     <p>
       <strong>*Background generation is limited to 3 per 24h per user.</strong>
     </p>
     <p>This is a student project/demo checkout flow. No real physical product will be sent.</p>
     <p>After a successful test payment, the thank you card can be downloaded in PDF format from the account page.</p>
-  </section>
+  </div>
 {% endblock %}
