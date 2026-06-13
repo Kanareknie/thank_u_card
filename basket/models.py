@@ -3,7 +3,10 @@ from django.conf import settings
 from cards.models import Card
 
 # Create your models here.
-# The Basket model represents a user's shopping basket, which can contain multiple items (cards).
+# The Basket model represents a user's shopping basket,
+# which can contain multiple items (cards).
+
+
 class Basket(models.Model):
     user = models.OneToOneField(
         # Use the custom user model defined in settings.AUTH_USER_MODEL
@@ -32,4 +35,3 @@ class BasketItem(models.Model):
 
     def __str__(self):
         return f"Card {self.card.id} in basket"
-    

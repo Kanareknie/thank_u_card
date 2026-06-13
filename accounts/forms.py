@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from  .models import CustomUser
+from .models import CustomUser
 
 
 class SignUpForm(UserCreationForm):
@@ -9,7 +9,7 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = CustomUser
         fields = ("email", "password1", "password2")
-        
+
     # Email validation
     # https://medium.com/@python-javascript-php-html-css/implementing-email-validation-in-django-projects-e210d4777fac
     def clean_email(self):
@@ -37,4 +37,3 @@ class SignUpForm(UserCreationForm):
             )
 
         return email
-    

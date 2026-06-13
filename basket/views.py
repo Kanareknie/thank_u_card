@@ -7,6 +7,7 @@ from .models import BasketItem
 # Price per card in pence (199p = £1.99)
 CARD_PRICE_PENCE = 199
 
+
 # View to display the user's basket
 @login_required
 def basket_view(request):
@@ -19,7 +20,7 @@ def basket_view(request):
         "card__colour",
         "card__element",
     ).order_by("-added_on")
-    
+
     basket_count = basket_items.count()
     basket_total_pence = basket_count * CARD_PRICE_PENCE
     basket_total = basket_total_pence / 100
@@ -33,7 +34,8 @@ def basket_view(request):
             "basket_total": basket_total,
         }
     )
-    
+
+
 # View to handle removing an item from the basket
 @login_required
 def remove_basket_item(request, item_id):
@@ -45,9 +47,13 @@ def remove_basket_item(request, item_id):
 
     if request.method == "POST":
         basket_item.delete()
-        messages.success(request, "The card has been removed from your basket.")
+        messages.success(
+            request,
+            "The card has been removed from your basket."
+            )
 
     return redirect("basket")
+
 
 # View to preview a card in the basket
 @login_required
@@ -66,4 +72,3 @@ def basket_item_preview(request, item_id):
             "card": basket_item.card,
         }
     )
-    

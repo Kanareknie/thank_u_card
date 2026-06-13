@@ -4,6 +4,7 @@ from .models import Profile, RecipientType, Theme, Colour, Element, Card
 # Register model in Django admin using Django's ModelAdmin register decorator:
 # https://docs.djangoproject.com/en/4.2/ref/contrib/admin/#the-register-decorator
 
+
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ("user", "created_on")
@@ -67,4 +68,3 @@ class CardAdmin(admin.ModelAdmin):
         "created_on",
         "updated_on",
     )
-    

@@ -79,7 +79,10 @@ def create_checkout_session(request):
 def payment_success(request):
     messages.success(
         request,
-        "Payment received. Your card will be available in your account shortly."
+        (
+            "Payment received. Your card will be "
+            "available in your account shortly."
+        )
     )
     return redirect("account")
 
@@ -131,7 +134,7 @@ def stripe_webhook(request):
             for card in cards:
                 card.is_paid = True
                 card.save()
-                
+
                 if not card.pdf_file:
                     generate_card_pdf(card)
 

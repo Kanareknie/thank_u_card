@@ -13,37 +13,47 @@ from cards.models import Card
 from basket.models import Basket, BasketItem
 
 
-# This view is for the user registration page. 
+# This view is for the user registration page.
 def register(request):
     if request.method == "POST":
         form = SignUpForm(request.POST)
-        
+
         if form.is_valid():
             user = form.save()
-            login(request, user, backend="django.contrib.auth.backends.ModelBackend")
-            messages.success(request, "Account created successfully. You are now logged in.")
+            login(request, user,
+                  backend="django.contrib.auth.backends.ModelBackend")
+            messages.success(
+                request,
+                (
+                    "Account created successfully. "
+                    "You are now logged in."
+                )
+            )
             return redirect("home")
     else:
         form = SignUpForm()
-        
+
     return render(request, 'accounts/register.html', {"form": form})
+
 
 class CustomLoginView(LoginView):
     template_name = 'accounts/login.html'
-    
+
     def form_valid(self, form):
         messages.success(self.request, "Logged in successfully.")
         return super().form_valid(form)
-    
+
 
 class CustomLogoutView(LogoutView):
     def dispatch(self, request, *args, **kwargs):
         messages.success(request, "You have logged out successfully.")
         return super().dispatch(request, *args, **kwargs)
-    
-    
-# This view is for the user account page, 
-# where they can see their cards that are ready to download and their saved cards.
+
+
+# This view is for the user account page,
+# where they can see their cards that are ready
+# to download and their saved cards.
+
 @login_required
 def account_view(request):
     ready_to_download = Card.objects.filter(
@@ -65,8 +75,11 @@ def account_view(request):
             "saved_cards": saved_cards,
         },
     )
-    
-# Only the owner of the card can download the PDF, and only if the card is paid for and has a PDF file available.
+
+# Only the owner of the card can download the PDF,
+# and only if the card is paid for and has a PDF file available.
+
+
 @login_required
 def download_card_pdf(request, card_id):
     card = get_object_or_404(
@@ -97,8 +110,11 @@ def download_card_pdf(request, card_id):
         filename=filename,
         content_type="application/pdf",
     )
-    
-# This view allows the user to preview a saved card before downloading or adding it to the basket.
+
+
+# This view allows the user to preview a saved card
+# before downloading or adding it to the basket.
+
 @login_required
 def account_card_preview(request, card_id):
     card = get_object_or_404(
@@ -114,6 +130,7 @@ def account_card_preview(request, card_id):
             "card": card,
         }
     )
+
 
 # This view allows the user to add a saved card to their basket for checkout.
 @login_required
@@ -135,11 +152,15 @@ def add_saved_card_to_basket(request, card_id):
             card=card
         )
 
-        messages.success(request, "Your saved card has been added to the basket.")
+        messages.success(request,
+                         "Your saved card has been added to the basket.")
 
     return redirect("account")
 
-# This view allows the user to delete a saved card that has not been paid for yet.
+
+# This view allows the user to delete a saved card
+# that has not been paid for yet.
+
 @login_required
 def delete_saved_card(request, card_id):
     card = get_object_or_404(
@@ -151,6 +172,7 @@ def delete_saved_card(request, card_id):
 
     if request.method == "POST":
         card.delete()
-        messages.success(request, "Your saved card has been deleted.")
+        messages.success(request,
+                         "Your saved card has been deleted.")
 
     return redirect("account")

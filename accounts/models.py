@@ -2,8 +2,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 # Create your models here.
-#https://testdriven.io/blog/django-custom-user-model/
-    
+# https://testdriven.io/blog/django-custom-user-model/
+
+
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -28,7 +29,7 @@ class CustomUserManager(BaseUserManager):
             raise ValueError("Superuser must have is_superuser=True.")
 
         return self.create_user(email, password, **extra_fields)
-    
+
 
 class CustomUser(AbstractUser):
     username = None
@@ -38,7 +39,7 @@ class CustomUser(AbstractUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
-    
+
     # Ensure email is saved in lowercase
     def save(self, *args, **kwargs):
         if self.email:

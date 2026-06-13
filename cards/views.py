@@ -1,6 +1,6 @@
 from datetime import timedelta
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
@@ -12,21 +12,19 @@ from basket.models import Basket, BasketItem
 from .tasks import generate_background_task
 from .openai_helpers import generate_card_message
 
-from django.shortcuts import get_object_or_404
-
-
 
 def home(request):
     generated_message = None
     preview_card = None
-    # Check if the reset query parameter is set to "1" to determine if the form and 
-    # preview should be reset
+    # Check if the reset query parameter is set to "1" to determine
+    # if the form and preview should be reset.
     reset_page = request.GET.get("reset") == "1"
-    
+
     latest_card = None
-    
-    # Display on the preview only if the user is authenticated and has a card that has
-    # a generated background image that is not paid for
+
+    # Display on the preview only if the user is authenticated
+    # and has a card that has
+    # a generated background image that is not paid for.
     if request.user.is_authenticated:
         latest_card = Card.objects.filter(
             user=request.user,
@@ -34,7 +32,7 @@ def home(request):
             background_status__in=["generating", "completed", "failed"],
         ).order_by("-created_on").first()
 
-    # Handle form submissions for generating messages, 
+    # Handle form submissions for generating messages,
     # updating preview, and saving cards
     if request.method == "POST":
         form = CardForm(request.POST)
@@ -48,23 +46,32 @@ def home(request):
                     theme=form.cleaned_data["theme"],
                     message=form.cleaned_data.get("message", ""),
                 )
-                
-                # If a message was generated, update the form and preview card with
-                # the new message
+
+                # If a message was generated, update the form and
+                # preview card with the new message
                 if generated_message:
                     form = CardForm(
                         initial={
-                            "recipient_type": form.cleaned_data["recipient_type"],
+                            "recipient_type": form.cleaned_data[
+                                "recipient_type"
+                                ],
                             "theme": form.cleaned_data["theme"],
                             "colour": form.cleaned_data["colour"],
                             "element": form.cleaned_data["element"],
-                            "recipient_name": form.cleaned_data.get("recipient_name", ""),
+                            "recipient_name": form.cleaned_data.get(
+                                "recipient_name",
+                                ""
+                                ),
                             "message": generated_message,
-                            "no_message": form.cleaned_data.get("no_message", False),
+                            "no_message": form.cleaned_data.get(
+                                "no_message",
+                                False
+                            ),
                         }
                     )
-                    
-                    # Update the preview card with the generated message and other form data
+
+                    # Update the preview card with the generated
+                    # message and other form data
                     preview_card = {
                         "recipient_name": form.initial.get("recipient_name"),
                         "message": generated_message,
@@ -74,14 +81,20 @@ def home(request):
                         "element": form.initial.get("element"),
                         "no_message": form.initial.get("no_message"),
                     }
-                    
+
                     # Display a success message to the user
-                    messages.success(request, "Message generated successfully.")
+                    messages.success(request,
+                                     "Message generated successfully.")
                 else:
-                    # If message generation failed, display an error message to the user
-                    messages.error(request, "AI message generation is currently unavailable.")
-         
-        # Update the preview card with the current form data without generating a new message            
+                    # If message generation failed, display
+                    # an error message to the user
+                    messages.error(
+                        request,
+                        "AI message generation is currently unavailable."
+                        )
+
+        # Update the preview card with the current form data
+        # without generating a new message
         elif action == "update_preview":
             if form.is_valid():
                 preview_card = {
@@ -94,7 +107,7 @@ def home(request):
                     "no_message": form.cleaned_data.get("no_message"),
                 }
 
-                # Display a success message to the user indicating that 
+                # Display a success message to the user indicating that
                 # the preview has been updated
                 messages.success(request, "Preview updated.")
         # Save the card to the database with the current form data
@@ -124,24 +137,34 @@ def home(request):
                 latest_card.no_message = form_card.no_message
                 latest_card.save()
 
-                messages.success(request, "Your card has been saved successfully.")
+                messages.success(
+                    request,
+                    "Your card has been saved successfully."
+                    )
                 return redirect(f"{reverse('home')}?reset=1")
-            
-        # Add the card to the user's basket by creating a BasketItem linking 
+
+        # Add the card to the user's basket by creating a BasketItem linking
         # the card to the user's Basket
         elif action == "add_to_basket":
             if not request.user.is_authenticated:
                 messages.error(
                     request,
-                    "Please log in or create an account to add your card to the basket."
+                    (
+                        "Please log in or create an account to add your card "
+                        "to the basket."
+                    )
                 )
                 return redirect("login")
 
             if not latest_card or not latest_card.background_image:
                 messages.error(
                     request,
-                    "Please generate a background before adding your card to the basket."
+                    (
+                        "Please generate a background before adding your"
+                        "card to the basket."
+                    )
                 )
+
             elif form.is_valid():
                 form_card = form.save(commit=False)
 
@@ -163,21 +186,26 @@ def home(request):
                     card=latest_card
                 )
 
-                messages.success(request, "Your card has been added to the basket.")
+                messages.success(
+                    request, "Your card has been added to the basket."
+                    )
                 return redirect(f"{reverse('home')}?reset=1")
-            
-        # Generate a background image for the card using AI and save it to the card's background_image field
+
+        # Generate a background image for the card using AI and save it to
+        # the card's background_image field
         # https://docs.djangoproject.com/en/6.0/ref/models/querysets/
         # https://stackoverflow.com/questions/32510123/django-datetime-timedelta-how-does-its-subtract-from-timezone-now-if-they-ar
         elif action == "generate_background":
             if not request.user.is_authenticated:
                 messages.error(
                     request,
-                "   Please log in or create an account to generate a card background."
+                    (
+                        "Please log in or create an account "
+                        "to generate a card background."
+                    )
                 )
                 return redirect("login")
-            
-            
+
             if form.is_valid():
                 twenty_four_hours_ago = timezone.now() - timedelta(hours=24)
 
@@ -186,17 +214,24 @@ def home(request):
                 generated_count = Card.objects.filter(
                     user=request.user,
                     created_on__gte=twenty_four_hours_ago,
-                    background_status__in=["generating", "completed", "failed"],
+                    background_status__in=[
+                        "generating",
+                        "completed",
+                        "failed"
+                        ],
                 ).count()
 
-                # If the user has already made 3 or more background generation 
-                # requests in the last 24 hours, 
-                # display an error message and do not allow them to generate 
+                # If the user has already made 3 or more background generation
+                # requests in the last 24 hours,
+                # display an error message and do not allow them to generate
                 # another background until the 24-hour period has
                 if generated_count >= 3:
                     messages.error(
                         request,
-                        "You can generate only 3 card backgrounds per 24 hours."
+                        (
+                            "You can generate only 3 card backgrounds "
+                            "per 24 hours."
+                        )
                     )
                 else:
                     card = form.save(commit=False)
@@ -204,17 +239,23 @@ def home(request):
                     card.user = request.user
                     card.save()
 
-                    # Call the Celery task to generate the background image asynchronously, 
+                    # Call the Celery task to generate the background
+                    # image asynchronously,
                     # passing the card's ID as an argument
                     generate_background_task.delay(card.id)
-                    
+
                     return redirect("home")
             else:
                 messages.error(
                     request,
-                    "Please choose the card options before generating a background."
+                    (
+                        "Please choose the card options before generating "
+                        "a background."
+                    )
                 )
-    # If the request method is GET, pre-fill the form with the latest card if it exists
+
+    # If the request method is GET, pre-fill the form with
+    # the latest card if it exists
     else:
         if reset_page:
             form = CardForm()
@@ -223,7 +264,7 @@ def home(request):
             form = CardForm(instance=latest_card)
         else:
             form = CardForm()
-            
+
     return render(
         request,
         "cards/home.html",
@@ -234,8 +275,10 @@ def home(request):
             "preview_card": preview_card,
         },
     )
-    
-# This function edits a saved card by allowing the user to update the card's attributes and message.
+
+# This function edits a saved card by allowing the user to
+# update the card's attributes and message.
+
 
 @login_required
 def edit_card(request, card_id):
@@ -267,7 +310,13 @@ def edit_card(request, card_id):
                     messages.success(request, "Message updated successfully.")
                     return redirect("edit_card", card_id=updated_card.id)
 
-                messages.error(request, "AI message generation is currently unavailable.")
+                messages.error(
+                    request,
+                    (
+                        "AI message generation is currently "
+                        "unavailable."
+                    )
+                )
 
             elif action == "generate_background":
                 updated_card.background_status = "generating"
@@ -275,7 +324,9 @@ def edit_card(request, card_id):
 
                 generate_background_task.delay(updated_card.id)
 
-                messages.success(request, "New background generation has started.")
+                messages.success(request,
+                                 "New background generation has started."
+                                 )
                 return redirect("edit_card", card_id=updated_card.id)
 
             elif action == "save_changes":
@@ -295,7 +346,9 @@ def edit_card(request, card_id):
                     card=updated_card
                 )
 
-                messages.success(request, "Your card has been added to the basket.")
+                messages.success(request,
+                                 "Your card has been added to the basket."
+                                 )
                 return redirect("basket")
 
         else:

@@ -2,12 +2,14 @@ from django.test import TestCase
 
 # Create your tests here.
 
-# This file contains tests for the card creation functionality. 
+# This file contains tests for the card creation functionality.
 # It tests that a logged-in user can create a card with valid data.
-# Also that the card is saved correctly in the database. 
-# The test also checks that the user is redirected to the home page after creating a card.
+# Also that the card is saved correctly in the database.
+# The test also checks that the user is redirected to
+# the home page after creating a card.
 
 # Imports
+
 from django.test import TestCase, override_settings
 from django.urls import reverse
 from django.contrib.auth import get_user_model
@@ -15,8 +17,9 @@ from django.contrib.auth import get_user_model
 
 from .models import Card, RecipientType, Theme, Colour, Element
 
+
 # Test case for card creation
-@override_settings( 
+@override_settings(
     STATICFILES_STORAGE="django.contrib.staticfiles.storage.StaticFilesStorage"
     )
 class CardCreationTests(TestCase):
@@ -52,11 +55,10 @@ class CardCreationTests(TestCase):
                 "message": "Thank you for helping me.",
                 "no_message": False,
                 "action": "save_card",
-                
             }
         )
 
-        # Check that the card was created successfully and that 
+        # Check that the card was created successfully and that
         # the user is redirected to the home page
         self.assertEqual(Card.objects.count(), 1)
 
@@ -65,4 +67,3 @@ class CardCreationTests(TestCase):
         self.assertEqual(card.recipient_name, "Mrs Smith")
         self.assertEqual(card.message, "Thank you for helping me.")
         self.assertRedirects(response, reverse("home"))
-        

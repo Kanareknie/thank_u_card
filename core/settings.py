@@ -10,16 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-from pathlib import Path
 
 # import env variables from env.py
 import os
+from pathlib import Path
 import dj_database_url
 
 if os.path.isfile("env.py"):
     import env
-    
-    
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -42,7 +42,12 @@ OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ['thank-u-card-535f2cd79ec9.herokuapp.com', 'localhost', '127.0.0.1', "thank-u-card.herokuapp.com",]
+ALLOWED_HOSTS = [
+    'thank-u-card-535f2cd79ec9.herokuapp.com',
+    'localhost',
+    '127.0.0.1',
+    "thank-u-card.herokuapp.com",
+]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://thank-u-card-535f2cd79ec9.herokuapp.com",
@@ -54,8 +59,8 @@ if not DEBUG:
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-    
-    
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -64,19 +69,19 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    
+
     'django.contrib.staticfiles',
-    
+
     'cards',
     'accounts',
-    
+
     'cloudinary_storage',
     'cloudinary',
-    
+
     'basket',
-    
+
     'payments',
-    
+
     # Django
     "django.contrib.sites",
 
@@ -85,13 +90,8 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
 
-    # provider you want
     "allauth.socialaccount.providers.google",
-    # optional:
-    # "allauth.socialaccount.providers.github",
 ]
-
-
 
 
 MIDDLEWARE = [
@@ -103,8 +103,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
-     # your existing middleware...
     "allauth.account.middleware.AccountMiddleware",
 ]
 
@@ -150,25 +148,38 @@ DATABASES = {
 }
 
 # Custom user model
-#https://testdriven.io/blog/django-custom-user-model/
+# https://testdriven.io/blog/django-custom-user-model/
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
+
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": (
+            "django.contrib.auth.password_validation."
+            "UserAttributeSimilarityValidator"
+        ),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": (
+            "django.contrib.auth.password_validation."
+            "MinimumLengthValidator"
+        ),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": (
+            "django.contrib.auth.password_validation."
+            "CommonPasswordValidator"
+        ),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": (
+            "django.contrib.auth.password_validation."
+            "NumericPasswordValidator"
+        ),
     },
 ]
 

@@ -1,19 +1,22 @@
 # PDF generation helper functions for cards.
 # Helper function inspired by ReportLab text measurement.
 # ReportLab does not automatically wrap text when using drawCentredString,
-# so the message is split into shorter lines that fit inside the card message box.
+# so the message is split into shorter lines that fit inside
+# the card message box.
 # https://docs.reportlab.com/reportlab/userguide/ch2_graphics/
 
 # This implementation uses ReportLab to create the final downloadable card PDF.
-# Uses canvas.Canvas(...), setFont(...), drawCentredString(...), showPage(), and save()
+# Uses canvas.Canvas(...), setFont(...), drawCentredString(...),
+# showPage(), and save()
 # https://docs.reportlab.com/reportlab/userguide/ch2_graphics/
 
 
-# Django FileField / saving files to models - 
-# How Django handles FileField and ImageField, which is what your card.pdf_file field uses.
+# Django FileField / saving files to models -
+# How Django handles FileField and ImageField, which is what your
+# card.pdf_file field uses.
 # https://docs.djangoproject.com/en/6.0/topics/files/
 
-# Python's io module for in-memory file handling, which is used to create 
+# Python's io module for in-memory file handling, which is used to create
 # a file-like object for the PDF data before saving it to the model.
 # https://docs.python.org/3/library/io.html
 
@@ -34,11 +37,18 @@ import requests
 
 
 # Register the font used in the card message box
-FONT_PATH = Path(settings.BASE_DIR) / "static" / "fonts" / "TheGirlNextDoor-Regular.ttf"
+FONT_PATH = (
+    Path(settings.BASE_DIR)
+    / "static"
+    / "fonts"
+    / "TheGirlNextDoor-Regular.ttf"
+)
 pdfmetrics.registerFont(TTFont("GirlNextDoor", str(FONT_PATH)))
 
-# Prompts for image generation INCLUDING main, colour, element, theme, recipient, 
-# and safety instructions.
+# Prompts for image generation INCLUDING main, colour,
+# element, theme, recipient and safety instructions.
+
+
 def draw_wrapped_text(
     pdf,
     text,
@@ -81,7 +91,10 @@ def draw_wrapped_text(
 
     return y
 
-# Main function to generate the PDF for a card, using the above helper function to draw wrapped text.
+# Main function to generate the PDF for a card,
+# using the above helper function to draw wrapped text.
+
+
 def generate_card_pdf(card):
 
     buffer = BytesIO()
@@ -121,7 +134,7 @@ def generate_card_pdf(card):
             pdf.setFillAlpha(0.55)
         except AttributeError:
             pass
-            
+
         pdf.setFillColorRGB(1, 1, 1)
         pdf.roundRect(
             box_x,
@@ -140,16 +153,15 @@ def generate_card_pdf(card):
         else:
             text_y = box_y + box_height - 80
 
-
-        # Draw recipient name and message, wrapped to fit inside the box with some padding.
+        # Draw recipient name and message, wrapped to fit
+        # inside the box with some padding.
         if card.recipient_name:
             recipient_text = f"Dear {card.recipient_name}"
 
-            # Set fill alpha for recipient name to make it slightly transparent, 
-            # so it doesn't overpower the message text.
-            
+            # Set fill alpha for recipient name to make
+            # it slightly transparent.
+
             pdf.setFillColorRGB(0.1, 0.1, 0.1)
-            
 
             text_y = draw_wrapped_text(
                 pdf=pdf,
@@ -165,12 +177,12 @@ def generate_card_pdf(card):
             text_y -= 12  # Extra spacing between recipient name and message
 
         if card.message:
-            
+
             try:
                 pdf.setFillAlpha(0.62)
             except AttributeError:
                 pass
-            
+
             pdf.setFillColorRGB(0.15, 0.15, 0.15)
 
             draw_wrapped_text(

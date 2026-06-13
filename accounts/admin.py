@@ -25,7 +25,7 @@ class CustomUserAdmin(UserAdmin):
 
     ordering = ("email",)
     search_fields = ("email",)
-    
+
     readonly_fields = ("last_login", "date_joined")
 
     fieldsets = (

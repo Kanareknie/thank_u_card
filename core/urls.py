@@ -18,15 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 from cards.views import home, edit_card
 from accounts.views import (
-    register, 
-    CustomLoginView, 
-    CustomLogoutView, 
+    register,
+    CustomLoginView,
+    CustomLogoutView,
     account_view,
     account_card_preview,
     add_saved_card_to_basket,
     delete_saved_card,
     download_card_pdf,
-    
 )
 from django.conf import settings
 from django.conf.urls.static import static
@@ -35,16 +34,28 @@ from core.views import google_site_verification, google_site_verification_2
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('basket/', include('basket.urls')), 
+    path('basket/', include('basket.urls')),
     path('payments/', include('payments.urls')),
     path('register/', register, name='register'),
     path('login/', CustomLoginView.as_view(), name='login'),
     path('account/', account_view, name='account'),
-    path('account/preview/<int:card_id>/', account_card_preview, name='account_card_preview'),
-    path('account/add-to-basket/<int:card_id>/', add_saved_card_to_basket, name='add_saved_card_to_basket'),
-    path('account/delete/<int:card_id>/', delete_saved_card, name='delete_saved_card'),
+    path('account/preview/<int:card_id>/',
+         account_card_preview,
+         name='account_card_preview'
+         ),
+    path('account/add-to-basket/<int:card_id>/',
+         add_saved_card_to_basket,
+         name='add_saved_card_to_basket'
+         ),
+    path('account/delete/<int:card_id>/',
+         delete_saved_card,
+         name='delete_saved_card'
+         ),
     path("accounts/", include("allauth.urls")),
-    path('account/download/<int:card_id>/', download_card_pdf, name='download_card_pdf'),
+    path('account/download/<int:card_id>/',
+         download_card_pdf,
+         name='download_card_pdf'
+         ),
     path('cards/edit/<int:card_id>/', edit_card, name='edit_card'),
     path(
         "password-reset/",
@@ -88,7 +99,6 @@ urlpatterns = [
         google_site_verification_2,
         name="google_site_verification_2",
     ),
-   
 ]
 
 if settings.DEBUG:
