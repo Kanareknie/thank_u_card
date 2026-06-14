@@ -158,13 +158,15 @@
                     </div>
                   {% else %}
                     <div class="card-message-box hidden" id="card-message-box">
-                      <p id="live-recipient-preview"></p  >
+                      <p id="live-recipient-preview"></p>
                       <p id="live-message-preview"></p>
                     </div>
                   {% endif %}
                 {% else %}
                   <div class="card-message-box" id="card-message-box">
-                    <h3 id="live-recipient-preview"></h3>
+                    <h3 id="live-recipient-preview">
+                      <span class="visually-hidden">Recipient preview</span>
+                    </h3>
                     <p id="live-message-preview">Your card preview will appear here</p>
                   </div>
                 {% endif %}
