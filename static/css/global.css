@@ -231,7 +231,7 @@ textarea {
   height: 1.35rem;
   padding: 0 0.35rem;
   border-radius: 999px;
-  border: 2px solid var(--white-cream);
+  border: 1px solid var(--white-cream);
   background: var(--orange);
   color: #fff;
   font-size: 0.72rem;
@@ -440,7 +440,7 @@ textarea:focus-visible {
   overflow: hidden;
   z-index: 1;
 
-  border: 2px solid var(--button-color);
+  border: 1px solid var(--button-color);
   background: rgba(255, 250, 244, 0.88);
   color: var(--button-color);
 
